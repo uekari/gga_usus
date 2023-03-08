@@ -47,3 +47,6 @@
                 Model と View に司令を出す，処理の流れを決める役割．
     ・Route:アクセスされた URL に応じて処理を振り分ける。URL と Controller の関数の対応を決める．
             実際の処理は Controller を通じて Model や View が実行する．
+
+
+＃再スタート！を早く切りたい・・・
