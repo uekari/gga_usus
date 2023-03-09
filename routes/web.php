@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\CarestationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::resource('client', ClientController::class);
+Route::resource('hospital', HospitalController::class);
+Route::resource('carestation', CarestationController::class);
 
 Route::get('/', function () {
     return view('welcome');

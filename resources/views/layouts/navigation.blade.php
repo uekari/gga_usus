@@ -1,3 +1,5 @@
+<!-- 共通ナビゲーションバー -->
+
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,6 +18,20 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <!-- 病院一覧ページへのリンクを追加 -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('hospital.index')" :active="request()->routeIs('hospital.index')">
+                    {{ __('病院一覧') }}
+                    </x-nav-link>
+                </div>
+                <!-- 病院登録ページへのリンクを追加 -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('hospital.create')" :active="request()->routeIs('hospital.create')">
+                    {{ __('病院登録') }}
+                    </x-nav-link>
+                </div>
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -69,6 +85,18 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+        </div>
+        <!-- 病院一覧ページへのリンクを追加 -->
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('hospital.index')" :active="request()->routeIs('hospital.index')">
+            {{ __('Index') }}
+            </x-responsive-nav-link>
+        </div>
+        <!-- 病院登録ページへのリンクを追加 -->
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('hospital.create')" :active="request()->routeIs('hospital.create')">
+            {{ __('Create') }}
             </x-responsive-nav-link>
         </div>
 
