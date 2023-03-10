@@ -13,16 +13,14 @@
           <form class="mb-6" action="{{ route('hospital.store') }}" method="POST">
             @csrf
             <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="hospital">AAA</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="hospital" id="hospital">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="hospital_name">AAA</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="hospital_name" id="hospital_name">
             </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="description">BBB</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="description" id="description">
             </div>
-            <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-              登録
-            </button>
+            <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-black uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">登録</button>
           </form>
         </div>
       </div>
