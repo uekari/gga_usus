@@ -15,7 +15,7 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        $hospitals = [];
+        $hospitals = Hospital::getAllOrderByUpdated_at();
         return view('hospital.index',compact('hospitals'));
     }
 
@@ -37,7 +37,23 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // バリデーション
+        $validator = Validator::make($request->all(), [
+            'hospital_name' => 'required | max:191',
+            'description' => 'required',
+        ]);
+        // バリデーション:エラー
+        if ($validator->fails()) {
+            return redirect()
+                ->route('hospital.create')
+                ->withInput()
+                ->withErrors($validator);
+        }
+        // create()は最初から用意されている関数
+        // 戻り値は挿入されたレコードの情報
+        $result = Hospital::create($request->all());
+        // ルーティング「index」にリクエスト送信（一覧ページに移動）
+        return redirect()->route('hospital.index');
     }
 
     /**
@@ -48,7 +64,8 @@ class HospitalController extends Controller
      */
     public function show($id)
     {
-        //
+        $hospital = Hospital::find($id);
+        return view('hospital.show', compact('hospital'));
     }
 
     /**
@@ -59,7 +76,8 @@ class HospitalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $hospital = Hospital::find($id);
+        return view('hospital.edit', compact('hospital'));
     }
 
     /**
@@ -71,8 +89,22 @@ class HospitalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        //バリデーション
+        $validator = Validator::make($request->all(), [
+            'hospital_name' => 'required | max:191',
+            'description' => 'required',
+        ]);
+        //バリデーション:エラー
+        if ($validator->fails()) {
+            return redirect()
+                ->route('hospital.edit', $id)
+                ->withInput()
+                ->withErrors($validator);
+        }
+        //データ更新処理
+        $result = Hospital::find($id)->update($request->all());
+            return redirect()->route('hospital.index');
+        }
 
     /**
      * Remove the specified resource from storage.
