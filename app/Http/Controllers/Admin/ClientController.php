@@ -23,6 +23,8 @@ class ClientController extends Controller
     }
 
 
+
+
     public function index()
     {
         // $e_all = Client::all();  //Elquentエロクアント
@@ -38,8 +40,7 @@ class ClientController extends Controller
 
     // dd('testだー表示してーお願いー');
 
-        $clients = Client::select('client_name', 'desease','age', 'carelevel', 'created_at')->get();
-
+        $clients = Client::select('id','client_name','client_name2', 'desease','age', 'carelevel', 'created_at')->get();
         return view('admin.client.index',
         compact('clients'));
 
@@ -53,7 +54,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-
+         return view('admin.client.create');
     }
 
     /**
@@ -64,7 +65,26 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // バリデーション
+        $validator = Validator::make($request->all(), [
+            'client_name' => 'required | max:191',
+            'client_name2' => 'required | max:191',
+            'desease' => 'required',
+            'age' => 'required | max:5',
+            'carelevel' => 'required | max:5',
+        ]);
+        // バリデーション:エラー
+        if ($validator->fails()) {
+            return redirect()
+                ->route('admin.client.create')
+                ->withInput()
+                ->withErrors($validator);
+        }
+        // create()は最初から用意されている関数
+        // 戻り値は挿入されたレコードの情報
+        $result = Client::create($request->all());
+        // ルーティング「index」にリクエスト送信（一覧ページに移動）
+        return redirect()->route('admin.client.index');
     }
 
     /**
@@ -75,7 +95,8 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+          $client = Client::find($id);
+        return view('admin.client.show', compact('client'));
     }
 
     /**
@@ -86,7 +107,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+      $client = Client::find($id);
+        return view('admin.client.edit', compact('client'));
     }
 
     /**
@@ -98,7 +120,24 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // バリデーション
+        $validator = Validator::make($request->all(), [
+            'client_name' => 'required | max:191',
+            'client_name2' => 'required | max:191',
+            'desease' => 'required',
+            'age' => 'required | max:5',
+            'carelevel' => 'required | max:5',
+        ]);
+        // バリデーション:エラー
+        if ($validator->fails()) {
+            return redirect()
+                ->route('admin.client.edit',$id)
+                ->withInput()
+                ->withErrors($validator);
+        }
+        //データ更新処理
+        $result = Client::find($id)->update($request->all());
+        return redirect()->route('admin.client.index');
     }
 
     /**
