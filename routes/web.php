@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('client', ClientController::class);
+// Route::resource('client', ClientController::class);
 Route::resource('hospital', HospitalController::class);
 Route::resource('carestation', CarestationController::class);
 
