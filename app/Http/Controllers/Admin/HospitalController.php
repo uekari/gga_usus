@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\Hospital;
+use Illuminate\Support\Facades\DB;
 
 class HospitalController extends Controller
 {
@@ -15,8 +17,11 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        $hospitals = Hospital::getAllOrderByUpdated_at();
-        return view('hospital.index',compact('hospitals'));
+        // $hospitals = Hospital::getAllOrderByUpdated_at();
+        // return view('admin.hospital.index',compact('hospitals'));
+        $hospitals = Hospital::select('id','hospital_name','address', 'tel', 'fax' ,'created_at')->get();
+        return view('admin.hospital.index',
+        compact('hospitals'));
     }
 
     /**
@@ -26,7 +31,7 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        return view('hospital.create');
+        return view('admin.hospital.create');
     }
 
     /**
@@ -45,7 +50,7 @@ class HospitalController extends Controller
         // バリデーション:エラー
         if ($validator->fails()) {
             return redirect()
-                ->route('hospital.create')
+                ->route('admin.hospital.create')
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -53,7 +58,7 @@ class HospitalController extends Controller
         // 戻り値は挿入されたレコードの情報
         $result = Hospital::create($request->all());
         // ルーティング「index」にリクエスト送信（一覧ページに移動）
-        return redirect()->route('hospital.index');
+        return redirect()->route('admin.hospital.index');
     }
 
     /**
@@ -65,7 +70,7 @@ class HospitalController extends Controller
     public function show($id)
     {
         $hospital = Hospital::find($id);
-        return view('hospital.show', compact('hospital'));
+        return view('admin.hospital.show', compact('hospital'));
     }
 
     /**
@@ -77,7 +82,7 @@ class HospitalController extends Controller
     public function edit($id)
     {
         $hospital = Hospital::find($id);
-        return view('hospital.edit', compact('hospital'));
+        return view('admin.hospital.edit', compact('hospital'));
     }
 
     /**
@@ -97,13 +102,13 @@ class HospitalController extends Controller
         //バリデーション:エラー
         if ($validator->fails()) {
             return redirect()
-                ->route('hospital.edit', $id)
+                ->route('admin.hospital.edit', $id)
                 ->withInput()
                 ->withErrors($validator);
         }
         //データ更新処理
         $result = Hospital::find($id)->update($request->all());
-            return redirect()->route('hospital.index');
+            return redirect()->route('admin.hospital.index');
         }
 
     /**
