@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\HospitalController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -28,7 +29,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('admin.welcome');
 });
+
 Route::resource('client', ClientController::class)
+->middleware('auth:admin');
+
+Route::resource('hospital', HospitalController::class)
 ->middleware('auth:admin');
 
 Route::get('/dashboard', function () {

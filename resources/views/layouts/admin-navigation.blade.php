@@ -14,10 +14,13 @@
         <!-- Navigation Links -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-            {{ __('Dashboard') }}
+            案件一覧
           </x-nav-link>
           <x-nav-link :href="route('admin.client.index')" :active="request()->routeIs('admin.client.index')">
             患者管理
+          </x-nav-link>
+          <x-nav-link :href="route('admin.hospital.index')" :active="request()->routeIs('admin.hospital.index')">
+            病院管理
           </x-nav-link>
         </div>
 

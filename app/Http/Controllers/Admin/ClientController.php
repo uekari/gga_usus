@@ -54,7 +54,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-         return view('admin.client.create');
+        return view('admin.client.create');
     }
 
     /**
@@ -95,7 +95,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-          $client = Client::find($id);
+        $client = Client::find($id);
         return view('admin.client.show', compact('client'));
     }
 
@@ -107,7 +107,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-      $client = Client::find($id);
+        $client = Client::find($id);
         return view('admin.client.edit', compact('client'));
     }
 

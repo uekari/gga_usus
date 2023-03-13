@@ -25,7 +25,7 @@
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">疾患</th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">年齢</th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">介護度</th>
-                      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日</th>
+                      <!-- <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日</th> -->
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">修正</th>
                     </tr>
                   </thead>
@@ -38,8 +38,12 @@
                       <td class="px-4 py-3">{{ $client->desease }}</td>
                       <td class="px-4 py-3">{{ $client->age }}</td>
                       <td class="px-4 py-3">{{ $client->carelevel }}</td>
-                      <td class="px-4 py-3">{{ $client->created_at->diffForHumans() }}</td>
+                      <!-- <td class="px-4 py-3">{{ $client->created_at->diffForHumans() }}</td> -->
                       <td>
+                        <!-- 詳細ボタン -->
+                        <a href="{{ route('admin.client.show',$client->id) }}">
+                          <h3 class="text-left font-bold text-lg text-grey-dark">詳細</h3>
+                        </a>
                         <!-- 更新ボタン -->
                         <form action="{{ route('admin.client.edit',$client->id) }}" method="GET" class="text-left">
                           @csrf
