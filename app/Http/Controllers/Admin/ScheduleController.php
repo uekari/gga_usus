@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\Schedule;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
@@ -15,7 +17,10 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        return view('admin.schedule.index');
+        
+        $schedules = Schedule::select('id','schedule_name','data','created_at')->get();
+        return view('admin.schedule.index',
+        compact('schedules'));
     }
 
     /**
@@ -47,7 +52,8 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+        $schedule = Schedule::find($id);
+        return view('admin.schedule.show', compact('schedule'));
     }
 
     /**
@@ -58,7 +64,8 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $schedule = Schedule::find($id);
+        return view('admin.schedule.edit', compact('schedule'));
     }
 
     /**
@@ -70,7 +77,21 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //バリデーション
+        $validator = Validator::make($request->all(), [
+            'schedule_name' => 'required | max:191',
+            'data' => 'required',
+        ]);
+        //バリデーション:エラー
+        if ($validator->fails()) {
+            return redirect()
+                ->route('admin.schedule.edit', $id)
+                ->withInput()
+                ->withErrors($validator);
+        }
+        //データ更新処理
+        $result = Schedule::find($id)->update($request->all());
+            return redirect()->route('admin.schedule.index');
     }
 
     /**

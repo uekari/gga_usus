@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     use HasFactory;
+
+    protected $guarded = [
+        'id',
+        'schedule_name',
+        'data',
+        'created_at',
+    ];
+
 }

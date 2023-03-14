@@ -17,8 +17,7 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        // $hospitals = Hospital::getAllOrderByUpdated_at();
-        // return view('admin.hospital.index',compact('hospitals'));
+        
         $hospitals = Hospital::select('id','hospital_name','address', 'tel', 'fax' ,'created_at')->get();
         return view('admin.hospital.index',
         compact('hospitals'));
