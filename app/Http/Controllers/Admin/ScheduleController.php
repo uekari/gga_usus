@@ -17,7 +17,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        
+
         $schedules = Schedule::select('id','schedule_name','data','created_at')->get();
         return view('admin.schedule.index',
         compact('schedules'));
@@ -41,7 +41,23 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // バリデーション
+        $validator = Validator::make($request->all(), [
+            'schedule_name' => 'required | max:191',
+            'data' => 'required',
+        ]);
+        // バリデーション:エラー
+        if ($validator->fails()) {
+            return redirect()
+                ->route('admin.schedule.create')
+                ->withInput()
+                ->withErrors($validator);
+        }
+        // create()は最初から用意されている関数
+        // 戻り値は挿入されたレコードの情報
+        $result = Schedule::create($request->all());
+        // ルーティング「index」にリクエスト送信（一覧ページに移動）
+        return redirect()->route('admin.schedule.index');
     }
 
     /**
