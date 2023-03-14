@@ -13,12 +13,12 @@
           <form class="mb-6" action="{{ route('admin.schedule.store') }}" method="POST">
             @csrf
             <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="tweet">Tweet</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="tweet" id="tweet">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="schedule_name">案件</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="schedule_name" id="schedule_name">
             </div>
             <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="description">Description</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="description" id="description">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="data">旅行日</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="data" id="data">
             </div>
             <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
               Create

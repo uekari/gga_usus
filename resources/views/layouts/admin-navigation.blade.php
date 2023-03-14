@@ -14,6 +14,9 @@
         <!-- Navigation Links -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
           <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+            {{ __('Dashboard') }}
+          </x-nav-link>
+          <x-nav-link :href="route('admin.schedule.index')" :active="request()->routeIs('admin.schedule.index')">
             案件一覧
           </x-nav-link>
           <x-nav-link :href="route('admin.client.index')" :active="request()->routeIs('admin.client.index')">
@@ -73,6 +76,11 @@
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
         {{ __('Dashboard') }}
+      </x-responsive-nav-link>
+    </div>
+    <div class="pt-2 pb-3 space-y-1">
+      <x-responsive-nav-link :href="route('admin.schedule.index')" :active="request()->routeIs('admin.schedule.index')">
+        {{ __('案件') }}
       </x-responsive-nav-link>
     </div>
 

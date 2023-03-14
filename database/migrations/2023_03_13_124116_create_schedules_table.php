@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->string('schedule_name');
+            $table->binary('data')->comment('旅行日');
             $table->timestamps();
         });
     }
