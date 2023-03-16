@@ -26,7 +26,9 @@
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">年齢</th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">介護度</th>
                       <!-- <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日</th> -->
+                      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">詳細</th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">修正</th>
+                      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">処置</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -39,13 +41,15 @@
                       <td class="px-4 py-3">{{ $client->age }}</td>
                       <td class="px-4 py-3">{{ $client->carelevel }}</td>
                       <!-- <td class="px-4 py-3">{{ $client->created_at->diffForHumans() }}</td> -->
-                      <td>
+                      <td class="px-4 py-3">
                         <!-- 詳細ボタン -->
                         <a href="{{ route('admin.client.show',$client->id) }}">
-                          <h3 class="text-left font-bold text-lg text-grey-dark">詳細</h3>
+                          <h3 class="">詳細</h3>
                         </a>
-                        <!-- 更新ボタン -->
-                        <form action="{{ route('admin.client.edit',$client->id) }}" method="GET" class="text-left">
+                      </td>
+                      <!-- 更新ボタン -->
+                      <td class="px-4 py-3">
+                        <form action="{{ route('admin.client.edit',$client->id) }}" method="GET">
                           @csrf
                           <button type="submit" class="mr-2 ml-2 text-sm hover:bg-gray-200 hover:shadow-none text-white py-1 px-2 focus:outline-none focus:shadow-outline">
                             <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="black">
@@ -53,8 +57,12 @@
                             </svg>
                           </button>
                       </td>
-
-                      </form>
+                      <!-- 処置登録ボタン -->
+                      <td class="px-4 py-3">
+                        <a href="{{ route('admin.treatment.create',$client->id) }}">
+                          <h3 class="">処置登録</h3>
+                        </a>
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>

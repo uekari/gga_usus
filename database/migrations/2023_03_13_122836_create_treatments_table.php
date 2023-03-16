@@ -17,7 +17,13 @@ return new class extends Migration
     {
         Schema::create('treatments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('client_id')
+            ->constrained();
             $table->timestamps();
+            $table->string('item');
+            $table->string('content');
+            $table->string('point');
+
         });
     }
 

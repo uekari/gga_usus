@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\CarestationController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\TreatmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::resource('schedule', ScheduleController::class);
 Route::resource('hospital', HospitalController::class);
 Route::resource('carestation', CarestationController::class);
+
+Route::resource('{client}/treatment', TreatmentController::class);
 
 Route::get('/', function () {
     return view('user.welcome');
