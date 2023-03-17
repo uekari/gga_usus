@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
-use App\Models\Hospital;
+use App\Models\Carestation;
 use Illuminate\Support\Facades\DB;
 
-class HospitalController extends Controller
+class CarestationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,9 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        
-        $hospitals = Hospital::select('id','hospital_name','address', 'tel', 'fax' ,'created_at')->get();
-        return view('admin.hospital.index',
-        compact('hospitals'));
+        $carestations = Carestation::select('id','carestation_name','address', 'tel', 'fax' ,'created_at')->get();
+        return view('admin.carestation.index',
+        compact('carestations'));
     }
 
     /**
@@ -30,7 +29,7 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        return view('admin.hospital.create');
+        return view('admin.carestation.create');
     }
 
     /**
@@ -43,7 +42,7 @@ class HospitalController extends Controller
     {
         // バリデーション
         $validator = Validator::make($request->all(), [
-            'hospital_name' => 'required | max:191',
+            'carestation_name' => 'required | max:191',
             'address' => 'required',
             'tel' => 'required',
             'fax' => 'required',
@@ -51,15 +50,15 @@ class HospitalController extends Controller
         // バリデーション:エラー
         if ($validator->fails()) {
             return redirect()
-                ->route('admin.hospital.create')
+                ->route('admin.carestation.create')
                 ->withInput()
                 ->withErrors($validator);
         }
         // create()は最初から用意されている関数
         // 戻り値は挿入されたレコードの情報
-        $result = Hospital::create($request->all());
+        $result = Carestation::create($request->all());
         // ルーティングにリクエスト送信（一覧ページに移動）
-        return redirect()->route('admin.hospital.index');
+        return redirect()->route('admin.carestation.index');
     }
 
     /**
@@ -70,8 +69,8 @@ class HospitalController extends Controller
      */
     public function show($id)
     {
-        $hospital = Hospital::find($id);
-        return view('admin.hospital.show', compact('hospital'));
+        $carestation = Carestation::find($id);
+        return view('admin.carestation.show', compact('carestation'));
     }
 
     /**
@@ -82,8 +81,8 @@ class HospitalController extends Controller
      */
     public function edit($id)
     {
-        $hospital = Hospital::find($id);
-        return view('admin.hospital.edit', compact('hospital'));
+        $carestation = Carestation::find($id);
+        return view('admin.carestation.edit', compact('carestation'));
     }
 
     /**
@@ -97,7 +96,7 @@ class HospitalController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'hospital_name' => 'required | max:191',
+            'carestation_name' => 'required | max:191',
             'address' => 'required',
             'tel' => 'required',
             'fax' => 'required',
@@ -105,14 +104,14 @@ class HospitalController extends Controller
         //バリデーション:エラー
         if ($validator->fails()) {
             return redirect()
-                ->route('admin.hospital.edit', $id)
+                ->route('admin.carestation.edit', $id)
                 ->withInput()
                 ->withErrors($validator);
         }
         //データ更新処理
-        $result = Hospital::find($id)->update($request->all());
-            return redirect()->route('admin.hospital.index');
-        }
+        $result = Carestation::find($id)->update($request->all());
+            return redirect()->route('admin.carestation.index');
+    }
 
     /**
      * Remove the specified resource from storage.
