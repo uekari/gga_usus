@@ -17,8 +17,8 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-
-        $schedules = Schedule::select('id','schedule_name','data','created_at')->get();
+        // $schedules = Schedule::select('id','schedule_name','data','created_at')->get();
+        $schedules = Schedule::with('user')->get();
         return view('admin.schedule.index',
         compact('schedules'));
     }
