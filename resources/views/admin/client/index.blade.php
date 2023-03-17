@@ -43,7 +43,7 @@
                       <!-- <td class="px-4 py-3">{{ $client->created_at->diffForHumans() }}</td> -->
                       <td class="px-4 py-3">
                         <!-- 詳細ボタン -->
-                        <a href="{{ route('admin.client.show',$client->id) }}">
+                        <a href="{{ route('admin.client.show', $client->id )}}">
                           <h3 class="">詳細</h3>
                         </a>
                       </td>
@@ -59,7 +59,7 @@
                       </td>
                       <!-- 処置登録ボタン -->
                       <td class="px-4 py-3">
-                        <a href="{{ route('admin.treatment.create',$client->id) }}">
+                        <a href="{{ route('admin.treatment.create',$client->id )}}">
                           <h3 class="">処置登録</h3>
                         </a>
                       </td>

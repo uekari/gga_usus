@@ -46,8 +46,11 @@ Route::resource('schedule', ScheduleController::class)
 Route::resource('carestation', CarestationController::class)
 ->middleware('auth:admin');
 
-Route::resource('treatment', TreatmentController::class)
+Route::resource('client/{client}/treatment', TreatmentController::class)
 ->middleware('auth:admin');
+
+
+
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');

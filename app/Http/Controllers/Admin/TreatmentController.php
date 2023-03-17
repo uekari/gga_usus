@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; //インスタンスクラスを読み込み
 use Validator;
 use App\Models\Treatment; //Elquentエロクアント
 use Illuminate\Support\Facades\DB; //QueryBuilderクエリビルダ
@@ -18,39 +18,37 @@ class TreatmentController extends Controller
     {
         $this->middleware('auth:admin');
 
-        // $client = Client::find(1);
-        // $client->treatments;
-        // foreach($client->treatments as $treatment){
-        //      $treatment->content;
-        // }
     }
 
 
 
     public function index()
     {
+
         // 指定したカラムのみ取得（注意：IDは必ず含める）
         $treatments = Treatment::with('client:id,client_name')->get();
-
-        // return view('admin.treatment.index',
-        // compact('treatments'));
+        // dd($treatments);
+        return view('admin.treatment.index',
+        compact('treatments'));
 
     }
 
 
     public function create(Client $client)
     {
-        return view('admin.treatment.create');
+
+        return view('admin.treatment.create', compact('client'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Client $client)
     {
+
+
         // バリデーション
         $validator = Validator::make($request->all(), [
             'item' => 'required | max:191',
             'content' => 'required | max:191',
             'point' => 'required | max:191',
-            'client_id' =>'required'
 
         ]);
         // バリデーション:エラー
@@ -60,11 +58,23 @@ class TreatmentController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-        // create()は最初から用意されている関数
-        // 戻り値は挿入されたレコードの情報
-        $result = Treatment::create($request->all());
-        // ルーティング「index」にリクエスト送信（一覧ページに移動）
-        return redirect()->route('admin.treatment.index');
+
+        $treatment = new Treatment;
+
+        $treatment-> client_id = $client -> id;
+        $treatment->item = $request->item;
+        $treatment->content = $request->content;
+        $treatment->point = $request->point;
+        $treatment->save();
+
+        return redirect()->route('admin.treatment.index',$client->id);
+
+
+        // // create()は最初から用意されている関数
+        // // 戻り値は挿入されたレコードの情報
+        // $result = Treatment::create($request->all());
+        // // ルーティング「index」にリクエスト送信（一覧ページに移動）
+        // return redirect()->route('admin.treatment.index');
     }
 
 

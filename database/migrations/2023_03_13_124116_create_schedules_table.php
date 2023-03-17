@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('client_id')->constrained();
             $table->string('schedule_name');
-            $table->binary('data')->comment('旅行日');
+            $table->timestamp('date')->comment('旅行日');
             $table->timestamps();
         });
     }
