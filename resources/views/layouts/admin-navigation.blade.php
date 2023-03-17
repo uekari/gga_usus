@@ -25,6 +25,9 @@
           <x-nav-link :href="route('admin.hospital.index')" :active="request()->routeIs('admin.hospital.index')">
             病院管理
           </x-nav-link>
+          <x-nav-link :href="route('admin.carestation.index')" :active="request()->routeIs('admin.carestation.index')">
+            ケアマネ管理
+          </x-nav-link>
         </div>
 
 
