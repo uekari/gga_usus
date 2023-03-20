@@ -1,3 +1,5 @@
+<!-- 処置とタイムスケジュールの中間テーブル -->
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -13,12 +15,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('time_treatment', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('time_id')->constrained();
             $table->foreignId('client_id')->constrained();
-            $table->string('schedule_name');
-            $table->timestamp('date')->comment('旅行日');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('time_treatment');
     }
 };

@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Client;
+use App\Models\User;
+use App\Models\Time;
 
 class Schedule extends Model
 {
@@ -11,9 +14,8 @@ class Schedule extends Model
 
     protected $guarded = [
         'id',
-        'schedule_name',
-        'data',
         'created_at',
+        'updated_at',
     ];
 
  public function user()
@@ -24,4 +26,10 @@ class Schedule extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+        public function times()
+    {
+        return $this->hasMany(Time::class);
+    }
+
 }

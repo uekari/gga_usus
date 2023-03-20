@@ -1,5 +1,3 @@
-<!-- タイムスケジュールテーブル -->
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -15,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('times', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('client_id')->constrained();
+            $table->string('content');
+            $table->timestamp('date')->comment('旅行日');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('times');
+        Schema::dropIfExists('schedules');
     }
 };

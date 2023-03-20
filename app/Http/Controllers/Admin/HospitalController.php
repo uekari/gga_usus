@@ -17,7 +17,7 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        
+
         $hospitals = Hospital::select('id','hospital_name','address', 'tel', 'fax' ,'created_at')->get();
         return view('admin.hospital.index',
         compact('hospitals'));

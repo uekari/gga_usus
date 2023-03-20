@@ -6,45 +6,45 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\Schedule;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB; //QueryBuilderクエリビルダ
+use App\Models\Client;
+use App\Models\User;
+
 
 class ScheduleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ public function __construct()
+    {
+        $this->middleware('auth:admin');
+
+    }
+
+
+
+
     public function index()
     {
+        $schedules = Schedule::with('client:id,client_name,client_name2','user:id,name')->get();
         // $schedules = Schedule::select('id','schedule_name','data','created_at')->get();
-        $schedules = Schedule::with('user')->get();
         return view('admin.schedule.index',
         compact('schedules'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+     public function create(Client $client, User $user)
     {
-        return view('admin.schedule.create');
+       $users  = User::select('id','name')->get();
+    //    dd($users);
+        return view('admin.schedule.create',compact('client','users'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(Request $request, Client $client)
     {
         // バリデーション
         $validator = Validator::make($request->all(), [
-            'schedule_name' => 'required | max:191',
-            'data' => 'required',
+            'content' => 'required | max:191',
+            'date' => 'required',
         ]);
         // バリデーション:エラー
         if ($validator->fails()) {
@@ -53,44 +53,34 @@ class ScheduleController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-        // create()は最初から用意されている関数
-        // 戻り値は挿入されたレコードの情報
-        $result = Schedule::create($request->all());
-        // ルーティング「index」にリクエスト送信（一覧ページに移動）
-        return redirect()->route('admin.schedule.index');
+
+
+        $schedule = new Schedule;
+        $schedule-> client_id = $client -> id;
+        $schedule-> user_id = $request-> user_id;
+        $schedule->content = $request-> content;
+        $schedule->date = $request-> date;
+        // dd($schedule);
+        $schedule->save();
+
+        return redirect()->route('admin.schedule.index',$client->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $schedule = Schedule::find($id);
         return view('admin.schedule.show', compact('schedule'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $schedule = Schedule::find($id);
         return view('admin.schedule.edit', compact('schedule'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //バリデーション
@@ -110,12 +100,7 @@ class ScheduleController extends Controller
             return redirect()->route('admin.schedule.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

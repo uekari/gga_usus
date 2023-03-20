@@ -8,13 +8,14 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\HospitalController;
 use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Admin\TimeController;
 use App\Http\Controllers\Admin\CarestationController;
 use App\Http\Controllers\Admin\TreatmentController;
 use Illuminate\Support\Facades\Route;
-
 
 
 /*
@@ -30,9 +31,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 Route::get('/', function () {
     return view('admin.welcome');
 });
+
+
+Route::resource('user', UserController::class)
+->middleware('auth:admin');
 
 Route::resource('client', ClientController::class)
 ->middleware('auth:admin');
@@ -40,15 +46,22 @@ Route::resource('client', ClientController::class)
 Route::resource('hospital', HospitalController::class)
 ->middleware('auth:admin');
 
-Route::resource('schedule', ScheduleController::class)
-->middleware('auth:admin');
-
 Route::resource('carestation', CarestationController::class)
 ->middleware('auth:admin');
+
+// Route::resource('schedule', ScheduleController::class)
+// ->middleware('auth:admin');
+Route::resource('client/{client}/schedule', ScheduleController::class)
+->middleware('auth:admin');
+
 
 Route::resource('client/{client}/treatment', TreatmentController::class)
 ->middleware('auth:admin');
 
+// Route::resource('time', TimeController::class)
+// ->middleware('auth:admin');
+Route::resource('schedule/{schedule}/time', TimeController::class)
+->middleware('auth:admin');
 
 
 
