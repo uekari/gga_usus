@@ -4,29 +4,41 @@
       {{ __('案件作成') }}
     </h2>
   </x-slot>
+  <tbody>
 
+
+  </tbody>
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
           @include('common.errors')
-          <form class="mb-6" action="{{ route('admin.schedule.store') }}" method="POST">
+          <form class="mb-6" action="{{ route('admin.schedule.store',$client->id) }}" method="POST">
             @csrf
             <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="schedule_name">案件</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="schedule_name" id="schedule_name">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="content">案件</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="content" id="content">
             </div>
             <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="data">旅行日</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="data" id="data">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="date">旅行日</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="date" name="date" id="date">
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="user_id">サポーター</label>
+              <select name="user_id">
+                @foreach ($users as $user)
+                <option id="user_id" value=" {{$user -> id}}">{{$user -> name}}</option>
+                @endforeach
+              </select>
+
             </div>
             <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
               Create
             </button>
           </form>
+
         </div>
       </div>
     </div>
   </div>
 </x-app-layout>
-
