@@ -19,7 +19,6 @@ class TreatmentController extends Controller
 
     public function index()
     {
-
         // 指定したカラムのみ取得（注意：IDは必ず含める）
         $treatments = Treatment::with('client:id,client_name')->get();
         // dd($treatments);

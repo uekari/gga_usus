@@ -16,7 +16,9 @@
           <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
             {{ __('Dashboard') }}
           </x-nav-link>
-
+          <x-nav-link :href="route('admin.schedule.index')" :active="request()->routeIs('admin.schedule.index')">
+            {{ ('案件管理') }}
+          </x-nav-link>
           <x-nav-link :href="route('admin.client.index')" :active="request()->routeIs('admin.client.index')">
             {{ ('患者管理') }}
           </x-nav-link>

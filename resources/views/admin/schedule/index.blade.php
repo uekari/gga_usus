@@ -13,26 +13,33 @@
             <thead>
               <tr>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">id</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">依頼者</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">案件</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">施行日</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">詳細</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">編集</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">詳細登録</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
               </tr>
             </thead>
             <tbody>
               @foreach ($schedules as $schedule)
               <tr>
                 <td class="px-4 py-3">{{ $schedule->id }}</td>
+                <td class="px-4 py-3">{{ $schedule->client ->client_name }}{{ $schedule->client ->client_name2 }}</td>
                 <td class="px-4 py-3">{{ $schedule->content }}</td>
                 <td class="px-4 py-3">{{ $schedule->date }}</td>
-                <!-- 案件登録ボタン -->
+                <!-- 詳細登録ボタン -->
                 <td class="px-4 py-3">
                   <a href="{{ route('admin.time.create',$schedule->id )}}">
-                    <h3 class="">案件詳細登録</h3>
+                    <h3 class="">詳細登録</h3>
                   </a>
                 </td>
+                <!-- 詳細一覧ボタン -->
+                <td class="px-4 py-3">
+                  <a href="{{ route('admin.time.index',$schedule->id )}}">
+                    <h3 class="">詳細一覧</h3>
+                  </a>
                 </td>
+
               </tr>
               @endforeach
             </tbody>

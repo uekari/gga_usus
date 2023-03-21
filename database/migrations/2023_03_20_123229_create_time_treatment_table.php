@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('time_treatment', function (Blueprint $table) {
             $table->id();
             $table->foreignId('time_id')->constrained();
-            $table->foreignId('client_id')->constrained();
+            $table->foreignId('treatment_id')->constrained();
             $table->timestamps();
         });
     }
