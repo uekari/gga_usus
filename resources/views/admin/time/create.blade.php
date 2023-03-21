@@ -16,6 +16,23 @@
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="item">行き先</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="content" id="content">
             </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="item">時間</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="time" name="time" id="time" list="data-list">
+              <span></span>
+              <datalist id="data-list">
+                <option value="08:00"></option>
+                <option value="08:30"></option>
+                <option value="09:00"></option>
+                <option value="09:30"></option>
+                <option value="10:00"></option>
+                <option value="10:30"></option>
+                <option value="11:00"></option>
+                <option value="11:30"></option>
+                <option value="12:00"></option>
+                <option value="12:30"></option>
+              </datalist>
+            </div>
             <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="item">移動の有無</label>
             <input class="border py-2 px-3 text-grey-darkest" type="text" name="is_move" id="is_move">
         </div>

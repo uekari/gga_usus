@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\User; //Elquentエロクアント
-use App\Models\Treatment;
+use App\Models\Schedule;
 
 class UserController extends Controller
 {

@@ -18,6 +18,7 @@ return new class extends Migration
         Schema::create('times', function (Blueprint $table) {
             $table->id();
             $table->foreignId('schedule_id')->constrained();
+            $table->time('time');
             $table->string('content');
             $table->boolean('is_move');
             $table->timestamps();

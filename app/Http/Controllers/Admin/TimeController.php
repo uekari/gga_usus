@@ -7,6 +7,7 @@ use Illuminate\Http\Request; //インスタンスクラスを読み込み
 use Validator;
 use App\Models\Time;
 use App\Models\Schedule;
+use App\Models\Treatment;
 
 class TimeController extends Controller
 {
@@ -19,11 +20,14 @@ class TimeController extends Controller
 
     public function index()
     {
-        // 指定したカラムのみ取得（注意：IDは必ず含める）
-        $times = Time::with('schedule:id,content')->get();
-         dd($times);
-        // return view('admin.time.index',
-        // compact('times'));
+        // 多対多
+        $times = Time::with('treatments:id,content')->get();
+        // dd($times);
+
+
+        // $times = Time::with('schedule:id,content')->get();
+        return view('admin.time.index',
+        compact('times'));
     }
 
 
@@ -37,6 +41,7 @@ class TimeController extends Controller
     {
         $time = new Time;
         $time->schedule_id = $schedule -> id;
+        $time->time = $request->time;
         $time->content = $request->content;
         $time->is_move = $request->is_move;
         // dd($time);

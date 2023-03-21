@@ -20,8 +20,8 @@
                   <thead>
                     <tr>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">id</th>
-                      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">名前(姓)</th>
-                      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">名前(名)</th>
+                      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">名前</th>
+
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">疾患</th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">年齢</th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">介護度</th>
@@ -35,8 +35,7 @@
                     @foreach ($clients as $client)
                     <tr>
                       <td class="px-4 py-3">{{ $client->id }}</td>
-                      <td class="px-4 py-3">{{ $client->client_name }}</td>
-                      <td class="px-4 py-3">{{ $client->client_name2 }}</td>
+                      <td class="px-4 py-3">{{ $client->client_name }}{{ $client->client_name2 }}</td>
                       <td class="px-4 py-3">{{ $client->desease }}</td>
                       <td class="px-4 py-3">{{ $client->age }}</td>
                       <td class="px-4 py-3">{{ $client->carelevel }}</td>
