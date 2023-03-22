@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
-    //修正する！！！！！！！　　うえかり
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +18,9 @@ class DoctorController extends Controller
     public function index()
     {
 
-        $doctors = Doctor::select('id','hospital_name','address', 'tel', 'fax' ,'created_at')->get();
-        return view('admin.hospital.index',
-        compact('hospitals'));
+        $doctors = Doctor::select('id','doctor_name','belong','address', 'tel', 'fax' ,'created_at')->get();
+        return view('admin.doctor.index',
+        compact('doctors'));
     }
 
     /**
@@ -31,7 +30,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('admin.hospital.create');
+        return view('admin.doctor.create');
     }
 
     /**
@@ -45,7 +44,8 @@ class DoctorController extends Controller
 
         // バリデーション
         $validator = Validator::make($request->all(), [
-            'hospital_name' => 'required | max:191',
+            'doctor_name' => 'required | max:191',
+            'belong' => 'required',
             'address' => 'required',
             'tel' => 'required',
             'fax' => 'required',
@@ -53,15 +53,15 @@ class DoctorController extends Controller
         // バリデーション:エラー
         if ($validator->fails()) {
             return redirect()
-                ->route('admin.hospital.create')
+                ->route('admin.doctor.create')
                 ->withInput()
                 ->withErrors($validator);
         }
         // create()は最初から用意されている関数
         // 戻り値は挿入されたレコードの情報
-        $result = Hospital::create($request->all());
+        $result = Doctor::create($request->all());
         // ルーティングにリクエスト送信（一覧ページに移動）
-        return redirect()->route('admin.hospital.index');
+        return redirect()->route('admin.doctor.index');
     }
 
     /**
@@ -72,8 +72,8 @@ class DoctorController extends Controller
      */
     public function show($id)
     {
-        $hospital = Hospital::find($id);
-        return view('admin.hospital.show', compact('hospital'));
+        $doctor = Doctor::find($id);
+        return view('admin.doctor.show', compact('doctor'));
     }
 
     /**
@@ -84,8 +84,8 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        $hospital = Hospital::find($id);
-        return view('admin.hospital.edit', compact('hospital'));
+        $doctor = Doctor::find($id);
+        return view('admin.doctor.edit', compact('doctor'));
     }
 
     /**
@@ -99,7 +99,8 @@ class DoctorController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'hospital_name' => 'required | max:191',
+            'doctor_name' => 'required | max:191',
+            'belong' => 'required',
             'address' => 'required',
             'tel' => 'required',
             'fax' => 'required',
@@ -107,13 +108,13 @@ class DoctorController extends Controller
         //バリデーション:エラー
         if ($validator->fails()) {
             return redirect()
-                ->route('admin.hospital.edit', $id)
+                ->route('admin.doctor.edit', $id)
                 ->withInput()
                 ->withErrors($validator);
         }
         //データ更新処理
-        $result = Hospital::find($id)->update($request->all());
-            return redirect()->route('admin.hospital.index');
+        $result = Doctor::find($id)->update($request->all());
+            return redirect()->route('admin.doctor.index');
         }
 
     /**

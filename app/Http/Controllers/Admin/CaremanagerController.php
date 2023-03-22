@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class CaremanagerController extends Controller
 {
-    //修正する！！！！！！！　うえかり
+
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +18,9 @@ class CaremanagerController extends Controller
      */
     public function index()
     {
-        $carestations = Carestation::select('id','carestation_name','address', 'tel', 'fax' ,'created_at')->get();
-        return view('admin.carestation.index',
-        compact('carestations'));
+        $caremanagers = Caremanager::select('id','caremanager_name','belong','address', 'tel', 'fax' ,'created_at')->get();
+        return view('admin.caremanager.index',
+        compact('caremanagers'));
     }
 
     /**
@@ -30,7 +30,7 @@ class CaremanagerController extends Controller
      */
     public function create()
     {
-        return view('admin.carestation.create');
+        return view('admin.caremanager.create');
     }
 
     /**
@@ -43,7 +43,8 @@ class CaremanagerController extends Controller
     {
         // バリデーション
         $validator = Validator::make($request->all(), [
-            'carestation_name' => 'required | max:191',
+            'caremanager_name' => 'required | max:191',
+            'belong' => 'required',
             'address' => 'required',
             'tel' => 'required',
             'fax' => 'required',
@@ -51,15 +52,15 @@ class CaremanagerController extends Controller
         // バリデーション:エラー
         if ($validator->fails()) {
             return redirect()
-                ->route('admin.carestation.create')
+                ->route('admin.caremanager.create')
                 ->withInput()
                 ->withErrors($validator);
         }
         // create()は最初から用意されている関数
         // 戻り値は挿入されたレコードの情報
-        $result = Carestation::create($request->all());
+        $result = Caremanager::create($request->all());
         // ルーティングにリクエスト送信（一覧ページに移動）
-        return redirect()->route('admin.carestation.index');
+        return redirect()->route('admin.caremanager.index');
     }
 
     /**
@@ -70,8 +71,8 @@ class CaremanagerController extends Controller
      */
     public function show($id)
     {
-        $carestation = Carestation::find($id);
-        return view('admin.carestation.show', compact('carestation'));
+        $caremanager = Caremanager::find($id);
+        return view('admin.caremanager.show', compact('caremanager'));
     }
 
     /**
@@ -82,8 +83,8 @@ class CaremanagerController extends Controller
      */
     public function edit($id)
     {
-        $carestation = Carestation::find($id);
-        return view('admin.carestation.edit', compact('carestation'));
+        $caremanager = Caremanager::find($id);
+        return view('admin.caremanager.edit', compact('caremanager'));
     }
 
     /**
@@ -97,7 +98,8 @@ class CaremanagerController extends Controller
     {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            'carestation_name' => 'required | max:191',
+            'caremanager_name' => 'required | max:191',
+            'belong' => 'required',
             'address' => 'required',
             'tel' => 'required',
             'fax' => 'required',
@@ -105,13 +107,13 @@ class CaremanagerController extends Controller
         //バリデーション:エラー
         if ($validator->fails()) {
             return redirect()
-                ->route('admin.carestation.edit', $id)
+                ->route('admin.caremanager.edit', $id)
                 ->withInput()
                 ->withErrors($validator);
         }
         //データ更新処理
-        $result = Carestation::find($id)->update($request->all());
-            return redirect()->route('admin.carestation.index');
+        $result = Caremanager::find($id)->update($request->all());
+            return redirect()->route('admin.caremanager.index');
     }
 
     /**
