@@ -20,12 +20,11 @@ class TimeController extends Controller
 
     public function index()
     {
-        // 多対多
-        $times = Time::with('treatments:id,content')->get();
-        // dd($times);
 
-
+        //$id=
+        $times = Time::where('schedule_id',$id)->get();
         // $times = Time::with('schedule:id,content')->get();
+
         return view('admin.time.index',
         compact('times'));
     }
