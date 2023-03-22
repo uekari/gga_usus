@@ -18,14 +18,14 @@ class ScheduleSeeder extends Seeder
                [
                 'user_id' => '1' ,
                 'client_id' => '1' ,
-                'content' => '春の花見旅行' ,
+                'title' => '春の花見旅行' ,
                 'date' => '2021/01/01 11:11:11',
                 'created_at' => Now(),
                ],
                [
                 'user_id' => '2' ,
                 'client_id' => '2' ,
-                'content' => 'ちょっとそこまで植物園日帰り旅行' ,
+                'title' => 'ちょっとそこまで植物園日帰り旅行' ,
                 'date' => '2021/06/16 10:10:10',
                 'created_at' => Now(),
                ],

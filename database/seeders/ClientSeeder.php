@@ -21,6 +21,11 @@ class ClientSeeder extends Seeder
                 'age' => '80' ,
                 'desease' => '脳梗塞',
                 'carelevel' => '要介護5',
+                'doctor_id' => '1',
+                'caremanager_id' => '1',
+                'treatment_title' => '吸引',
+                'treatment_content' => '手順が入ります。',
+                'treatment_point' => '本人が必要ないときは無理にしなくて良い。SpO2の値を確認しながらなるべく短い時間でする。',
                 'created_at' => Now(),
                ],
                [
@@ -29,6 +34,11 @@ class ClientSeeder extends Seeder
                 'age' => '70' ,
                 'desease' => 'ALS',
                 'carelevel' => '要介護5',
+                'doctor_id' => '2',
+                'caremanager_id' => '2',
+                'treatment_title' => '投薬',
+                'treatment_content' => '手順が入ります。',
+                'treatment_point' => '痛みに応じてアセアミノフェンを使用。NRS7以上の場合はオプソも検討する。',
                 'created_at' => Now(),
                ],
         ]);
