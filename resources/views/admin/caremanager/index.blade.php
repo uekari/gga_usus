@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('ステーション一覧') }}
+      {{ __('ケアマネ一覧') }}
     </h2>
   </x-slot>
 
@@ -11,7 +11,7 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
           <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-nav-link :href="route('admin.carestation.create')" :active="request()->routeIs('admin.carestation.create')">
+            <x-nav-link :href="route('admin.caremanager.create')" :active="request()->routeIs('admin.caremanager.create')">
               {{ __('新規登録') }}
             </x-nav-link>
           </div>
@@ -19,6 +19,7 @@
             <thead>
               <tr>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">id</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">名前</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">ステーション名</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">住所</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">電話番号</th>
@@ -27,16 +28,17 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($carestations as $carestation)
+              @foreach ($caremanagers as $caremanager)
               <tr class="hover:bg-grey-lighter">
-                <td class="px-4 py-3">{{ $carestation->id }}</td>
-                <td class="px-4 py-3">{{ $carestation->carestation_name }}</td>
-                <td class="px-4 py-3">{{ $carestation->address }}</td>
-                <td class="px-4 py-3">{{ $carestation->tel }}</td>
-                <td class="px-4 py-3">{{ $carestation->fax }}</td>
+                <td class="px-4 py-3">{{ $caremanager->id }}</td>
+                <td class="px-4 py-3">{{ $caremanager->caremanager_name }}</td>
+                <td class="px-4 py-3">{{ $caremanager->belong }}</td>
+                <td class="px-4 py-3">{{ $caremanager->address }}</td>
+                <td class="px-4 py-3">{{ $caremanager->tel }}</td>
+                <td class="px-4 py-3">{{ $caremanager->fax }}</td>
                 <td>
                   <!-- 更新ボタン -->
-                  <form action="{{ route('admin.carestation.edit',$carestation->id) }}" method="GET" class="text-left">
+                  <form action="{{ route('admin.caremanager.edit',$caremanager->id) }}" method="GET" class="text-left">
                     @csrf
                     <button type="submit" class="mr-2 ml-2 text-sm hover:bg-gray-200 hover:shadow-none text-white py-1 px-2 focus:outline-none focus:shadow-outline">
                       <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="black">

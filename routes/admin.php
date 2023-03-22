@@ -10,12 +10,12 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ClientController;
-use App\Http\Controllers\Admin\HospitalController;
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\CaremanagerController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\TimeController;
-use App\Http\Controllers\Admin\CarestationController;
-use App\Http\Controllers\Admin\TreatmentController;
-use App\Http\Controllers\Admin\RiskController;
+// use App\Http\Controllers\Admin\TreatmentController;
+// use App\Http\Controllers\Admin\RiskController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -49,8 +49,8 @@ Route::post('client/{client}/schedule', [ScheduleController::class, 'store'])->n
 
 
 // treatment
-Route::resource('client/{client}/treatment', TreatmentController::class)
-->middleware('auth:admin');
+// Route::resource('client/{client}/treatment', TreatmentController::class)
+// ->middleware('auth:admin');
 
 // time
 Route::prefix('time')->
@@ -64,12 +64,12 @@ Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name(
 
 
 // risk
-Route::prefix('risk')->
-    middleware('auth:admin')->group(function(){
-        Route::get('/', [RiskController::class, 'index'])->name('risk.index');
-});
-Route::get('time/{time}/risk', [RiskController::class, 'create'])->name('risk.create');
-Route::post('time/{time}/risk', [RiskController::class, 'store'])->name('risk.store');
+// Route::prefix('risk')->
+//     middleware('auth:admin')->group(function(){
+//         Route::get('/', [RiskController::class, 'index'])->name('risk.index');
+// });
+// Route::get('time/{time}/risk', [RiskController::class, 'create'])->name('risk.create');
+// Route::post('time/{time}/risk', [RiskController::class, 'store'])->name('risk.store');
 
 
 // user
@@ -80,12 +80,12 @@ Route::resource('user', UserController::class)
 Route::resource('client', ClientController::class)
 ->middleware('auth:admin');
 
-// hospital
-Route::resource('hospital', HospitalController::class)
+// doctor
+Route::resource('doctor', DoctorController::class)
 ->middleware('auth:admin');
 
-// carestation
-Route::resource('carestation', CarestationController::class)
+// caremanager
+Route::resource('caremanager', CaremanagerController::class)
 ->middleware('auth:admin');
 
 

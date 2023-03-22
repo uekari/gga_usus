@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('病院登録') }}
+      {{ __('医師登録') }}
     </h2>
   </x-slot>
 
@@ -10,11 +10,15 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
           @include('common.errors')
-          <form class="mb-6" action="{{ route('admin.hospital.store') }}" method="POST">
+          <form class="mb-6" action="{{ route('admin.doctor.store') }}" method="POST">
             @csrf
             <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="hospital_name">病院名</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="hospital_name" id="hospital_name">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="doctor_name">名前</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="doctor_name" id="doctor_name">
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="belong">病院名</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="belong" id="belong">
             </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="address">住所</label>

@@ -16,10 +16,11 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             UserSeeder::class,
             ClientSeeder::class,
-            TreatmentSeeder::class,
             ScheduleSeeder::class,
             TimeSeeder::class,
-            RiskSeeder::class,
+            Caremanager::class,
+            Doctor::class,
+￥,
          ]);
 
         // \App\Models\User::factory(10)->create();
