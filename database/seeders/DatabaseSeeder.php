@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
             TimeSeeder::class,
             Caremanager::class,
             Doctor::class,
-￥,
          ]);
 
         // \App\Models\User::factory(10)->create();
