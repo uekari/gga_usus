@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained(); //内緒
             $table->foreignId('client_id')->constrained();
-            $table->string('content');
+            $table->string('title');
             $table->timestamp('date')->comment('旅行日');
             $table->timestamps();
         });

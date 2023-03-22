@@ -22,7 +22,7 @@ class TimeController extends Controller
     {
 
         //$id=
-        $times = Time::where('schedule_id',$id)->get();
+        $times = Time::where('schedule_id',1)->get();
         // $times = Time::with('schedule:id,content')->get();
 
         return view('admin.time.index',

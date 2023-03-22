@@ -21,6 +21,12 @@ return new class extends Migration
             $table->time('time');
             $table->string('content');
             $table->boolean('is_move');
+            $table->string('risk_title1');
+            $table->string('risk_content1');
+            $table->string('risk_title2');
+            $table->string('risk_content2');
+            $table->string('risk_title3');
+            $table->string('risk_content3');
             $table->timestamps();
         });
     }
