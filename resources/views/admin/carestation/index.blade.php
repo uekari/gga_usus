@@ -5,16 +5,16 @@
     </h2>
   </x-slot>
 
-  <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-    <x-nav-link :href="route('admin.carestation.create')" :active="request()->routeIs('admin.carestation.create')">
-      {{ __('新規登録') }}
-    </x-nav-link>
-  </div>
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
+          <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            <x-nav-link :href="route('admin.carestation.create')" :active="request()->routeIs('admin.carestation.create')">
+              {{ __('新規登録') }}
+            </x-nav-link>
+          </div>
           <table class="text-center w-full border-collapse">
             <thead>
               <tr>
@@ -35,8 +35,8 @@
                 <td class="px-4 py-3">{{ $carestation->tel }}</td>
                 <td class="px-4 py-3">{{ $carestation->fax }}</td>
                 <td>
-                    <!-- 更新ボタン -->
-                    <form action="{{ route('admin.carestation.edit',$carestation->id) }}" method="GET" class="text-left">
+                  <!-- 更新ボタン -->
+                  <form action="{{ route('admin.carestation.edit',$carestation->id) }}" method="GET" class="text-left">
                     @csrf
                     <button type="submit" class="mr-2 ml-2 text-sm hover:bg-gray-200 hover:shadow-none text-white py-1 px-2 focus:outline-none focus:shadow-outline">
                       <svg class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="black">
@@ -44,16 +44,15 @@
                       </svg>
                     </button>
                   </form>
-                    <!-- 削除ボタン -->
-                  </div>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+                  <!-- 削除ボタン -->
         </div>
+        </td>
+        </tr>
+        @endforeach
+        </tbody>
+        </table>
       </div>
     </div>
   </div>
+  </div>
 </x-app-layout>
-

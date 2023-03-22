@@ -5,16 +5,16 @@
     </h2>
   </x-slot>
 
-  <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-    <x-nav-link :href="route('admin.hospital.create')" :active="request()->routeIs('admin.hospital.create')">
-      {{ __('新規登録') }}
-    </x-nav-link>
-  </div>
 
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
+          <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            <x-nav-link :href="route('admin.hospital.create')" :active="request()->routeIs('admin.hospital.create')">
+              {{ __('新規登録') }}
+            </x-nav-link>
+          </div>
           <table class="text-center w-full border-collapse">
             <thead>
               <tr>
