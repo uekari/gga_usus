@@ -17,11 +17,6 @@ class ClientController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
-
-
-
-
-
     }
 
 
@@ -42,7 +37,7 @@ class ClientController extends Controller
 
     // dd('testだー表示してーお願いー');
 
-        $clients = Client::select('id','client_name','client_name2', 'desease','age', 'carelevel', 'created_at')->get();
+        $clients = Client::select('id','client_name','client_name2', 'desease','age', 'carelevel', 'treatment_title','treatment_content','treatment_point','created_at')->get();
         return view('admin.client.index',
         compact('clients'));
 
@@ -56,7 +51,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-         return view('admin.client.create');
+        return view('admin.client.create');
     }
 
 
@@ -69,6 +64,9 @@ class ClientController extends Controller
             'desease' => 'required',
             'age' => 'required | max:5',
             'carelevel' => 'required | max:5',
+            'treatment_title' => 'required',
+            'treatment_content' => 'required',
+            'treatment_point' => 'required',
         ]);
         // バリデーション:エラー
         if ($validator->fails()) {
@@ -87,14 +85,14 @@ class ClientController extends Controller
 
     public function show($id)
     {
-          $client = Client::find($id);
+        $client = Client::find($id);
         return view('admin.client.show', compact('client'));
     }
 
 
     public function edit($id)
     {
-      $client = Client::find($id);
+        $client = Client::find($id);
         return view('admin.client.edit', compact('client'));
     }
 
@@ -109,6 +107,9 @@ class ClientController extends Controller
             'desease' => 'required',
             'age' => 'required | max:5',
             'carelevel' => 'required | max:5',
+            'treatment_title' => 'required',
+            'treatment_content' => 'required',
+            'treatment_point' => 'required',
         ]);
         // バリデーション:エラー
         if ($validator->fails()) {
