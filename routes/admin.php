@@ -31,6 +31,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+// 修正　ソエジマ
+
 Route::get('/', function () {
     return view('admin.welcome');
 });

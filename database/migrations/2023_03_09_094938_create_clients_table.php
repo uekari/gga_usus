@@ -20,6 +20,11 @@ return new class extends Migration
             $table->string('age');
             $table->string('desease');
             $table->string('carelevel');
+            $table->foreignId('doctor_id')->constrained();
+            $table->foreignId('caremanager_id')->constrained();
+            $table->string('treatment_title');
+            $table->string('treatment_content');
+            $table->string('treatment_point');
             $table->timestamps();
         });
     }
