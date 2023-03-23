@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\Client; //Elquentエロクアント
+use App\Models\User;
 use Illuminate\Support\Facades\DB; //QueryBuilderクエリビルダ
 
 class U_ClientController extends Controller
