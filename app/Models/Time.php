@@ -18,6 +18,9 @@ class Time extends Model
         'updated_at',
 
     ];
+    protected $casts = [
+    'is_move' => 'boolean',
+    ];
 
     public function schedule()
     {

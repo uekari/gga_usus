@@ -12,7 +12,6 @@
 
           <section class="text-gray-600 body-font">
             <div class="container px-5 mx-auto">
-
               <div class="lg:w-2/3 w-full mx-auto overflow-auto">
                 <table class="table-auto w-full text-left whitespace-no-wrap">
                   <thead>
@@ -27,16 +26,23 @@
                   <tbody>
                     @foreach ($schedules as $schedule)
                     <tr>
+                      <!-- 詳細ボタン -->
+                      <a href="{{ route('user.schedule.show', $schedule->id )}}">詳細へ
+                      </a>
                       <td class="px-4 py-3">{{ $schedule->id }}</td>
                       <td class="px-4 py-3">{{ $schedule->client ->client_name }}{{ $schedule->client ->client_name2 }}</td>
                       <td class="px-4 py-3">{{ $schedule->title }}</td>
                       <td class="px-4 py-3">{{ $schedule->date }}</td>
+
                     </tr>
+
                     @endforeach
                   </tbody>
+
                 </table>
               </div>
             </div>
+
           </section>
         </div>
       </div>

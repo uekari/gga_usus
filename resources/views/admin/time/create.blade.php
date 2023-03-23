@@ -34,8 +34,21 @@
               </datalist>
             </div>
             <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="item">移動の有無</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="is_move" id="is_move">
+              <!-- <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="item">移動の有無</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="is_move" id="is_move"> -->
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="is_move1" name="is_move" value="1">
+                    <label class="form-check-label" for="is_move1">移動あり</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="is_move2" name="is_move" value="2">
+                    <label class="form-check-label" for="is_move2">移動なし</label>
+                  </div>
+
+                </div>
+              </div>
             </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_title1">リスク：タイトル</label>

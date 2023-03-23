@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
@@ -21,10 +22,7 @@ class U_ScheduleController extends Controller
 
     public function index()
     {
-
-
-
-        $schedules = Schedule::get();
+        $schedules = \Auth::user()->schedules;
         // dd($schedules);
 
         return view('user.schedule.index',
@@ -32,4 +30,14 @@ class U_ScheduleController extends Controller
 
 
     }
+
+
+    public function show($id)
+    {
+        $schedule = Schedule::with('times')->where('user_id',\Auth::user()->id)->find($id); //ログインしている情報のみ
+        // dd($schedule);
+        return view('user.schedule.show', compact('schedule'));
+    }
+
+
 }
