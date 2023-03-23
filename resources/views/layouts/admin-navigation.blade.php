@@ -22,10 +22,10 @@
           <x-nav-link :href="route('admin.client.index')" :active="request()->routeIs('admin.client.index')">
             {{ ('患者管理') }}
           </x-nav-link>
-          <x-nav-link :href="route('admin.hospital.index')" :active="request()->routeIs('admin.hospital.index')">
-            {{ ('病院管理') }}
+          <x-nav-link :href="route('admin.doctor.index')" :active="request()->routeIs('admin.doctor.index')">
+            {{ ('医師管理') }}
           </x-nav-link>
-          <x-nav-link :href="route('admin.carestation.index')" :active="request()->routeIs('admin.carestation.index')">
+          <x-nav-link :href="route('admin.caremanager.index')" :active="request()->routeIs('admin.caremanager.index')">
             {{ ('ケアマネ管理') }}
           </x-nav-link>
         </div>

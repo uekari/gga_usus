@@ -16,6 +16,7 @@ class Time extends Model
         'id',
         'created_at',
         'updated_at',
+
     ];
 
     public function schedule()

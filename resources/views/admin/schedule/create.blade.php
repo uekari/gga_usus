@@ -16,8 +16,8 @@
           <form class="mb-6" action="{{ route('admin.schedule.store',$client->id) }}" method="POST">
             @csrf
             <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="content">案件</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="content" id="content">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="title">案件</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="title" id="title">
             </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="date">旅行日</label>
@@ -30,7 +30,6 @@
                 <option id="user_id" value=" {{$user -> id}}">{{$user -> name}}</option>
                 @endforeach
               </select>
-
             </div>
             <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
               Create

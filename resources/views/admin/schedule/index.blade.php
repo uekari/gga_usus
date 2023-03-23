@@ -25,7 +25,7 @@
               <tr>
                 <td class="px-4 py-3">{{ $schedule->id }}</td>
                 <td class="px-4 py-3">{{ $schedule->client ->client_name }}{{ $schedule->client ->client_name2 }}</td>
-                <td class="px-4 py-3">{{ $schedule->content }}</td>
+                <td class="px-4 py-3">{{ $schedule->title }}</td>
                 <td class="px-4 py-3">{{ $schedule->date }}</td>
                 <!-- 詳細登録ボタン -->
                 <td class="px-4 py-3">

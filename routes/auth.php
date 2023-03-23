@@ -10,10 +10,16 @@ use App\Http\Controllers\User\Auth\PasswordResetLinkController;
 use App\Http\Controllers\User\Auth\RegisteredUserController;
 use App\Http\Controllers\User\Auth\VerifyEmailController;
 use App\Http\Controllers\User\U_ClientController;
+use App\Http\Controllers\User\U_ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::resource('client', U_ClientController::class);
+
+
+Route::middleware('auth:users') ->group(function(){
+Route::get('schedule', [U_ScheduleController::class, 'index'])->name('schedule.index'); });
+
 
 
 Route::middleware('guest')->group(function () {

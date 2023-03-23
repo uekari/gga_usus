@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Client;
 
 class Doctor extends Model
 {
@@ -24,5 +25,12 @@ class Doctor extends Model
         // self = Hospitalモデル、orderBy() = SQLと同じものの理解でOK
         return self::orderBy('updated_at', 'desc')->get();
     }
+
+    public function clients()
+    {
+       return $this->hasMany(Client::class);
+    }
+
+
 
 }

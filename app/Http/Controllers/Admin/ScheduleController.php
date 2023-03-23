@@ -23,7 +23,7 @@ class ScheduleController extends Controller
     {
         $schedules = Schedule::with('client:id,client_name,client_name2','user:id,name')->get();
 
-        // $schedules = Schedule::select('id','title','data','created_at')->get();
+        // $schedules = Schedule::select('id','title','date','created_at')->get();
         return view('admin.schedule.index',
         compact('schedules'));
     }
@@ -41,12 +41,12 @@ class ScheduleController extends Controller
         // バリデーション
         $validator = Validator::make($request->all(), [
             'title' => 'required | max:191',
-            'data' => 'required',
+            'date' => 'required',
         ]);
         // バリデーション:エラー
         if ($validator->fails()) {
             return redirect()
-                ->route('admin.schedule.create')
+                ->route('admin.schedule.create',$client->id)
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -56,7 +56,7 @@ class ScheduleController extends Controller
         $schedule-> client_id = $client -> id;
         $schedule-> user_id = $request-> user_id;
         $schedule-> title = $request-> title;
-        $schedule-> data = $request-> data;
+        $schedule-> date = $request-> date;
         // dd($schedule);
         $schedule->save();
 
@@ -83,7 +83,7 @@ class ScheduleController extends Controller
         //バリデーション
         $validator = Validator::make($request->all(), [
             'title' => 'required | max:191',
-            'data' => 'required',
+            'date' => 'required',
         ]);
         //バリデーション:エラー
         if ($validator->fails()) {

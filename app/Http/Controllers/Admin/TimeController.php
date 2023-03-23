@@ -21,9 +21,9 @@ class TimeController extends Controller
     public function index()
     {
 
-        //$id=
-        $times = Time::where('schedule_id',1)->get();
-        // $times = Time::with('schedule:id,content')->get();
+
+        // $times = Time::where('schedule_id',1)->get();
+        $times = Time::with('schedule:id,title')->get();
 
         return view('admin.time.index',
         compact('times'));
@@ -43,6 +43,12 @@ class TimeController extends Controller
         $time->time = $request->time;
         $time->content = $request->content;
         $time->is_move = $request->is_move;
+        $time->risk_title1 = $request->risk_title1;
+        $time->risk_content1 = $request->risk_content1;
+        $time->risk_title2 = $request->risk_title2;
+        $time->risk_content2 = $request->risk_content2;
+        $time->risk_title3 = $request->risk_title3;
+        $time->risk_content3 = $request->risk_content3;
         // dd($time);
         $time->save();
 

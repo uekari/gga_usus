@@ -18,8 +18,8 @@
             </div>
             <div class="flex flex-col mb-4">
               <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">旅行日</p>
-              <p class="py-2 px-3 text-grey-darkest" id="data">
-                {{$schedule->data}}
+              <p class="py-2 px-3 text-grey-darkest" id="date">
+                {{$schedule->date}}
               </p>
             </div>
             <a href="{{ url()->previous() }}" class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-blsck uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">

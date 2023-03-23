@@ -40,6 +40,42 @@
                 {{$client->carelevel}}
               </p>
             </div>
+            <div class="flex flex-col mb-4">
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">主治医</p>
+              <p class="py-2 px-3 text-grey-darkest" id="carelevel">
+                {{$client->doctor->doctor_name}}
+              </p>
+            </div>
+            <div class="flex flex-col mb-4">
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">ケアマネ</p>
+              <p class="py-2 px-3 text-grey-darkest" id="carelevel">
+                {{$client->caremanager->caremanager_name}}
+              </p>
+            </div>
+            <div class="flex flex-col mb-4">
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">処置：項目</p>
+              <p class="py-2 px-3 text-grey-darkest" id="treatment_title">
+                {{$client->treatment_title}}
+              </p>
+            </div>
+            <div class="flex flex-col mb-4">
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">処置：手順</p>
+              <p class="py-2 px-3 text-grey-darkest" id="treatment_content">
+                {{$client->treatment_content}}
+              </p>
+            </div>
+            <div class="flex flex-col mb-4">
+              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">処置：注意点</p>
+              <p class="py-2 px-3 text-grey-darkest" id="treatment_point">
+                {{$client->treatment_point}}
+              </p>
+            </div>
+            <!-- 更新ボタン -->
+            <td class="px-4 py-3">
+              <a href="{{ route('admin.client.edit', $client->id )}}">
+                <h3 class="">編集</h3>
+              </a>
+            </td>
             <a href="{{ url()->previous() }}" class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-black uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
               Back
             </a>
@@ -49,4 +85,3 @@
     </div>
   </div>
 </x-app-layout>
-

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Client;
 
 class Caremanager extends Model
 {
@@ -19,4 +20,10 @@ class Caremanager extends Model
     {
         return self::orderBy('updated_at', 'desc')->get();
     }
+
+    public function clients()
+    {
+       return $this->hasMany(Client::class);
+    }
+
 }
