@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained(); //内緒
             $table->foreignId('client_id')->constrained();
             $table->string('title');
-            $table->timestamp('data')->comment('旅行日');
+            $table->timestamp('date')->comment('旅行日');
             $table->timestamps();
         });
     }

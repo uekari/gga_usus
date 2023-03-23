@@ -17,8 +17,7 @@
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">案件名</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">行き先</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">移動の有無</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
+
 
               </tr>
             </thead>
@@ -27,21 +26,9 @@
               <tr>　
                 <td class="px-4 py-3">{{ $time->id }}</td>
                 <td class="px-4 py-3">{{ $time->time }}</td>
-                <td class="px-4 py-3">{{ $time-> schedule -> content }}</td>
+                <td class="px-4 py-3">{{ $time-> schedule -> title }}</td>
                 <td class="px-4 py-3">{{ $time->content }}</td>
                 <td class="px-4 py-3">{{ $time->is_move }}</td>
-                <!-- リスク登録ボタン -->
-                <td class="px-4 py-3">
-                  <a href="{{ route('admin.risk.create',$time->id )}}">
-                    <h3 class="">リスク登録</h3>
-                  </a>
-                </td>
-                <!-- リスク一覧ボタン -->
-                <td class="px-4 py-3">
-                  <a href="{{ route('admin.risk.index',$time->id )}}">
-                    <h3 class="">リスク一覧</h3>
-                  </a>
-                </td>
               </tr>
               @endforeach
             </tbody>

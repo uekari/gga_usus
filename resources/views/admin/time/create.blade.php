@@ -33,8 +33,34 @@
                 <option value="12:30"></option>
               </datalist>
             </div>
-            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="item">移動の有無</label>
-            <input class="border py-2 px-3 text-grey-darkest" type="text" name="is_move" id="is_move">
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="item">移動の有無</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="is_move" id="is_move">
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_title1">リスク：タイトル</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_title1" id="risk_title1">
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_content1">リスク：内容</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content1" id="risk_content1">
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_title2">リスク：タイトル</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_title2" id="risk_title2">
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_content2">リスク：内容</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content2" id="risk_content2">
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_title3">リスク：タイトル</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_title3" id="risk_title3">
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_content3">リスク：内容</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content3" id="risk_content3">
+            </div>
         </div>
 
         <button type=" submit" class="w-full py-3 mt-6 font-medium tracking-widest text-black uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">登録</button>

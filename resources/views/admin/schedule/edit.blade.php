@@ -18,8 +18,8 @@
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="schedule_name" id="schedule_name" value="{{$schedule->schedule_name}}">
             </div>
             <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="data">旅行日</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="data" id="data" value="{{$schedule->data}}">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="date">旅行日</label>
+              <input class="border py-2 px-3 text-grey-darkest" type="text" name="date" id="date" value="{{$schedule->date}}">
             </div>
             <div class="flex justify-evenly">
               <a href="{{ url()->previous() }}" class="block text-center w-5/12 py-3 mt-6 font-medium tracking-widest text-black uppercase bg-gray-100 shadow-sm focus:outline-none hover:bg-gray-200 hover:shadow-none">

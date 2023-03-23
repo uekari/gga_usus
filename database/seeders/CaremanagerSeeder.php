@@ -16,7 +16,7 @@ class CaremanagerSeeder extends Seeder
     {
         DB::table('caremanagers')->insert([
                [
-                'doctor_name' => '吉田凛' ,
+                'caremanager_name' => '吉田凛' ,
                 'belong' => 'A事業所' ,
                 'address' => '福岡市',
                 'tel' => '00011112222',
@@ -24,7 +24,7 @@ class CaremanagerSeeder extends Seeder
                 'created_at' => Now(),
                ],
                [
-                'doctor_name' => '近藤蓮' ,
+                'caremanager_name' => '近藤蓮' ,
                 'belong' => 'B事業所' ,
                 'address' => '北九州市',
                 'tel' => '00011112222',
