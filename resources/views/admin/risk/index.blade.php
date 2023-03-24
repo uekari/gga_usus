@@ -19,11 +19,10 @@
             </thead>
             <tbody>
               @foreach ($risks as $risk)
-              <tr>　
+              <tr>
                 <td class="px-4 py-3">{{ $risk->id }}</td>
                 <td class="px-4 py-3">{{ $risk->title }}</td>
                 <td class="px-4 py-3">{{ $risk->content }}</td>
-
                 </td>
               </tr>
               @endforeach

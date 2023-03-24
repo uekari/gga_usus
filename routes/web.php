@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\HospitalController;
-use App\Http\Controllers\CarestationController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\CaremanagerController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TreatmentController;
 use Illuminate\Support\Facades\Route;
@@ -21,8 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 // Route::resource('client', ClientController::class);
 // Route::resource('schedule', ScheduleController::class);
-// Route::resource('hospital', HospitalController::class);
-// Route::resource('carestation', CarestationController::class);
+// Route::resource('hospital', DoctorController::class);
+// Route::resource('carestation', CaremanagerController::class);
 
 
 Route::get('/', function () {
