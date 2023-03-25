@@ -17,15 +17,18 @@ class TreatmentController extends Controller
     }
 
 
-    public function index()
+
+    public function index($client_id)
     {
-        // 指定したカラムのみ取得（注意：IDは必ず含める）
-        $treatments = Treatment::with('client:id,client_name')->get();
-        // dd($treatments);
+       $cliemt = Client::findOrFail($client_id);
+       $treatments = $cliemt -> treatments()->get();
+    //    dd($treatments);
+
+
         return view('admin.treatment.index',
         compact('treatments'));
-
     }
+
 
 
     public function create(Client $client)
