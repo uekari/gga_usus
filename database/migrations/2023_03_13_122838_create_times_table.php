@@ -23,10 +23,13 @@ return new class extends Migration
             $table->boolean('is_move')->default(0);
             $table->string('risk_title1')->nullable();
             $table->string('risk_content1')->nullable();
+            $table->string('risk_img1',100)->nullable();
             $table->string('risk_title2')->nullable();
             $table->string('risk_content2')->nullable();
+            $table->string('risk_img2',100)->nullable();
             $table->string('risk_title3')->nullable();
             $table->string('risk_content3')->nullable();
+            $table->string('risk_img3',100)->nullable();
             $table->timestamps();
         });
     }

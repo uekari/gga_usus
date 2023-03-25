@@ -58,6 +58,10 @@
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_content1">リスク：内容</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content1" id="risk_content1">
             </div>
+            <label for="image">画像</label>
+              <div class="col-md-6">
+                <input id="image" type="file" name="image">
+              </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_title2">リスク：タイトル</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_title2" id="risk_title2">

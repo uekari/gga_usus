@@ -5,7 +5,9 @@
     ③マイグレーションする
         ./vendor/bin/sail php artisan migrate
     ※ 書き換えや追加の場合、変更後に下記コマンドを打つ。
-        ./vendor/bin/sail php artisan migrate:fresh
+        
+    DBにデータを作成(seeder)
+    ./vendor/bin/sail php artisan db:seed
 
 
 ＃何のファイルかメモ

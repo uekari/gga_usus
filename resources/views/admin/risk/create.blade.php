@@ -20,6 +20,10 @@
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="content">注意事項</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="content" id=" content">
             </div>
+            <!-- <label for="image">画像 </label>
+              <div class="col-md-6">
+                <input id="image" type="file" name="image">
+              </div> -->
         </div>
 
         <button type=" submit" class="w-full py-3 mt-6 font-medium tracking-widest text-black uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">登録</button>
