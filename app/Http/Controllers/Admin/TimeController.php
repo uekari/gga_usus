@@ -24,7 +24,7 @@ class TimeController extends Controller
 
         // $times = Time::where('schedule_id',1)->get();
         $times = Time::with('schedule:id,title')->get();
-// dd($times);
+        // dd($times);
         return view('admin.time.index',
         compact('times'));
     }
@@ -32,7 +32,7 @@ class TimeController extends Controller
 
     public function create(Schedule $schedule)
     {
-         return view('admin.time.create', compact('schedule'));
+        return view('admin.time.create', compact('schedule'));
     }
 
 
@@ -45,10 +45,19 @@ class TimeController extends Controller
         $time->is_move = $request->is_move;
         $time->risk_title1 = $request->risk_title1;
         $time->risk_content1 = $request->risk_content1;
+        // $time->risk_img1_ = $request->risk_img1;
         $time->risk_title2 = $request->risk_title2;
         $time->risk_content2 = $request->risk_content2;
+        // $time->risk_img2_ = $request->risk_img2;
         $time->risk_title3 = $request->risk_title3;
         $time->risk_content3 = $request->risk_content3;
+        // $time->risk_img3_ = $request->risk_img3;
+        // 画像の保存
+        $original = request()->file('image')->getClientOriginalName();
+        $name = date('Ymd_His').'_'.$original;
+        request()->file('image')->move('storage/images',$name);
+        $post->image = $name;
+
         // dd($time);
         $time->save();
 

@@ -32,6 +32,7 @@
                 <td class="px-4 py-3">{{ $time->time }}</td>
                 <td class="px-4 py-3">{{ $time->content }}</td>
                 <td class="px-4 py-3">{{ $time->is_move }}</td>
+                <img src="{{asset('storage/images/'.$post->image)}}" alt="画像">
               </tr>
               @endforeach
             </tbody>
