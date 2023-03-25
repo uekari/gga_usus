@@ -18,13 +18,19 @@ class TimeController extends Controller
     }
 
 
-    public function index()
+    public function index($schedule_id)
     {
+    // $time_treatment=Time::find(1)->treatments()->get();
+    // dd($time_treatment);
 
 
-        // $times = Time::where('schedule_id',1)->get();
-        $times = Time::with('schedule:id,title')->get();
-        // dd($times);
+       $schedule = Schedule::findOrFail($schedule_id);
+       $times = $schedule -> times()->get();
+    //    dd($times);
+
+        // $times = Time::where('schedule_id',2)->get();
+        // $times = Time::with('schedule:id,title')->get();
+
         return view('admin.time.index',
         compact('times'));
     }

@@ -15,11 +15,19 @@ use App\Http\Controllers\User\U_TimeController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::resource('client', U_ClientController::class);
+// Route::resource('client', U_ClientController::class);
 
 
+// client
+Route::middleware('auth:users') ->group(function(){
+
+    Route::resource('client', U_ClientController::class)
+    ->only(['index']);
+
+});
 
 
+// schedule
 Route::middleware('auth:users') ->group(function(){
 
     Route::resource('schedule', U_ScheduleController::class)

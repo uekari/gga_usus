@@ -52,14 +52,18 @@ Route::post('client/{client}/schedule', [ScheduleController::class, 'store'])->n
 // Route::resource('client/{client}/treatment', TreatmentController::class)
 // ->middleware('auth:admin');
 
-// time
-Route::prefix('time')->
-    middleware('auth:admin')->group(function(){
-        Route::get('/', [TimeController::class, 'index'])->name('time.index');
-});
-Route::get('schedule/{schedule}/time', [TimeController::class, 'create'])->name('time.create');
-Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name('time.store');
 
+// time
+Route::resource('schedule/{schedule}/time', TimeController::class)
+->middleware('auth:admin');
+
+// Route::prefix('time')->
+//     middleware('auth:admin')->group(function(){
+//     Route::get('/', [TimeController::class, 'index'])->name('time.index');
+// //    Route::get('schedule/{schedule}/time', [TimeController::class, 'index'])->name('time.index');
+// });
+// Route::get('schedule/{schedule}/time', [TimeController::class, 'create'])->name('time.create');
+// Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name('time.store');
 
 
 

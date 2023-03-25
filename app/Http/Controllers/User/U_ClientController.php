@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\DB; //QueryBuilderクエリビルダ
 
 class U_ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
 
     public function __construct()
@@ -28,10 +23,13 @@ class U_ClientController extends Controller
     public function index()
     {
 
-        $clients = Client::select('client_name', 'desease','age', 'carelevel', 'created_at')->get();
+        // $clients = Client::select('client_name', 'desease','age', 'carelevel', 'created_at')->get();
+
+    $clients = \Auth::user()->clients;
+        // dd($clients);
+
 
         return view('user.client.index',
-
         compact('clients'));
 
 

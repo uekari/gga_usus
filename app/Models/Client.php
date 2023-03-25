@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Schedule;
 use App\Models\Doctor;
 use App\Models\Caremanager;
+use App\Models\User;
 
 class Client extends Model
 {
@@ -35,6 +36,10 @@ class Client extends Model
     public function caremanager()
     {
         return $this->belongsTo(Caremanager::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 }
