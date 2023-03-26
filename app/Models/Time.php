@@ -22,6 +22,10 @@ class Time extends Model
     'is_move' => 'boolean',
     ];
 
+    protected $fillable = [
+        'img_path',
+    ];
+
     public function schedule()
     {
         return $this->belongsTo(Schedule::class);

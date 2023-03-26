@@ -6,6 +6,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\CaremanagerController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TreatmentController;
+use App\Http\Controllers\TimeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('user.dashboard');
 })->middleware(['auth:users', 'verified'])->name('dashboard');
+
+Route::get('/', [TimeController::class, 'index'])->name('admin.time.index');
+Route::get('/create', [TimeController::class, 'create'])->name('admin.time.create');
+Route::post('/store', [TimeController::class, 'store'])->name('admin.time.store');
 
 // Route::middleware('auth:users')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

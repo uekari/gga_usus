@@ -21,18 +21,19 @@
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">時間</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">行き先</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">移動の有無</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">リスク</th>
 
 
               </tr>
             </thead>
             <tbody>
               @foreach ($times as $time)
-              <tr>　
+              <tr>
                 <td class="px-4 py-3">{{ $time->id }}</td>
                 <td class="px-4 py-3">{{ $time->time }}</td>
                 <td class="px-4 py-3">{{ $time->content }}</td>
                 <td class="px-4 py-3">{{ $time->is_move }}</td>
-                <img src="{{asset('storage/images/'.$post->image)}}" alt="画像">
+                <td><img src="{{ Storage::url($time->img_path) }}"></td>
               </tr>
               @endforeach
             </tbody>
