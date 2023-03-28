@@ -1,3 +1,5 @@
+<!-- 処置テーブル -->
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -13,9 +15,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('treatments', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('client_id')->constrained();
+            $table->string('title');
+            $table->string('content');
+            $table->string('point');
+           $table->timestamps();
         });
     }
 
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('treatments');
     }
 };

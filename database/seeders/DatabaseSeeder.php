@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             ClientSeeder::class,
             ScheduleSeeder::class,
             TimeSeeder::class,
+            TreatmentSeeder::class,
 
          ]);
 

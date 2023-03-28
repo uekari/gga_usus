@@ -59,9 +59,9 @@
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content1" id="risk_content1">
             </div>
             <label for="image">画像</label>
-              <div class="col-md-6">
-                <input type="file" id="image" name="image">
-              </div>
+            <div class="col-md-6">
+              <input type="file" id="image" name="image">
+            </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_title2">リスク：タイトル</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_title2" id="risk_title2">
@@ -78,9 +78,36 @@
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_content3">リスク：内容</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content3" id="risk_content3">
             </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="treatment_title1">処置1</label>
+              <select name="treatment_title1">
+                <option value="吸引">吸引</option>
+                <option value="投薬">投薬</option>
+                <option value="経管栄養">経管栄養</option>
+                <option value="摘便">摘便</option>
+              </select>
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="treatment_title2">処置2</label>
+              <select name="treatment_title2">
+                <option value="吸引">吸引</option>
+                <option value="投薬">投薬</option>
+                <option value="経管栄養">経管栄養</option>
+                <option value="摘便">摘便</option>
+              </select>
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="treatment_title3">処置3</label>
+              <select name="treatment_title3">
+                <option value="吸引">吸引</option>
+                <option value="投薬">投薬</option>
+                <option value="経管栄養">経管栄養</option>
+                <option value="摘便">摘便</option>
+              </select>
+            </div>
         </div>
 
-        <button type=" submit" class="w-full py-3 mt-6 font-medium tracking-widest text-black uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">登録</button>
+        <button type=" submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">登録</button>
         </form>
       </div>
     </div>

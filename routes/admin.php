@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\CaremanagerController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\TimeController;
-// use App\Http\Controllers\Admin\TreatmentController;
+use App\Http\Controllers\Admin\TreatmentController;
 // use App\Http\Controllers\Admin\RiskController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +31,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// 修正　ソエジマ
 
 Route::get('/', function () {
     return view('admin.welcome');
@@ -48,9 +47,18 @@ Route::post('client/{client}/schedule', [ScheduleController::class, 'store'])->n
 
 
 
+
 // treatment
-// Route::resource('client/{client}/treatment', TreatmentController::class)
-// ->middleware('auth:admin');
+Route::resource('client/{client}/treatment', TreatmentController::class)
+->middleware('auth:admin');
+// Route::prefix('treatment')->
+//     middleware('auth:admin')->group(function(){
+//         Route::get('/', [TreatmentController::class, 'index'])->name('treatment.index');
+// });
+// Route::get('client/{client}/treatment', [TreatmentController::class, 'create'])->name('treatment.create');
+// Route::post('client/{client}/treatment', [TreatmentController::class, 'store'])->name('treatment.store');
+// Route::post('client/{client}/treatment', [TreatmentController::class, 'store'])->name('treatment.show');
+
 
 
 // time

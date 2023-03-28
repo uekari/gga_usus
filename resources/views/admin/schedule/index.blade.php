@@ -26,7 +26,7 @@
                 @foreach ($schedules as $schedule)
                 <tr class="hover:bg-grey-lighter">
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->id }}</td>
-                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->client ->client_name }}{{ $schedule->client ->client_name2 }}</td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->client ->client_name }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->title }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->date }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">

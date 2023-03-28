@@ -16,8 +16,8 @@ class ClientSeeder extends Seeder
     {
         DB::table('clients')->insert([
                [
-                'client_name' => '山田' ,
-                'client_name2' => '太郎' ,
+                'client_name' => '山田太郎' ,
+                'client_name2' => 'やまだたろう' ,
                 'age' => '80' ,
                 'desease' => '脳梗塞',
                 'carelevel' => '要介護5',
@@ -30,8 +30,8 @@ class ClientSeeder extends Seeder
                 'created_at' => Now(),
                ],
                [
-                'client_name' => '佐藤' ,
-                'client_name2' => '花子' ,
+                'client_name' => '佐藤花子' ,
+                'client_name2' => 'さとうはなこ' ,
                 'age' => '70' ,
                 'desease' => 'ALS',
                 'carelevel' => '要介護5',

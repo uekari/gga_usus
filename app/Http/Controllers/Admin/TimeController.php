@@ -54,29 +54,33 @@ class TimeController extends Controller
         $time->is_move = $request->is_move;
         $time->risk_title1 = $request->risk_title1;
         $time->risk_content1 = $request->risk_content1;
-        $time->img_path = $request->img_path;
+        // $time->img_path = $request->img_path;
         $time->risk_title2 = $request->risk_title2;
         $time->risk_content2 = $request->risk_content2;
         // $time->risk_img2 = $request->risk_img2;
         $time->risk_title3 = $request->risk_title3;
         $time->risk_content3 = $request->risk_content3;
         // $time->risk_img3 = $request->risk_img3;
+        $time->treatment_title1 = $request->treatment_title1;
+        $time->treatment_title2 = $request->treatment_title2;
+        $time->treatment_title3 = $request->treatment_title3;
 
-        // 画像の登録
-        // 画像フォームでリクエストした画像を取得
-        $img = request()->file('img_path'); //->getClientOriginalName(); //getClientOriginalName():画像につけている名前にする
-        // 画像情報がセットされていれば、
-        if (isset($img)) {
-            // storage > public > img 配下に画像が保存される
-            $path = $img->store('img','public');
-            // store処理が実行できたら、
-            if ($path) {
-                // DBに登録する処理
-                Item::create([
-                    'img_path' => $path,
-                ]);
-            }
-        }
+        // // 画像の登録
+        // // 画像フォームでリクエストした画像を取得
+        //   $img = request()->file('img_path');
+        // //->getClientOriginalName(); //getClientOriginalName():画像につけている名前にする
+        // // 画像情報がセットされていれば、
+        // if (isset($img)) {
+        //     // storage > public > img 配下に画像が保存される
+        //     $path = $img->store('img','public');
+        //     // store処理が実行できたら、
+        //     if ($path) {
+        //         // DBに登録する処理
+        //         Item::create([
+        //             'img_path' => $path,
+        //         ]);
+        //     }
+        // }
 
         // $time->risk_img1 = $name1;
         // $time->risk_img2 = $name2;
