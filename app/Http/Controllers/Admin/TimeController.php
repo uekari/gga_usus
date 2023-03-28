@@ -32,7 +32,7 @@ class TimeController extends Controller
         // $times = Time::with('schedule:id,title')->get();
 
         // itemsテーブルのデータを全て取得
-        $times = Time::get();
+        // $times = Time::get();
 
         return view('admin.time.index',
         compact('times'));

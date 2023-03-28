@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\TreatmentController;
 use Illuminate\Support\Facades\Route;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
