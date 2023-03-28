@@ -26,6 +26,9 @@ class TimeSeeder extends Seeder
                 'risk_content2' => 'リスク2の内容が入る',
                 'risk_title3' => null,
                 'risk_content3' => null,
+                'treatment_title1' => '吸引',
+                'treatment_title2' => '経管栄養',
+                'treatment_title3' => '投薬',
                 'created_at' => Now(),
                ],
                 [
@@ -39,6 +42,9 @@ class TimeSeeder extends Seeder
                 'risk_content2' => 'リスク2の内容が入る',
                 'risk_title3' => 'リスク3のタイトルが入る',
                 'risk_content3' => 'リスク3の内容が入る',
+                'treatment_title1' => '投薬',
+                'treatment_title2' => '点眼',
+                'treatment_title3' => null,
                 'created_at' => Now(),
                ],
                [
@@ -52,6 +58,9 @@ class TimeSeeder extends Seeder
                 'risk_content2' => null,
                 'risk_title3' => null,
                 'risk_content3' => null,
+                'treatment_title1' => '摘便',
+                'treatment_title2' => 'SpO2確認',
+                'treatment_title3' => null,
                 'created_at' => Now(),
                ],
                [
@@ -65,6 +74,9 @@ class TimeSeeder extends Seeder
                 'risk_content2' => 'リスク2の内容が入る',
                 'risk_title3' => 'リスク3のタイトルが入る',
                 'risk_content3' => 'リスク3の内容が入る',
+                'treatment_title1' => '投薬',
+                'treatment_title2' => '点眼',
+                'treatment_title3' => null,
                 'created_at' => Now(),
                ],
         ]);

@@ -24,7 +24,7 @@
               <tr>　
                 <td class="px-4 py-3">{{ $treatment->id }}</td>
                 <td class="px-4 py-3">{{ $treatment-> client -> client_name }}</td>
-                <td class="px-4 py-3">{{ $treatment->item }}</td>
+                <td class="px-4 py-3">{{ $treatment->title }}</td>
                 <td class="px-4 py-3">{{ $treatment->content }}</td>
                 <td class="px-4 py-3">{{ $treatment->point }}</td>
               </tr>

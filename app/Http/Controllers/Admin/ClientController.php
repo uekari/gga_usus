@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Models\Client; //Elquentエロクアント
 use Illuminate\Support\Facades\DB; //QueryBuilderクエリビルダ
-// use App\Models\Treatment;
+use App\Models\Treatment;
 use App\Models\Schedule;
 use App\Models\Doctor;
 use App\Models\Caremanager;
@@ -36,7 +36,7 @@ class ClientController extends Controller
         // var_dump($q_get);
         // dd($e_all, $q_get, $q_first, $c_test);
 
-    $clients = Client::with('doctor','caremanager')->get();
+    $clients = Client::with('treatments','doctor','caremanager')->get();
     return view('admin.client.index',
     compact('clients'));
     }

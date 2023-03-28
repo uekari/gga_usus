@@ -29,6 +29,8 @@
                   <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                   <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                   <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
+                  <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
+                  <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                 </tr>
               </thead>
 
@@ -36,7 +38,7 @@
                 @foreach ($clients as $client)
                 <tr class="hover:bg-grey-lighter">
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $client->id }}</td>
-                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $client->client_name }}{{ $client->client_name2 }}</td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $client->client_name }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $client->desease }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $client->age }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $client->carelevel }}</td>
@@ -58,7 +60,18 @@
                       <h3 class="">案件登録</h3>
                     </a>
                   </td>
-
+                  <!-- 処置登録ボタン -->
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <a href="{{ route('admin.treatment.create',$client->id )}}">
+                      <h3 class="">処置登録</h3>
+                    </a>
+                  </td>
+                  <!-- 処置一覧ボタン -->
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <a href="{{ route('admin.treatment.index',$client->id)}}">
+                      <h3 class="">処置一覧</h3>
+                    </a>
+                  </td>
                 </tr>
                 @endforeach
               </tbody>

@@ -19,10 +19,10 @@ class Client extends Model
     'created_at',
     'updated_at',
   ];
-    // public function treatments()
-    // {
-    //     return $this->hasMany(Treatment::class);
-    // }
+    public function treatments()
+    {
+        return $this->hasMany(Treatment::class);
+    }
     public function schedules()
     {
         return $this->hasMany(Schedule::class);
