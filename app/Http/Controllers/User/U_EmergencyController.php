@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Validator;
 use App\Models\Emergency;
+use App\Models\User;
+use App\Models\Doctor;
 use Illuminate\Support\Facades\DB;
 
 class U_EmergencyController extends Controller
@@ -20,9 +22,9 @@ class U_EmergencyController extends Controller
     public function index()
     {
 
-        // $emergencys = \Auth::user() -> doctors;
+        $emergencys = \Auth::user() -> clients;
 
-        $emergencys = [];
+        // $emergencys = [];
         // dd($emergencys);
         return view('user.emergency.index',
         compact('emergencys'));

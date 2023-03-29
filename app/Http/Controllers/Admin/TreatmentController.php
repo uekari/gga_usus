@@ -20,8 +20,8 @@ class TreatmentController extends Controller
 
     public function index($client_id)
     {
-       $cliemt = Client::findOrFail($client_id);
-       $treatments = $cliemt -> treatments()->get();
+       $client = Client::findOrFail($client_id);
+       $treatments = $client -> treatments()->get();
     //    dd($treatments);
 
 

@@ -23,6 +23,7 @@
                 <td class="px-4 py-3">{{ $risk->id }}</td>
                 <td class="px-4 py-3">{{ $risk->title }}</td>
                 <td class="px-4 py-3">{{ $risk->content }}</td>
+                <td><img src="{{ Storage::url($time->img_path) }}"></td>
                 </td>
               </tr>
               @endforeach

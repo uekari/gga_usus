@@ -8,6 +8,7 @@ use Validator;
 use App\Models\Time;
 use App\Models\Schedule;
 use App\Models\Treatment;
+use InterventionImage;
 
 class TimeController extends Controller
 {
@@ -64,27 +65,6 @@ class TimeController extends Controller
         $time->treatment_title1 = $request->treatment_title1;
         $time->treatment_title2 = $request->treatment_title2;
         $time->treatment_title3 = $request->treatment_title3;
-
-        // // 画像の登録
-        // // 画像フォームでリクエストした画像を取得
-        //   $img = request()->file('img_path');
-        // //->getClientOriginalName(); //getClientOriginalName():画像につけている名前にする
-        // // 画像情報がセットされていれば、
-        // if (isset($img)) {
-        //     // storage > public > img 配下に画像が保存される
-        //     $path = $img->store('img','public');
-        //     // store処理が実行できたら、
-        //     if ($path) {
-        //         // DBに登録する処理
-        //         Item::create([
-        //             'img_path' => $path,
-        //         ]);
-        //     }
-        // }
-
-        // $time->risk_img1 = $name1;
-        // $time->risk_img2 = $name2;
-        // $time->risk_img3 = $name3;
 
         // dd($time);
         $time->save();

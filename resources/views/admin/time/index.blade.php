@@ -33,7 +33,12 @@
                 <td class="px-4 py-3">{{ $time->time }}</td>
                 <td class="px-4 py-3">{{ $time->content }}</td>
                 <td class="px-4 py-3">{{ $time->is_move }}</td>
-                <td><img src="{{ Storage::url($time->img_path) }}"></td>
+                <td class="px-4 py-3">
+                  <a href="{{ route('admin.risk.index',$time->id )}}">
+                    <h3 class="">詳細</h3>
+                  </a>
+                </td>
+                <!-- <td><img src="{{ Storage::url($time->img_path) }}"></td> -->
               </tr>
               @endforeach
             </tbody>
