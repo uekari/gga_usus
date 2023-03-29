@@ -15,6 +15,7 @@
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">id</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">タイトル</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">注意事項</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">写真</th>
               </tr>
             </thead>
             <tbody>
@@ -23,7 +24,8 @@
                 <td class="px-4 py-3">{{ $risk->id }}</td>
                 <td class="px-4 py-3">{{ $risk->title }}</td>
                 <td class="px-4 py-3">{{ $risk->content }}</td>
-                <td><img src="{{ Storage::url($time->img_path) }}"></td>
+                <td>
+                <img src="{{ $risk }}" >
                 </td>
               </tr>
               @endforeach

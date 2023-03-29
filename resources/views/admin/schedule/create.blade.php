@@ -21,7 +21,7 @@
             </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="date">旅行日</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="date" name="date" id="date">
+              <input class="border py-2 px-3 text-grey-darkest" type="date" name="date" id="date" value="<?php echo date('Y-m-j');?>">
             </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="user_id">サポーター</label>

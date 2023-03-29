@@ -30,7 +30,7 @@
               @foreach ($times as $time)
               <tr>
                 <td class="px-4 py-3">{{ $time->id }}</td>
-                <td class="px-4 py-3">{{ $time->time }}</td>
+                <td class="px-4 py-3">{{ substr($time->time, 0, 5) }}</td>
                 <td class="px-4 py-3">{{ $time->content }}</td>
                 <td class="px-4 py-3">{{ $time->is_move }}</td>
                 <td class="px-4 py-3">
@@ -38,7 +38,6 @@
                     <h3 class="">詳細</h3>
                   </a>
                 </td>
-                <!-- <td><img src="{{ Storage::url($time->img_path) }}"></td> -->
               </tr>
               @endforeach
             </tbody>
