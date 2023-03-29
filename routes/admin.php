@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\CaremanagerController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\TimeController;
 use App\Http\Controllers\Admin\TreatmentController;
-// use App\Http\Controllers\Admin\RiskController;
+use App\Http\Controllers\Admin\RiskController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -77,10 +77,10 @@ Route::resource('schedule/{schedule}/time', TimeController::class)
 
 
 // risk
-// Route::prefix('risk')->
-//     middleware('auth:admin')->group(function(){
-//         Route::get('/', [RiskController::class, 'index'])->name('risk.index');
-// });
+Route::prefix('risk')->
+    middleware('auth:admin')->group(function(){
+        Route::get('/', [RiskController::class, 'index'])->name('risk.index');
+});
 // Route::get('time/{time}/risk', [RiskController::class, 'create'])->name('risk.create');
 // Route::post('time/{time}/risk', [RiskController::class, 'store'])->name('risk.store');
 

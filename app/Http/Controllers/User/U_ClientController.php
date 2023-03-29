@@ -25,7 +25,7 @@ class U_ClientController extends Controller
 
         // $clients = Client::select('client_name', 'desease','age', 'carelevel', 'created_at')->get();
 
-    $clients = \Auth::user()->clients;
+        $clients = \Auth::user()->clients;
         // dd($clients);
 
 

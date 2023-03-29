@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Validator;
 use App\Models\Treatment;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class U_TreatmentController extends Controller

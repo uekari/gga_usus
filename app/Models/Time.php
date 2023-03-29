@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Schedule;
-// use App\Models\Risk;
+use App\Models\Risk;
 // use App\Models\Treatment;
 
 class Time extends Model
