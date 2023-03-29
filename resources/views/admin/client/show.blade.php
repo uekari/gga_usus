@@ -70,13 +70,8 @@
                 {{$client->treatment_point}}
               </p>
             </div>
-            <!-- 更新ボタン -->
-            <td class="px-4 py-3">
-              <a href="{{ route('admin.client.edit', $client->id )}}">
-                <h3 class="">編集</h3>
-              </a>
-            </td>
-            <a href="{{ url()->previous() }}" class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-black uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+
+            <a href="{{ url()->previous() }}" class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
               Back
             </a>
           </div>

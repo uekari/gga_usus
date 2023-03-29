@@ -31,9 +31,9 @@ Route::middleware('auth:users') ->group(function(){
 // emergency
 Route::middleware('auth:users') ->group(function(){
 
-    Route::get('/user/emergency', [EmergencyController::class, 'index'])
+    Route::get('/user/emergency', [U_EmergencyController::class, 'index'])
     ->name('emergency.index');
-    
+
     Route::resource('emergency', U_EmergencyController::class)
     ->only(['index']);
 
@@ -42,7 +42,7 @@ Route::middleware('auth:users') ->group(function(){
 // treatment
 Route::middleware('auth:users') ->group(function(){
 
-    Route::get('/user/treatment', [TreatmentController::class, 'index'])
+    Route::get('/user/treatment', [U_TreatmentController::class, 'index'])
     ->name('treatment.index');
 
     Route::resource('treatment', U_TreatmentController::class)
@@ -110,5 +110,5 @@ Route::middleware('auth:users')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
-            
+
 });

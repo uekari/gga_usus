@@ -14,10 +14,10 @@
             <table class="text-center w-full border-collapse">
               <thead>
                 <tr>
-                  <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">id</th>
+                  <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">日程</th>
                   <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">依頼者</th>
                   <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">旅行タイトル</th>
-                  <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">施行日</th>
+                  <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                   <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                   <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                 </tr>
@@ -25,10 +25,15 @@
               <tbody>
                 @foreach ($schedules as $schedule)
                 <tr class="hover:bg-grey-lighter">
-                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->id }}</td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->date }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->client ->client_name }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->title }}</td>
-                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->date }}</td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <a href="{{ route('admin.schedule.edit',$schedule->id)}}">
+                      <h3 class="">案件編集</h3>
+                    </a>
+                  </td>
+                  <!-- 詳細登録ボタン -->
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">
                     <a href="{{ route('admin.time.create',$schedule->id )}}">
                       <h3 class="">詳細登録</h3>
@@ -40,6 +45,7 @@
                       <h3 class="">詳細一覧</h3>
                     </a>
                   </td>
+
                 </tr>
                 @endforeach
               </tbody>

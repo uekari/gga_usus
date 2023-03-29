@@ -39,14 +39,9 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="is_move1" name="is_move" value="1">
-                    <label class="form-check-label" for="is_move1">移動あり</label>
+                    <input class="form-check-input" type="radio" name="is_move" id="is_move1" value="1">移動あり
+                    <input class="form-check-input" type="radio" name="is_move" id="is_move2" value="2">移動なし
                   </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="is_move2" name="is_move" value="2">
-                    <label class="form-check-label" for="is_move2">移動なし</label>
-                  </div>
-
                 </div>
               </div>
             </div>

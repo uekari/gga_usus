@@ -43,8 +43,12 @@ Route::prefix('schedule')->
     middleware('auth:admin')->group(function(){
         Route::get('/', [ScheduleController::class, 'index'])->name('schedule.index');
 });
-Route::get('client/{client}/schedule', [ScheduleController::class, 'create'])->name('schedule.create');
+
+Route::get('client/{client}/schedule/create', [ScheduleController::class, 'create'])->name('schedule.create');
 Route::post('client/{client}/schedule', [ScheduleController::class, 'store'])->name('schedule.store');
+Route::get('client/{client}/schedule', [ScheduleController::class, 'edit'])->name('schedule.edit');
+Route::put('client/{client}/schedule', [ScheduleController::class, 'update'])->name('schedule.update');
+
 
 
 
@@ -63,16 +67,18 @@ Route::resource('client/{client}/treatment', TreatmentController::class)
 
 
 // time
-Route::resource('schedule/{schedule}/time', TimeController::class)
-->middleware('auth:admin');
+// Route::resource('schedule/{schedule}/time', TimeController::class)
+// ->middleware('auth:admin');
 
-// Route::prefix('time')->
-//     middleware('auth:admin')->group(function(){
-//     Route::get('/', [TimeController::class, 'index'])->name('time.index');
-// //    Route::get('schedule/{schedule}/time', [TimeController::class, 'index'])->name('time.index');
-// });
-// Route::get('schedule/{schedule}/time', [TimeController::class, 'create'])->name('time.create');
-// Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name('time.store');
+
+
+   Route::get('schedule/{schedule}/time', [TimeController::class, 'index'])->name('time.index')->middleware('auth:admin');
+   Route::get('schedule/{schedule}/time/create', [TimeController::class, 'create'])->name('time.create')->middleware('auth:admin');
+   Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name('time.store')->middleware('auth:admin');
+   Route::get('time/{time}', [TimeController::class, 'show'])->name('time.show')->middleware('auth:admin');
+
+//    Route::get('time/{time}', [TimeController::class, 'edit'])->name('time.edit');
+//    Route::put('time/{time}', [TimeController::class, 'update'])->name('time.update');
 
 
 
