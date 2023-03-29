@@ -8,7 +8,7 @@ use Validator;
 use App\Models\Time;
 use App\Models\Schedule;
 use App\Models\Treatment;
-use InterventionImage;
+
 
 class TimeController extends Controller
 {
@@ -93,10 +93,12 @@ class TimeController extends Controller
         return redirect('/');
     }
 
-    
-    public function show(string $id)
+
+    public function show($id)
     {
-        //
+
+       $time = Time::find($id);
+       return view('admin.time.show', compact('time'));
     }
 
 
