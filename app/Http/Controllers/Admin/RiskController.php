@@ -18,7 +18,7 @@ class RiskController extends Controller
 
     public function index()
     {
-        $risks = Risk::with('time:id')->get();
+        $risks = Time::with('time:id')->get();
         // dd($risks);
         return view('admin.risk.index',
         compact('risks'));
@@ -33,12 +33,12 @@ class RiskController extends Controller
 
     public function store(Request $request, Time $time)
     {
-       $risk= new Risk;
-       $risk->time_id = $time -> id;
-       $risk->title = $request->title;
-       $risk->content = $request->content;
-    //    dd($risk);
-       $risk->save();
+        $risk= new Risk;
+        $risk->time_id = $time -> id;
+        $risk->title = $request->title;
+        $risk->content = $request->content;
+        // dd($risk);
+        $risk->save();
 
        return redirect()->route('admin.risk.index', $time->id);
     }

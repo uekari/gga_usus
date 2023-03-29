@@ -30,6 +30,12 @@ class Time extends Model
     {
         return $this->belongsTo(Schedule::class);
     }
+
+    public function time()
+    {
+        return $this->belongsTo(Time::class);
+    }
+
 //      public function risk()
 //     {
 //         return $this->hasMany(Risk::class);
