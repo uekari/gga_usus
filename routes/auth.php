@@ -12,6 +12,8 @@ use App\Http\Controllers\User\Auth\VerifyEmailController;
 use App\Http\Controllers\User\U_ClientController;
 use App\Http\Controllers\User\U_ScheduleController;
 use App\Http\Controllers\User\U_TimeController;
+use App\Http\Controllers\User\U_EmergencyController;
+use App\Http\Controllers\User\U_TreatmentController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,6 +28,30 @@ Route::middleware('auth:users') ->group(function(){
 
 });
 
+// emergency
+Route::middleware('auth:users') ->group(function(){
+
+    Route::get('/user/emergency', [EmergencyController::class, 'index'])
+    ->name('emergency.index');
+    
+    Route::resource('emergency', U_EmergencyController::class)
+    ->only(['index']);
+
+});
+
+// treatment
+Route::middleware('auth:users') ->group(function(){
+
+    Route::get('/user/treatment', [TreatmentController::class, 'index'])
+    ->name('treatment.index');
+
+    Route::resource('treatment', U_TreatmentController::class)
+    ->only(['index']);
+
+    Route::get('client/{client}/treatment', [U_ClientController::class, 'show'])
+    ->name('client.show');
+
+});
 
 // schedule
 Route::middleware('auth:users') ->group(function(){
@@ -84,8 +110,5 @@ Route::middleware('auth:users')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
-
-
-
-
+            
 });

@@ -18,9 +18,12 @@
           <x-nav-link :href="route('user.client.index')" :active="request()->routeIs('user.client.index')">
             {{ ('患者管理') }}
           </x-nav-link>
-          <!-- <x-nav-link :href="route('user.schedule.index')" :active="request()->routeIs('user.schedule.index')">
-            {{ ('旅行スケジュール') }}
-          </x-nav-link> -->
+          <x-nav-link :href="route('user.treatment.index')" :active="request()->routeIs('user.treatment.index')">
+            {{ __('処置') }}
+          </x-nav-link>
+          <x-nav-link :href="route('user.emergency.index')" :active="request()->routeIs('user.emergency.index')">
+            {{ ('緊急連絡先') }}
+          </x-nav-link>
         </div>
       </div>
 
@@ -69,7 +72,16 @@
   <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('user.schedule.index')" :active="request()->routeIs('user.dschedule.index')">
-        {{ __('Dashboard!!!') }}
+        {{ __('旅行スケジュール') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('user.client.index')" :active="request()->routeIs('user.client.index')">
+        {{ __('患者管理') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('user.treatment.index')" :active="request()->routeIs('user.treatment.index')">
+        {{ __('処置') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('user.emergency.index')" :active="request()->routeIs('user.emergency.index')">
+        {{ __('緊急連絡先') }}
       </x-responsive-nav-link>
     </div>
 
