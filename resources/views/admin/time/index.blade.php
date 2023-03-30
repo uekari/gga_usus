@@ -21,8 +21,8 @@
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">行き先</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">移動の有無</th>
 
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">詳細</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">編集</th>
               </tr>
             </thead>
             <tbody>
@@ -37,14 +37,13 @@
                   <p>移動なし</p>
                   @endif
                 </td>
-                <!-- <td><img src="{{ Storage::url($time->img_path) }}"></td> -->
                 <td class="px-4 py-3 text-base ">
                   <a href="{{ route('admin.time.show',$time->id )}}">
                     <h3 class="">詳細</h3>
                   </a>
                 </td>
                 <td class="px-4 py-3 text-base ">
-                  <a href="{{}}">
+                  <!-- <img src="{{ Storage::url($time->risk_img1) }}" width="25%"> -->
                     <h3 class="">編集 *設定未</h3>
                   </a>
                 </td>

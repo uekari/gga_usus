@@ -44,11 +44,14 @@
               <p class="py-5">リスクの情報</p>
             </div>
             <div class=" flex-auto">
-              @if($time->risk_title2 ==! NULL)
+              @if($time->risk_title1 ==! NULL)
               <p class="pt-5">{{$time->risk_title1}}</p>
               @endif
-              @if($time->risk_content2 ==! NULL)
+              @if($time->risk_content1 ==! NULL)
               <p class="py-5">{{$time->risk_content1}}</p>
+              @endif
+              @if($time->risk_img1 ==! NULL)
+              <img src="{{ Storage::url($time->risk_img1) }}">
               @endif
 
               @if($time->risk_title2 ==! NULL)

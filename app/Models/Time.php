@@ -22,9 +22,11 @@ class Time extends Model
     'is_move' => 'boolean',
     ];
 
-    protected $fillable = [
-        'img_path',
-    ];
+    protected $table = 'times';
+
+    // protected $fillable = [
+    //     'risk_img1',
+    // ];
 
     public function schedule()
     {
