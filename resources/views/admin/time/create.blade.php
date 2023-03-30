@@ -10,8 +10,9 @@
       <div class="bg-whi  te overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
           @include('common.errors')
-          <form class="mb-6" action="{{ route('admin.time.store',$schedule->id) }}" method="POST" enctype="multipart/form-data">
+          <form class="mb-6" action="{{ route('admin.time.store',$schedule->id) }}" method="POST"  enctype="multipart/form-data">
             @csrf
+
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="item">行き先</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="content" id="content">
@@ -54,9 +55,9 @@
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content1" id="risk_content1">
             </div>
             <label for="image">画像</label>
-            <div class="col-md-6">
-              <input type="file" id="image" name="image">
-            </div>
+                <div class="col-md-6">
+                  <input type="file" id="risk_img1" name="risk_img1">
+                </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_title2">リスク：タイトル</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_title2" id="risk_title2">
@@ -65,10 +66,10 @@
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_content2">リスク：内容</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content2" id="risk_content2">
             </div>
-            <label for="image">画像</label>
+            <!-- <label for="image">画像</label>
             <div class="col-md-6">
               <input type="file" id="image" name="image">
-            </div>
+            </div> -->
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_title3">リスク：タイトル</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_title3" id="risk_title3">
@@ -77,10 +78,10 @@
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_content3">リスク：内容</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content3" id="risk_content3">
             </div>
-            <label for="image">画像</label>
+            <!-- <label for="image">画像</label>
             <div class="col-md-6">
               <input type="file" id="image" name="image">
-            </div>
+            </div> -->
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="treatment_title1">処置1</label>
               <select name="treatment_title1">

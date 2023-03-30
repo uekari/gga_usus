@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('is_move')->default(0);
             $table->string('risk_title1')->nullable();
             $table->string('risk_content1')->nullable();
-            // $table->string('img_path',100);
+            $table->string('risk_img1',100);
             $table->string('risk_title2')->nullable();
             $table->string('risk_content2')->nullable();
             // $table->string('risk_img2',100)->nullable();

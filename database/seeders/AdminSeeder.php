@@ -15,18 +15,18 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         DB::table('admins')->insert([
-               [
+            [
                 'name' => 'admin1' ,
                 'email' => 'admin1@mail.com',
                 'password' => Hash::make('password123'),
                 'created_at' => Now(),
-               ],
-               [
+            ],
+            [
                 'name' => 'admin2' ,
                 'email' => 'admin2@mail.com',
                 'password' => Hash::make('password123'),
                 'created_at' => Now(),
-               ],
+            ],
         ]);
     }
 }
