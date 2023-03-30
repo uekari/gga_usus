@@ -15,7 +15,7 @@
               <p class="py-5">時間</p>
             </div>
             <div class=" flex-auto">
-              <p class="py-5">{{$time->time}}</p>
+              <p class="py-5">{{ substr($time->time, 0, 5) }}</p>
             </div>
           </div>
           <div class="flex">
@@ -51,7 +51,7 @@
               <p class="py-5">{{$time->risk_content1}}</p>
               @endif
               @if($time->risk_img1 ==! NULL)
-              <img src="{{ Storage::url($time->risk_img1) }}">
+              <img src="{{ Storage::url($time->risk_img1) }}" width="25%">
               @endif
 
               @if($time->risk_title2 ==! NULL)
@@ -60,11 +60,18 @@
               @if($time->risk_content2 ==! NULL)
               <p class="py-5">{{$time->risk_content2}}</p>
               @endif
+              @if($time->risk_img2 ==! NULL)
+              <img src="{{ Storage::url($time->risk_img2) }}" width="25%">
+              @endif
+
               @if($time->risk_title3 ==! NULL)
               <p class="pt-5">{{$time->risk_title3}}</p>
               @endif
               @if($time->risk_content3 ==! NULL)
               <p class="py-5">{{$time->risk_content3}}</p>
+              @endif
+              @if($time->risk_img3 ==! NULL)
+              <img src="{{ Storage::url($time->risk_img3) }}" width="25%">
               @endif
             </div>
           </div>
