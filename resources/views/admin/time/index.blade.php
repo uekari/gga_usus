@@ -43,7 +43,6 @@
                   </a>
                 </td>
                 <td class="px-4 py-3 text-base ">
-                  <!-- <img src="{{ Storage::url($time->risk_img1) }}" width="25%"> -->
                     <h3 class="">編集 *設定未</h3>
                   </a>
                 </td>

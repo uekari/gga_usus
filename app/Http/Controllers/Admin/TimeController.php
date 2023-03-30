@@ -56,20 +56,20 @@ class TimeController extends Controller
         $time->is_move = $request->is_move;
         $time->risk_title1 = $request->risk_title1;
         $time->risk_content1 = $request->risk_content1;
-
-        // 画像フォームでリクエストした画像を取得
-        $img = $request->file('risk_img1');
-        // storage > public > img配下に画像が保存される
-        $path = $img->store('img','public');
-        // pathをDBに保存
+        $img1 = $request->file('risk_img1');
+        $path = $img1->store('img','public');
         $time->risk_img1 = $path;
-
         $time->risk_title2 = $request->risk_title2;
         $time->risk_content2 = $request->risk_content2;
-        // $time->risk_img2 = $request->risk_img2;
+        $img2 = $request->file('risk_img2');
+        $path = $img2->store('img','public');
+        $time->risk_img2 = $path;
         $time->risk_title3 = $request->risk_title3;
         $time->risk_content3 = $request->risk_content3;
-        // $time->risk_img3 = $request->risk_img3;
+        $img3 = $request->file('risk_img3');
+        $path = $img3->store('img','public');
+        $time->risk_img3 = $path;
+
         $time->treatment_title1 = $request->treatment_title1;
         $time->treatment_title2 = $request->treatment_title2;
         $time->treatment_title3 = $request->treatment_title3;
@@ -82,7 +82,6 @@ class TimeController extends Controller
         return redirect()->route('admin.time.index',$schedule -> id);
     }
 
-    
 
     public function show($id)
     {

@@ -54,7 +54,7 @@
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_content1">リスク：内容</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content1" id="risk_content1">
             </div>
-            <label for="image">画像</label>
+            <label for="image">画像1</label>
                 <div class="col-md-6">
                   <input type="file" id="risk_img1" name="risk_img1">
                 </div>
@@ -66,10 +66,10 @@
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_content2">リスク：内容</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content2" id="risk_content2">
             </div>
-            <!-- <label for="image">画像</label>
+            <label for="image">画像2</label>
             <div class="col-md-6">
-              <input type="file" id="image" name="image">
-            </div> -->
+              <input type="file" id="risk_img2" name="risk_img2">
+            </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_title3">リスク：タイトル</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_title3" id="risk_title3">
@@ -78,10 +78,10 @@
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="risk_content3">リスク：内容</label>
               <input class="border py-2 px-3 text-grey-darkest" type="text" name="risk_content3" id="risk_content3">
             </div>
-            <!-- <label for="image">画像</label>
+            <label for="image">画像3</label>
             <div class="col-md-6">
-              <input type="file" id="image" name="image">
-            </div> -->
+              <input type="file" id="risk_img3" name="risk_img3">
+            </div>
             <div class="flex flex-col mb-4">
               <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="treatment_title1">処置1</label>
               <select name="treatment_title1">
