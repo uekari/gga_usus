@@ -22,10 +22,17 @@ class U_EmergencyController extends Controller
     public function index()
     {
 
-        $emergencys = \Auth::user() -> clients;
-
-        // $emergencys = [];
+        // $emergencys = \Auth::user() -> clients;
         // dd($emergencys);
+        // return view('user.emergency.index',
+        // compact('emergencys'));
+
+        // $schedule = Schedule::with('times')->where('user_id',\Auth::user()->id)->find($id); //ログインしている情報のみ
+        // dd($schedule);
+        // return view('user.schedule.show', compact('schedule'));
+
+        $emergencys = Client::with('doctor')->get();
+        dd($emergencys);
         return view('user.emergency.index',
         compact('emergencys'));
 
