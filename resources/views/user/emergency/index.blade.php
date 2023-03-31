@@ -21,7 +21,7 @@
               @foreach ($emergencys as $emergency)
               <tr class="hover:bg-grey-lighter">
                 <td class="py-4 px-6 border-b border-grey-light">
-                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$emergency->emergency}}</h3>
+                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$emergency->doctor_id}}</h3>
                 </td>
                 <td class="py-4 px-6 border-b border-grey-light">
                     <h3 class="text-left font-bold text-lg text-grey-dark">{{$emergency->emergency}}</h3>

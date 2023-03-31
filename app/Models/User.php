@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Client;
+use App\Models\Doctor;
+
 
 class User extends Authenticatable
 {
@@ -51,9 +53,13 @@ class User extends Authenticatable
 
     public function clients()
     {
-       return $this->hasMany(Client::class);
+        return $this->hasMany(Client::class);
     }
 
+    public function doctors()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
 
 
 }

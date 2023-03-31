@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Client;
+use App\Models\User;
 
 class Doctor extends Model
 {
@@ -28,9 +29,12 @@ class Doctor extends Model
 
     public function clients()
     {
-       return $this->hasMany(Client::class);
+        return $this->hasMany(Client::class);
     }
 
-
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 
 }
