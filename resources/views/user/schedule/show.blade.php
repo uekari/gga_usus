@@ -20,7 +20,7 @@
             @foreach ($schedule->times as $time)
             <div class="flex flex-col mb-4">
               <p class="py-2 px-3 text-grey-darkest">
-                {{$time->time}}
+                {{ substr($time->time, 0, 5) }}
               </p>
               <p class="py-2 px-3 text-grey-darkest">
                 {{$time->content}}

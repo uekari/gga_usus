@@ -34,4 +34,12 @@ class U_ClientController extends Controller
 
 
     }
+
+    public function show()
+    {
+
+        //
+        
+    }
+
 }

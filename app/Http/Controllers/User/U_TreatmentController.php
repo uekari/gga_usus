@@ -24,14 +24,14 @@ class U_TreatmentController extends Controller
 
 
     public function index()
-{
-     $treatments=Treatment::where('client_id',\Auth::user()->id)->get();
-     return view('user.treatment.index',compact('treatments'));
-
+    {
+        $treatments=Treatment::where('client_id',\Auth::user()->id)->get();
+        // dd($treatments);
+        return view('user.treatment.index',compact('treatments'));
     }
 
     public function show($id)
-   {
+    {
         $treatment = Treatment::find($id);
         return view('user.treatment.show', compact('treatment'));
     }

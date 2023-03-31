@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Client;
 use App\Models\Doctor;
+use App\Models\Caremanager;
 
 
 class User extends Authenticatable
@@ -59,6 +60,11 @@ class User extends Authenticatable
     public function doctors()
     {
         return $this->belongsTo(Doctor::class);
+    }
+
+    public function caremanagers()
+    {
+        return $this->belongsTo(Caremanager::class);
     }
 
 

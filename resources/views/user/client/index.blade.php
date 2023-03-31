@@ -21,7 +21,7 @@
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">疾患</th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">年齢</th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">介護度</th>
-                      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日</th>
+                      <!-- <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日</th> -->
 
                     </tr>
                   </thead>
@@ -32,7 +32,7 @@
                       <td class="px-4 py-3">{{ $clent->desease }}</td>
                       <td class="px-4 py-3">{{ $clent->age }}</td>
                       <td class="px-4 py-3">{{ $clent->carelevel }}</td>
-                      <td class="px-4 py-3">{{ $clent->created_at->diffForHumans() }}</td>
+                      <!-- <td class="px-4 py-3">{{ $clent->created_at->diffForHumans() }}</td> -->
 
                     </tr>
                     @endforeach
