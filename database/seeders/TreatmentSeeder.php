@@ -18,15 +18,29 @@ class TreatmentSeeder extends Seeder
                [
                 'client_id' => '1' ,
                 'title' => '吸引' ,
-                'content' => 'リスクの手順です',
+                'content' => '処置の手順です',
                 'point' => '10秒以内で実施する。',
                 'created_at' => Now(),
                ],
                [
                 'client_id' => '1' ,
                 'title' => '投薬' ,
-                'content' => 'リスクの手順です',
+                'content' => '処置の手順です',
                 'point' => '痛みに応じてオプソ投与可。',
+                'created_at' => Now(),
+               ],
+               [
+                'client_id' => '1' ,
+                'title' => '摘便' ,
+                'content' => '処置の手順',
+                'point' => '左側臥位で行う',
+                'created_at' => Now(),
+               ],
+               [
+                'client_id' => '1' ,
+                'title' => '酸素' ,
+                'content' => '処置の手順',
+                'point' => '酸素5Lまで増量可',
                 'created_at' => Now(),
                ],
                [
@@ -43,6 +57,14 @@ class TreatmentSeeder extends Seeder
                 'point' => '不安を感じやすい。不安時はソラナックス投与を検討する。',
                 'created_at' => Now(),
                ],
+             [
+                'client_id' => '2' ,
+                'title' => '患者2:吸引' ,
+                'content' => 'リスクの手順です',
+                'point' => 'MRSAあり。防護をきちんとする',
+                'created_at' => Now(),
+               ],
+
         ]);
     }
 }

@@ -15,7 +15,8 @@ use App\Http\Controllers\Admin\CaremanagerController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\TimeController;
 use App\Http\Controllers\Admin\TreatmentController;
-use App\Http\Controllers\Admin\RiskController;
+use App\Http\Controllers\Admin\TimeTreatmentController;
+// use App\Http\Controllers\Admin\RiskController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -67,26 +68,28 @@ Route::resource('client/{client}/treatment', TreatmentController::class)
 
 
 // time
-// Route::resource('schedule/{schedule}/time', TimeController::class)
-// ->middleware('auth:admin');
-
 
 
    Route::get('schedule/{schedule}/time', [TimeController::class, 'index'])->name('time.index')->middleware('auth:admin');
    Route::get('schedule/{schedule}/time/create', [TimeController::class, 'create'])->name('time.create')->middleware('auth:admin');
    Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name('time.store')->middleware('auth:admin');
-   Route::get('time/{time}', [TimeController::class, 'show'])->name('time.show')->middleware('auth:admin');
 
-//    Route::get('time/{time}', [TimeController::class, 'edit'])->name('time.edit');
-//    Route::put('time/{time}', [TimeController::class, 'update'])->name('time.update');
+   Route::get('time/{time}', [TimeController::class, 'show'])->name('time.show')->middleware('auth:admin');
+   Route::get('time/{time}/edit', [TimeController::class, 'edit'])->name('time.edit');
+   Route::post('time/{time}', [TimeController::class, 'update'])->name('time.update');
+
+
+//TimeTreatment
+Route::resource('schedule/{schedule}/time/{time}/timetreatment', TimeTreatmentController::class)
+->middleware('auth:admin');
 
 
 
 // risk
-Route::prefix('risk')->
-    middleware('auth:admin')->group(function(){
-        Route::get('/', [RiskController::class, 'index'])->name('risk.index');
-});
+// Route::prefix('risk')->
+//     middleware('auth:admin')->group(function(){
+//         Route::get('/', [RiskController::class, 'index'])->name('risk.index');
+// });
 // Route::get('time/{time}/risk', [RiskController::class, 'create'])->name('risk.create');
 // Route::post('time/{time}/risk', [RiskController::class, 'store'])->name('risk.store');
 

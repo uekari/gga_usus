@@ -40,18 +40,19 @@ Route::middleware('auth:users') ->group(function(){
 });
 
 // treatment
-Route::middleware('auth:users') ->group(function(){
+Route::resource('treatment', U_TreatmentController::class);
 
-    Route::get('/user/treatment', [U_TreatmentController::class, 'index'])
-    ->name('treatment.index');
+// Route::middleware('auth:users') ->group(function(){
+//     Route::get('/user/treatment', [U_TreatmentController::class, 'index'])
+//     ->name('treatment.index');
+//     Route::resource('treatment', U_TreatmentController::class)
+//     ->only(['index']);
+//     Route::get('client/{client}/treatment', [U_ClientController::class, 'show'])
+//     ->name('client.show');
+// });
 
-    Route::resource('treatment', U_TreatmentController::class)
-    ->only(['index']);
 
-    Route::get('client/{client}/treatment', [U_ClientController::class, 'show'])
-    ->name('client.show');
 
-});
 
 // schedule
 Route::middleware('auth:users') ->group(function(){

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use App\Models\Treatment;
+use App\Models\Treatment;
 use App\Models\Schedule;
 use App\Models\Doctor;
 use App\Models\Caremanager;
@@ -19,7 +19,7 @@ class Client extends Model
     'created_at',
     'updated_at',
     ];
-    
+
     public function treatments()
     {
         return $this->hasMany(Treatment::class);

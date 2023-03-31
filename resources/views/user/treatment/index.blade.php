@@ -11,23 +11,23 @@
         <div class="p-6 bg-white border-b border-gray-200">
           <table class="text-center w-full border-collapse">
             <thead>
-                <tr>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">処置</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">手順</th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">注意点</th>
-                </tr>
+              <tr>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">処置</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">手順</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">注意点</th>
+              </tr>
             </thead>
             <tbody>
               @foreach ($treatments as $treatment)
               <tr class="hover:bg-grey-lighter">
                 <td class="py-4 px-6 border-b border-grey-light">
-                  <h3 class="text-left font-bold text-lg text-grey-dark">{{$treatment->treatment_title}}</h3>
+                  <h3 class="text-left  text-lg text-grey-dark">{{$treatment->title}}</h3>
                 </td>
                 <td class="py-4 px-6 border-b border-grey-light">
-                  <h3 class="text-left font-bold text-lg text-grey-dark">{{$treatment->treatment_content}}</h3>
+                  <h3 class="text-left  text-lg text-grey-dark">{{$treatment->content}}</h3>
                 </td>
                 <td class="py-4 px-6 border-b border-grey-light">
-                  <h3 class="text-left font-bold text-lg text-grey-dark">{{$treatment->treatment_point}}</h3>
+                  <h3 class="text-left  text-lg text-grey-dark">{{$treatment->point}}</h3>
                 </td>
               </tr>
               @endforeach
@@ -38,4 +38,3 @@
     </div>
   </div>
 </x-app-layout>
-
