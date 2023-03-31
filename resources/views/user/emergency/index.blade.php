@@ -18,16 +18,29 @@
                 </tr>
             </thead>
             <tbody>
-              @foreach ($emergencys as $emergency)
+              @foreach ($doctors as $doctor)
               <tr class="hover:bg-grey-lighter">
                 <td class="py-4 px-6 border-b border-grey-light">
-                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$emergency->doctor_id}}</h3>
+                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$doctor->belong}}</h3>
                 </td>
                 <td class="py-4 px-6 border-b border-grey-light">
-                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$emergency->emergency}}</h3>
+                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$doctor->doctor_name}}</h3>
                 </td>
                 <td class="py-4 px-6 border-b border-grey-light">
-                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$emergency->emergency}}</h3>
+                    <a href="tel:{{$doctor->tel}}" class="text-left font-bold text-lg text-grey-dark">{{$doctor->tel}}</a>
+                </td>
+              </tr>
+              @endforeach
+              @foreach ($caremanagers as $caremanager)
+              <tr class="hover:bg-grey-lighter">
+                <td class="py-4 px-6 border-b border-grey-light">
+                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$caremanager->belong}}</h3>
+                </td>
+                <td class="py-4 px-6 border-b border-grey-light">
+                    <h3 class="text-left font-bold text-lg text-grey-dark">{{$caremanager->caremanager_name}}</h3>
+                </td>
+                <td class="py-4 px-6 border-b border-grey-light">
+                    <a href="tel:{{$caremanager->tel}}" class="text-left font-bold text-lg text-grey-dark">{{$caremanager->tel}}</a>
                 </td>
               </tr>
               @endforeach
