@@ -18,6 +18,9 @@ class U_TimeController extends Controller
     {
         $this->middleware('auth:users');
     }
+
+
+    
     public function show($id)//timeのIDが入る
     {
 

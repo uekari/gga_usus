@@ -35,6 +35,11 @@
                 <a href="{{ route('user.time.show',$time->id )}}">リスクあり</a>
                 @endif
               </div>
+              <div class="px-4 py-3">
+                @foreach ($time -> treatments as $treatment)
+                <a href="{{  route('user.treatment.show', $treatment->id )}} ">{{ $treatment -> title}}</a>
+                @endforeach
+              </div>
             </div>
             @endforeach
           </div>

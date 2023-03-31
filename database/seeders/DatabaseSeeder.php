@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ScheduleSeeder::class,
             TimeSeeder::class,
             TreatmentSeeder::class,
+            TimeTreatmentSeeder::class,
 
          ]);
 

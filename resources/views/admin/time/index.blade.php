@@ -21,8 +21,10 @@
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">行き先</th>
                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">移動の有無</th>
 
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">詳細</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">編集</th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
+                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
               </tr>
             </thead>
             <tbody>
@@ -43,12 +45,24 @@
                   </a>
                 </td>
                 <td class="px-4 py-3 text-base ">
+                  <a href="{{ route('admin.time.edit',$time->id )}}">
                     <h3 class="">編集 *設定未</h3>
+                  </a>
+                </td>
+
+                <td class="px-4 py-3">
+                  @foreach ($time -> treatments as $treatment)
+                  {{ $treatment -> title}}
+                  @endforeach
+                </td>
+
+                <td class="px-4 py-3">
+                  <a href="{{ route('admin.timetreatment.index',[$time->schedule_id, $time->id])}}">
+                    <h3 class="">処置登録</h3>
                   </a>
                 </td>
               </tr>
               @endforeach
-
             </tbody>
           </table>
         </div>

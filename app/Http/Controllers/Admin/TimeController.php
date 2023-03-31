@@ -18,22 +18,10 @@ class TimeController extends Controller
         $this->middleware('auth:admin');
     }
 
-
     public function index($schedule_id)
     {
-    // $time_treatment=Time::find(1)->treatments()->get();
-    // dd($time_treatment);
-
-
-        $schedule = Schedule::findOrFail($schedule_id);
-        $times = $schedule -> times()->get();
-        //    dd($times);
-
-        // $times = Time::where('schedule_id',2)->get();
-        // $times = Time::with('schedule:id,title')->get();
-
-        // itemsテーブルのデータを全て取得
-        // $times = Time::get();
+       $schedule = Schedule::findOrFail($schedule_id);
+       $times = $schedule -> times()->with('treatments') ->get();
 
         return view('admin.time.index',
         compact('times'));
@@ -42,8 +30,7 @@ class TimeController extends Controller
 
     public function create(Schedule $schedule)
     {
-        return view('admin.time.create',
-        compact('schedule'));
+        return view('admin.time.create',compact('schedule'));
     }
 
 
@@ -75,7 +62,7 @@ class TimeController extends Controller
         $time->treatment_title3 = $request->treatment_title3;
 
         // dd($time);
-    
+
 
         $time->save();
 
@@ -91,15 +78,19 @@ class TimeController extends Controller
     }
 
 
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+     $time = Time::find($id);
+    //  dd($time);
+    return view('admin.time.edit', compact('time'));
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
-        //
+        //データ更新処理
+        $result = Time::find($id)->update($request->all());
+        return redirect()->route('admin.schedule.index');
     }
 
 
