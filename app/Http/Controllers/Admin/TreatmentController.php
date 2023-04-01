@@ -45,7 +45,7 @@ class TreatmentController extends Controller
 
         // バリデーション
         $validator = Validator::make($request->all(), [
-            'item' => 'required | max:191',
+            'title' => 'required | max:191',
             'content' => 'required | max:191',
             'point' => 'required | max:191',
 
@@ -61,7 +61,7 @@ class TreatmentController extends Controller
         $treatment = new Treatment;
 
         $treatment-> client_id = $client -> id;
-        $treatment->item = $request->item;
+        $treatment->title = $request->title;
         $treatment->content = $request->content;
         $treatment->point = $request->point;
         $treatment->save();
@@ -92,7 +92,9 @@ class TreatmentController extends Controller
 
     public function update(Request $request, $id)
     {
-
+      //データ更新処理
+        $result = Treatmentent::find($id)->update($request->all());
+            return redirect()->route('admin.treatment.index');
     }
 
 

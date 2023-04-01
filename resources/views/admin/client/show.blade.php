@@ -6,75 +6,56 @@
   </x-slot>
 
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
-          <div class="mb-6">
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">患者氏名</p>
-              <p class="py-2 px-3 text-grey-darkest" id="client_name">
-                {{$client->client_name}}
-              </p>
-            </div>
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">ふりがな</p>
-              <p class="py-2 px-3 text-grey-darkest" id="client_name2">
-                {{$client->client_name2}}
-              </p>
-            </div>
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">疾患名</p>
-              <p class="py-2 px-3 text-grey-darkest" id="desease">
-                {{$client->desease}}
-              </p>
-            </div>
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">年齢</p>
-              <p class="py-2 px-3 text-grey-darkest" id="age">
-                {{$client->age}}
-              </p>
-            </div>
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">介護度</p>
-              <p class="py-2 px-3 text-grey-darkest" id="carelevel">
-                {{$client->carelevel}}
-              </p>
-            </div>
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">主治医</p>
-              <p class="py-2 px-3 text-grey-darkest" id="carelevel">
-                {{$client->doctor->doctor_name}}
-              </p>
-            </div>
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">ケアマネ</p>
-              <p class="py-2 px-3 text-grey-darkest" id="carelevel">
-                {{$client->caremanager->caremanager_name}}
-              </p>
-            </div>
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">処置：項目</p>
-              <p class="py-2 px-3 text-grey-darkest" id="treatment_title">
-                {{$client->treatment_title}}
-              </p>
-            </div>
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">処置：手順</p>
-              <p class="py-2 px-3 text-grey-darkest" id="treatment_content">
-                {{$client->treatment_content}}
-              </p>
-            </div>
-            <div class="flex flex-col mb-4">
-              <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">処置：注意点</p>
-              <p class="py-2 px-3 text-grey-darkest" id="treatment_point">
-                {{$client->treatment_point}}
-              </p>
-            </div>
+        <div class="pt-2 pb-4 px-8 bg-white border-b border-gray-200">
 
-            <a href="{{ url()->previous() }}" class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-              Back
-            </a>
+          <div class="flex">
+            <div class="w-1/5">
+              <p class="py-5">患者氏名</p>
+            </div>
+            <div class=" flex-auto">
+              <p class="py-5">{{$client->client_name}}</p>
+            </div>
           </div>
+
+          <div class="flex">
+            <div class="w-1/5">
+              <p class="py-5">ふりがな</p>
+            </div>
+            <div class=" flex-auto">
+              <p class="py-5">{{$client->client_name2}}</p>
+            </div>
+          </div>
+
+          <div class="flex">
+            <div class="w-1/5">
+              <p class="py-5">疾患名</p>
+            </div>
+            <div class=" flex-auto">
+              <p class="py-5">{{$client->desease}}</p>
+            </div>
+          </div>
+
+          <div class="flex">
+            <div class="w-1/5">
+              <p class="py-5">主治医</p>
+            </div>
+            <div class=" flex-auto">
+              <p class="py-5">{{$client->doctor->doctor_name}}</p>
+            </div>
+          </div>
+
+          <div class="flex">
+            <div class="w-1/5">
+              <p class="py-5">ケアマネ</p>
+            </div>
+            <div class=" flex-auto">
+              <p class="py-5">{{$client->caremanager->caremanager_name}}</p>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>

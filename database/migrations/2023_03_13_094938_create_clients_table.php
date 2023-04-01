@@ -23,9 +23,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('doctor_id')->constrained();
             $table->foreignId('caremanager_id')->constrained();
-            $table->string('treatment_title')->comment('処置');
-            $table->string('treatment_content');
-            $table->string('treatment_point');
+            // $table->string('treatment_title')->comment('処置');
+            // $table->string('treatment_content');
+            // $table->string('treatment_point');
             $table->timestamps();
         });
     }

@@ -68,8 +68,6 @@ Route::resource('client/{client}/treatment', TreatmentController::class)
 
 
 // time
-
-
    Route::get('schedule/{schedule}/time', [TimeController::class, 'index'])->name('time.index')->middleware('auth:admin');
    Route::get('schedule/{schedule}/time/create', [TimeController::class, 'create'])->name('time.create')->middleware('auth:admin');
    Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name('time.store')->middleware('auth:admin');

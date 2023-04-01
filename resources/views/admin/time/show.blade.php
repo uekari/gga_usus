@@ -9,8 +9,8 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="pt-2 pb-4 px-8 bg-white border-b border-gray-200">
-          <div class="flex">
 
+          <div class="flex">
             <div class="w-1/5">
               <p class="py-5">時間</p>
             </div>
@@ -18,6 +18,7 @@
               <p class="py-5">{{ substr($time->time, 0, 5) }}</p>
             </div>
           </div>
+
           <div class="flex">
             <div class="w-1/5">
               <p class="py-5">予定</p>
@@ -26,6 +27,7 @@
               <p class="py-5">{{$time->content}}</p>
             </div>
           </div>
+
           <div class="flex">
             <div class="w-1/5">
               <p class="py-5">移動</p>

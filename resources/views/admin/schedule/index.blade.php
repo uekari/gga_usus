@@ -30,7 +30,7 @@
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $schedule->title }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">
                     <a href="{{ route('admin.schedule.edit',$schedule->id)}}">
-                      <h3 class="">案件編集</h3>
+                      <p class="">案件編集</p>
                     </a>
                   </td>
                   <!-- 詳細登録ボタン -->
