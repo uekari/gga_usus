@@ -1,39 +1,37 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('案件作成') }}
+      {{ __('旅行情報登録') }}
     </h2>
   </x-slot>
-  <tbody>
 
-
-  </tbody>
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
+        <div class="py-12 px-16 bg-white ">
           @include('common.errors')
           <form class="mb-6" action="{{ route('admin.schedule.store',$client->id) }}" method="POST">
             @csrf
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="title">案件</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="title" id="title">
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="date">旅行日</label>
+              <input class="w-80 border border-1 border-gray-300 py-2 px-3 " type="date" name="date" id="date" value="<?php echo date('Y-m-j');?>">
             </div>
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="date">旅行日</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="date" name="date" id="date" value="<?php echo date('Y-m-j');?>">
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="title">旅行名</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="title" id="title">
             </div>
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="user_id">サポーター</label>
-              <select name="user_id">
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="user_id">サポーター</label>
+
+              <select class="w-80 border border-1 border-gray-300 py-2 px-3" name="user_id">
                 @foreach ($users as $user)
                 <option id="user_id" value=" {{$user -> id}}">{{$user -> name}}</option>
                 @endforeach
               </select>
             </div>
-            <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-              Create
-            </button>
+            <div class="text-center">
+              <button type=" submit" class="pt-2.5 pb-2 px-6 text-base border border-1 border-gray-800 rounded-md ">登録を完了する</button>
+            </div>
           </form>
 
         </div>

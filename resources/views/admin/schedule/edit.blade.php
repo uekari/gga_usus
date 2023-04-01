@@ -1,33 +1,41 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('案件編集') }}
+      {{ __('旅行情報編集') }}
     </h2>
   </x-slot>
 
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
+        <div class="py-12 px-16 bg-white">
           @include('common.errors')
           <form class="mb-6" action="{{ route('admin.schedule.update',$schedule->id) }}" method="POST">
             @method('put')
             @csrf
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="schedule_name">案件</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="schedule_name" id="schedule_name" value="{{$schedule->schedule_name}}">
+
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="date">旅行日</label>
+              <input class="w-80 border border-1 border-gray-300 py-2 px-3 " type="date" name="date" id="date" value="{{$schedule->date}}">
             </div>
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="date">旅行日</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="date" id="date" value="{{$schedule->date}}">
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="title">旅行名</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="title" id="title" value="{{$schedule->title}}">
             </div>
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="title">サポーター</label>
+
+            </div>
+
+
             <div class="flex justify-evenly">
-              <a href="{{ url()->previous() }}" class="block text-center w-5/12 py-3 mt-6 font-medium tracking-widest text-black uppercase bg-gray-100 shadow-sm focus:outline-none hover:bg-gray-200 hover:shadow-none">
+
+              <a href="{{ url()->previous() }}" class="block text-center w-5/12 py-3 font-medium tracking-widest text-black uppercase bg-gray-100 shadow-sm focus:outline-none hover:bg-gray-200 hover:shadow-none">
                 Back
               </a>
-              <button type="submit" class="w-5/12 py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-                Update
-              </button>
+              <div class="text-center">
+                <button type=" submit" class="pt-2.5 pb-2 px-10 text-base border border-1 border-gray-800 rounded-md ">編集を完了する</button>
+              </div>
             </div>
           </form>
         </div>

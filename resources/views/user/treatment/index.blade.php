@@ -1,40 +1,56 @@
 <x-app-layout>
-  <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('処置') }}
-    </h2>
-  </x-slot>
+
 
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
+    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
         <div class="p-6 bg-white border-b border-gray-200">
-          <table class="text-center w-full border-collapse">
-            <thead>
-              <tr>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">処置</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">手順</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">注意点</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($treatments as $treatment)
-              <tr class="hover:bg-grey-lighter">
-                <td class="py-4 px-6 border-b border-grey-light">
-                  <h3 class="text-left  text-lg text-grey-dark">{{$treatment->title}}</h3>
-                </td>
-                <td class="py-4 px-6 border-b border-grey-light">
-                  <h3 class="text-left  text-lg text-grey-dark">{{$treatment->content}}</h3>
-                </td>
-                <td class="py-4 px-6 border-b border-grey-light">
-                  <h3 class="text-left  text-lg text-grey-dark">{{$treatment->point}}</h3>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+          <div class="flex justify-center items-center mb-8">
+            <p class="text-xl text-center pr-3">  {{ __('処置情報 ') }}</p>
+            <p class="w-6 h-6"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M132.6 33.4l-15 5.6L64 59.1V192c0 70.7 57.3 128 128 128s128-57.3 128-128V59.1L266.4 39l-15-5.6 11.2-30 15 5.6 64 24L352 36.9V48 192c0 83-63.1 151.2-144 159.2v.8c0 70.7 57.3 128 128 128s128-57.3 128-128V254c-27.6-7.1-48-32.2-48-62c0-35.3 28.7-64 64-64s64 28.7 64 64c0 29.8-20.4 54.9-48 62v98c0 88.4-71.6 160-160 160s-160-71.6-160-160v-.8C95.1 343.2 32 275 32 192V48 36.9L42.4 33l64-24 15-5.6 11.2 30zM480 224a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"/></svg>
+          </p>
+          </div>
+
+          @foreach ($treatments as $treatment)
+          <div class="accordion-container">
+            <h4 class="accordion-title jsAccordionTitle">{{$treatment->title}}</h4>
+            <div class="accordion-content">
+              <div class="flex flex-col text-gray-900">
+                <div class=mb-6>
+                  <p class="mb-1">手順</p>
+                  <div class="mb-2 gga_border">
+                  </div>
+                  <p class="text-sm">{{$treatment->content}}</p>
+                </div>
+                <div>
+                  <p class="mb-1">ポイント</p>
+                  <div class="mb-2 gga_border">
+                  </div>
+                  <p class="text-sm">{{$treatment->point}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+
+
         </div>
       </div>
     </div>
   </div>
 </x-app-layout>
+
+<script type="text/javascript">
+const title = document.querySelectorAll(".jsAccordionTitle");
+console.log(title);
+//forEachでtitleを一つ一つtitleEachに入れている
+title.forEach((titleEach) => {
+  //nextElementSiblingはjQueryのnext()みたいなもの
+  let content = titleEach.nextElementSibling;
+  titleEach.addEventListener("click", () => {
+    titleEach.classList.toggle("is-active");
+    content.classList.toggle("is-open");
+  });
+});
+</script>

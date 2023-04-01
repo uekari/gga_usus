@@ -1,34 +1,38 @@
 <x-app-layout>
-  <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-         リスク一覧
-      </h2>
-  </x-slot>
-
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
 
           <section class="text-gray-600 body-font">
-            <div class="container px-5 mx-auto">
+            <p class="mb-8 text-xl text-center">  {{ __('特記事項・注意点') }}</p>
 
-              <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-                <table class="table-auto w-full text-left whitespace-no-wrap">
-                  <div class="flex flex-col mb-4">
-                    <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">リスクタイトル</p>
-                    <p class="py-2 px-3 text-grey-darkest" id="date">
-                {{$time->risk_title1}}
-                {{$time->risk_content1}}
-                {{$time->risk_title2}}
-                {{$time->risk_content2}}
-              </p>
-                  </div>
+            <div class="w-full mx-auto overflow-auto">
 
-                  </tbody>
-                </table>
+              <div class="flex flex-col mb-8 text-gray-900">
+                <p class="mb-1 uppercase text-base">
+                  {{$time->risk_title1}}</p>
+                <div class="mb-2 gga_border"></div>
+                <p class="text-sm">{{$time->risk_content1}}</p>
               </div>
+              @if($time->risk_title2)
+              <div class="flex flex-col mb-8 text-gray-900">
+                <p class="mb-1 uppercase text-base">
+                  {{$time->risk_title2}}</p>
+                <div class="mb-2 gga_border"></div>
+                <p class="text-sm">{{$time->risk_content2}}</p>
+              </div>
+              @endif
+              @if($time->risk_title3)
+              <div class="flex flex-col mb-4 text-gray-900">
+                <p class="mb-1 uppercase text-base">
+                  {{$time->risk_title3}}</p>
+                <div class="mb-2 gga_border"></div>
+                <p class="text-sm">{{$time->risk_content3}}</p>
+              </div>
+              @endif
             </div>
+
           </section>
         </div>
       </div>

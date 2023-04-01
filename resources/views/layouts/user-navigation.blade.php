@@ -16,10 +16,10 @@
             {{ __('旅行スケジュール') }}
           </x-nav-link>
           <x-nav-link :href="route('user.client.index')" :active="request()->routeIs('user.client.index')">
-            {{ ('患者管理') }}
+            {{ ('患者情報') }}
           </x-nav-link>
           <x-nav-link :href="route('user.treatment.index')" :active="request()->routeIs('user.treatment.index')">
-            {{ __('処置') }}
+            {{ __('処置情報') }}
           </x-nav-link>
           <x-nav-link :href="route('user.emergency.index')" :active="request()->routeIs('user.emergency.index')">
             {{ ('緊急連絡先') }}
