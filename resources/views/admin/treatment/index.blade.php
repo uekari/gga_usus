@@ -6,31 +6,43 @@
   </x-slot>
 
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
-          <table class="text-center w-full border-collapse">
-            <thead>
-              <tr>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">id</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">患者名</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">項目</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">内容</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">ポイント</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($treatments as $treatment)
-              <tr>　
-                <td class="px-4 py-3">{{ $treatment->id }}</td>
-                <td class="px-4 py-3">{{ $treatment-> client -> client_name }}</td>
-                <td class="px-4 py-3">{{ $treatment->title }}</td>
-                <td class="px-4 py-3">{{ $treatment->content }}</td>
-                <td class="px-4 py-3">{{ $treatment->point }}</td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+          <section class="text-gray-600 body-font">
+
+            <table class="text-center w-full border-collapse">
+              <thead>
+                <tr>
+
+                  <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">患者名</th>
+                  <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">項目</th>
+                  <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">内容・手順</th>
+                  <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">ポイント</th>
+                  <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($treatments as $treatment)
+                <tr class="hover:bg-grey-lighter">
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $treatment-> client -> client_name }}</td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $treatment->title }}</td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $treatment->content }}</td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $treatment->point }}</td>
+
+                  <!-- 案件登録ボタン -->
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <a href="">
+                      <p class="">編集：リンク未</p>
+                    </a>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+
+          </section>
+
         </div>
       </div>
     </div>

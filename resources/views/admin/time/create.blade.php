@@ -90,7 +90,7 @@
               <input type="file" id="risk_img3" name="risk_img3">
             </div>
             <div class="text-center">
-              <button type=" submit" class="pt-2.5 pb-2 px-8 text-base border border-1 border-gray-800 rounded-md ">登録を完了する</button>
+              <button type=" submit" class="pt-2.5 pb-2 px-12 text-base border border-1 border-gray-800 rounded-md ">登録を完了する</button>
             </div>
         </div>
 

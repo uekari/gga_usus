@@ -6,33 +6,36 @@
   </x-slot>
 
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
+        <div class="py-12  px-16 bg-white ">
           @include('common.errors')
           <form class="mb-6" action="{{ route('admin.doctor.store') }}" method="POST">
             @csrf
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="doctor_name">名前</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="doctor_name" id="doctor_name">
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="doctor_name">名前</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="doctor_name" id="doctor_name">
             </div>
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="belong">病院名</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="belong" id="belong">
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="belong">病院名</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="belong" id="belong">
             </div>
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="address">住所</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="address" id="address">
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="address">住所</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="address" id="address">
             </div>
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="tel">電話番号</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="tel" id="tel">
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="tel">電話番号</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="tel" id="tel">
             </div>
-            <div class="flex flex-col mb-4">
-              <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="fax">FAX番号</label>
-              <input class="border py-2 px-3 text-grey-darkest" type="text" name="fax" id="fax">
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="fax">FAX番号</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="fax" id="fax">
             </div>
-            <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-black uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">登録</button>
+
+            <div class="text-center pt-4">
+              <button type=" submit" class="pt-2.5 pb-2 px-12 text-base border border-1 border-gray-800 rounded-md ">登録を完了する</button>
+            </div>
           </form>
         </div>
       </div>

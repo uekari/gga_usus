@@ -29,12 +29,11 @@
 
 
             <div class="flex justify-evenly">
-
               <a href="{{ url()->previous() }}" class="block text-center w-5/12 py-3 font-medium tracking-widest text-black uppercase bg-gray-100 shadow-sm focus:outline-none hover:bg-gray-200 hover:shadow-none">
                 Back
               </a>
               <div class="text-center">
-                <button type=" submit" class="pt-2.5 pb-2 px-10 text-base border border-1 border-gray-800 rounded-md ">編集を完了する</button>
+                <button type=" submit" class="pt-2.5 pb-2 px-12 text-base border border-1 border-gray-800 rounded-md ">編集を完了する</button>
               </div>
             </div>
           </form>
