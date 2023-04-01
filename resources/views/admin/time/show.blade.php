@@ -75,14 +75,6 @@
               @endif
             </div>
           </div>
-          <div class="flex">
-            <div class="w-1/5">
-              <p class="py-5">処置情報</p>
-            </div>
-            <div class=" flex-auto">
-              <p class="py-5">{{$time->treatment_title1}}&emsp;{{$time->treatment_title2}}&emsp;{{$time->treatment_title3}}</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -11,60 +11,47 @@
         <div class="p-6 bg-white border-b border-gray-200">
           @foreach ($times as $time)
           @if ($loop->first)
-          <td class="px-4 py-3">{{ $time-> schedule -> title }}</td>
+          <p class="pb-5 text-lg">{{ $time-> schedule -> title }}</p>
           @endif
           @endforeach
-          <table class="text-center w-full border-collapse">
-            <thead>
-              <tr>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">時間</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">行き先</th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">移動の有無</th>
 
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
-                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"></th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($times as $time)
-              <tr>
-                <td class="px-4 py-3">{{ substr($time->time, 0, 5) }}</td>
-                <td class="px-4 py-3">{{ $time->content }}</td>
-                <td class="px-4 py-3">
-                  @if($time->is_move == "0")
-                  <p>移動あり</p>
-                  @elseif($time->is_move == "1")
-                  <p>移動なし</p>
-                  @endif
-                </td>
-                <td class="px-4 py-3 text-base ">
-                  <a href="{{ route('admin.time.show',$time->id )}}">
-                    <h3 class="">詳細</h3>
-                  </a>
-                </td>
-                <td class="px-4 py-3 text-base ">
-                  <a href="{{ route('admin.time.edit',$time->id )}}">
-                    <h3 class="">編集 *設定未</h3>
-                  </a>
-                </td>
+          @foreach ($times as $time)
+          <div class="mb-8">
+            <div class=" flex items-center text-center">
+              <div class="w-24 py-3 border border-1 border-gray-200">{{ substr($time->time, 0, 5) }}</div>
+              <div class="w-80 py-3 border border-1 border-gray-200 text-left pl-6">{{ $time->content }}</div>
+              <div class="w-40 py-3 border border-1 border-gray-200">
+                @if($time->is_move == "0")
+                <p>移動あり</p>
+                @elseif($time->is_move == "1")
+                <p>移動なし</p>
+                @endif
+              </div>
+              <div class="w-80 py-3 border border-1 border-gray-200 text-left pl-6">
+                <p>処置&nbsp;：&nbsp;
+              @foreach ($time -> treatments as $treatment)
+              {{ $treatment -> title}}
+              @endforeach</p>
+              </div>
+            </div>
+            <div class="flex justify-center items-center text-center border border-1 border-gray-200">
+              <div class="w-44 p-4"> <a href="{{ route('admin.time.show',$time->id )}}">
+                  <p class="px-3 py-2 bg-black rounded text-white text-sm">詳細ページへ</p>
+                </a>
+              </div>
+              <div class="w-44 p-4"> <a href="{{ route('admin.time.edit',$time->id )}}">
+                  <p class="px-3 py-2 bg-black rounded text-white text-sm">編集ページへ</p>
+                </a>
+              </div>
+              <div class="w-56 p-4"> <a href="{{ route('admin.timetreatment.index',[$time->schedule_id, $time->id])}}">
+                  <p class="px-3 py-2 bg-black rounded text-white text-sm">処置編集ページへ</p>
+                </a>
+              </div>
+            </div>
+          </div>
+          @endforeach
 
-                <td class="px-4 py-3">
-                  @foreach ($time -> treatments as $treatment)
-                  {{ $treatment -> title}}
-                  @endforeach
-                </td>
 
-                <td class="px-4 py-3">
-                  <a href="{{ route('admin.timetreatment.index',[$time->schedule_id, $time->id])}}">
-                    <h3 class="">処置登録</h3>
-                  </a>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
