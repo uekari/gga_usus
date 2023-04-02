@@ -90,10 +90,12 @@ class ClientController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit($id,Doctor $doctor, Caremanager $caremanager)
     {
+        $doctors  = Doctor::select('id','doctor_name')->get();
+        $caremanagers  = Caremanager::select('id','caremanager_name')->get();
         $client = Client::find($id);
-        return view('admin.client.edit', compact('client'));
+        return view('admin.client.edit', compact('client','doctors','caremanagers'));
     }
 
 
@@ -107,9 +109,7 @@ class ClientController extends Controller
             'desease' => 'required',
             'age' => 'required | max:5',
             'carelevel' => 'required | max:5',
-            'treatment_title' => 'required',
-            'treatment_content' => 'required',
-            'treatment_point' => 'required',
+
         ]);
         // バリデーション:エラー
         if ($validator->fails()) {

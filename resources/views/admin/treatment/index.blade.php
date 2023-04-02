@@ -32,7 +32,7 @@
 
                   <!-- 案件登録ボタン -->
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">
-                    <a href="">
+                    <a href="{{ route('admin.treatment.edit',$treatment->id )}}">
                       <p class="">編集：リンク未</p>
                     </a>
                   </td>
