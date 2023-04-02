@@ -94,7 +94,8 @@ class TreatmentController extends Controller
     {
       //データ更新処理
         $result = Treatment::find($id)->update($request->all());
-        return redirect()->route('admin.treatment.index');
+        // dd($result);
+        return redirect()->route('admin.client.index');
     }
 
 
