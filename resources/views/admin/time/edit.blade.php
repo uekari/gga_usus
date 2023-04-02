@@ -10,7 +10,7 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
           @include('common.errors')
-          <p>こちらは編集画面</p>
+
           <form class="mb-6" action="{{ route('admin.time.update',$time->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
 

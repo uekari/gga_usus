@@ -30,9 +30,6 @@ return new class extends Migration
             $table->string('risk_title3')->nullable();
             $table->string('risk_content3')->nullable();
             $table->string('risk_img3',100)->nullable();
-            // $table->string('treatment_title1')->nullable();
-            // $table->string('treatment_title2')->nullable();
-            // $table->string('treatment_title3')->nullable();
             $table->timestamps();
         });
     }

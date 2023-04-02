@@ -59,7 +59,6 @@ class TreatmentController extends Controller
         }
 
         $treatment = new Treatment;
-
         $treatment-> client_id = $client -> id;
         $treatment->title = $request->title;
         $treatment->content = $request->content;
@@ -85,16 +84,17 @@ class TreatmentController extends Controller
 
     public function edit($id)
     {
-      $treatment = Treatmentent::find($id);
-        return view('admin.treatment.edit', compact('treatment'));
+      $treatment = Treatment::find($id);
+    //   dd($treatment);
+    return view('admin.treatment.edit', compact('treatment'));
     }
 
 
     public function update(Request $request, $id)
     {
       //データ更新処理
-        $result = Treatmentent::find($id)->update($request->all());
-            return redirect()->route('admin.treatment.index');
+        $result = Treatment::find($id)->update($request->all());
+        return redirect()->route('admin.treatment.index');
     }
 
 

@@ -71,10 +71,11 @@ class ScheduleController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit($id, User $user)
     {
+        $users  = User::select('id','name')->get();
         $schedule = Schedule::find($id);
-        return view('admin.schedule.edit', compact('schedule'));
+        return view('admin.schedule.edit', compact('schedule','users'));
     }
 
 
@@ -94,6 +95,7 @@ class ScheduleController extends Controller
         }
         //データ更新処理
         $result = Schedule::find($id)->update($request->all());
+
             return redirect()->route('admin.schedule.index');
     }
 

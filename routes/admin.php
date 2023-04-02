@@ -55,8 +55,10 @@ Route::put('client/{client}/schedule', [ScheduleController::class, 'update'])->n
 
 
 // treatment
-Route::resource('client/{client}/treatment', TreatmentController::class)
-->middleware('auth:admin');
+Route::resource('client/{client}/treatment', TreatmentController::class) ->only(['index','show','create','store']);
+Route::get('treatment/{treatment}/edit', [TreatmentController::class, 'edit'])->name('treatment.edit');
+Route::post('treatment/{treatment}', [TreatmentController::class, 'update'])->name('treatment.update');
+
 // Route::prefix('treatment')->
 //     middleware('auth:admin')->group(function(){
 //         Route::get('/', [TreatmentController::class, 'index'])->name('treatment.index');

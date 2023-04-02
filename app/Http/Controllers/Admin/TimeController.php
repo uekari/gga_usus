@@ -57,9 +57,6 @@ class TimeController extends Controller
         $path = $img3->store('img','public');
         $time->risk_img3 = $path;
 
-        $time->treatment_title1 = $request->treatment_title1;
-        $time->treatment_title2 = $request->treatment_title2;
-        $time->treatment_title3 = $request->treatment_title3;
 
         // dd($time);
 

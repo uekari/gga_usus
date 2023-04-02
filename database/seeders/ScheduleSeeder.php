@@ -24,6 +24,13 @@ class ScheduleSeeder extends Seeder
                ],
                [
                 'user_id' => '2' ,
+                'client_id' => '1' ,
+                'title' => '梨狩り旅行' ,
+                'date' => '2021/04/12 10:11:11',
+                'created_at' => Now(),
+               ],
+               [
+                'user_id' => '2' ,
                 'client_id' => '2' ,
                 'title' => 'ちょっとそこまで植物園日帰り旅行' ,
                 'date' => '2021/06/16 10:10:10',
