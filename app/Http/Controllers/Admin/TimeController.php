@@ -46,17 +46,17 @@ class TimeController extends Controller
         $time->risk_title1 = $request->risk_title1;
         $time->risk_content1 = $request->risk_content1;
         $img1 = $request->file('risk_img1');
-        $path = $img1->store('img','public');
+        $path = $img1->store('risk_img1','public');
         $time->risk_img1 = $path;
         $time->risk_title2 = $request->risk_title2;
         $time->risk_content2 = $request->risk_content2;
         $img2 = $request->file('risk_img2');
-        $path = $img2->store('img','public');
+        $path = $img2->store('risk_img2','public');
         $time->risk_img2 = $path;
         $time->risk_title3 = $request->risk_title3;
         $time->risk_content3 = $request->risk_content3;
         $img3 = $request->file('risk_img3');
-        $path = $img3->store('img','public');
+        $path = $img3->store('risk_img3','public');
         $time->risk_img3 = $path;
 
 
