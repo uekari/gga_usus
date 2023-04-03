@@ -64,9 +64,9 @@ class ClientController extends Controller
             'desease' => 'required',
             'age' => 'required | max:5',
             'carelevel' => 'required | max:10',
-            'treatment_title' => 'required',
-            'treatment_content' => 'required',
-            'treatment_point' => 'required',
+            // 'treatment_title' => 'required',
+            // 'treatment_content' => 'required',
+            // 'treatment_point' => 'required',
         ]);
         // バリデーション:エラー
         if ($validator->fails()) {
