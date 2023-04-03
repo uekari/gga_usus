@@ -1,0 +1,56 @@
+＃マイグレーションによるテーブル追加
+    ①「モデル」と「マイグレーションファイル」を作成する
+        ./vendor/bin/sail php artisan make:model (Table名) -m
+    ②作成されたファイルの中にカラムを追加
+    ③マイグレーションする
+        ./vendor/bin/sail php artisan migrate
+    ※ 書き換えや追加の場合、変更後に下記コマンドを打つ。
+
+    DBにデータを作成(seeder)
+    ./vendor/bin/sail php artisan db:seed
+
+
+＃何のファイルかメモ
+    ・index.blade.php（一覧画面）
+    ・create.blade.php（作成画面）
+    ・show.blade.php（詳細画面）
+    ・edit.blade.php（編集画面）
+
+＃github手順
+    ①pullする
+        git pull origin develop
+    ②branch切る（※ 必ずpullした後に!!!）
+        git branch (リモートbranch名)
+    ③switchでリモートbranchに移動
+        git switch (リモートbranch名)
+    ④内容書き換える
+    ⑤リモートbranchにpushする
+        git add .
+        git commit -m"追加・変更した内容のメモ"
+        git push origin (リモートbranch)
+    ⑥プルリクエスト送る
+        リモートbranch → develop
+        （※ mainに送らないように注意!!!）
+        （※ mainに送らないように注意!!!）
+        （※ mainに送らないように注意!!!）
+        （※ mainに送らないように注意!!!）
+        （※ mainに送らないように注意!!!）
+    ⑦mergeして、リモートbranchを削除する
+    ⑧一旦developに移動して、ローカルbranchを削除する
+        git switch develop
+        git branch -d (リモートbranch名)
+
+＃役割分担
+    ・Model:データの操作を行う役割
+            データの「作成」「参照」「更新」「削除」し，その結果を出力．
+    ・View:ブラウザの表示領域を作成する役割．
+            受け取ったデータ処理の結果を html に埋め込み，出力する．
+    ・Controller:リクエストとレスポンスを行う．その間のことをいい感じにやる．
+                Model と View に司令を出す，処理の流れを決める役割．
+    ・Route:アクセスされた URL に応じて処理を振り分ける。URL と Controller の関数の対応を決める．
+            実際の処理は Controller を通じて Model や View が実行する．
+
+
+＃再スタート！を早く切りたい・・・
+＃再スタート！準備完了
+＃再スタート！準備完了

@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Client;
+use App\Models\Doctor;
+use App\Models\Caremanager;
+
 
 class User extends Authenticatable
 {
@@ -41,4 +45,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
+
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
+    }
+
+    public function doctors()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function caremanagers()
+    {
+        return $this->belongsTo(Caremanager::class);
+    }
+
+
 }
