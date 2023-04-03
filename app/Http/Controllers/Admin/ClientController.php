@@ -11,6 +11,7 @@ use App\Models\Treatment;
 use App\Models\Schedule;
 use App\Models\Doctor;
 use App\Models\Caremanager;
+use App\Models\User;
 
 class ClientController extends Controller
 {
@@ -36,7 +37,7 @@ class ClientController extends Controller
         // var_dump($q_get);
         // dd($e_all, $q_get, $q_first, $c_test);
 
-    $clients = Client::with('treatments','doctor','caremanager')->get();
+    $clients = Client::with('treatments','doctor','caremanager','user')->get();
     return view('admin.client.index',
     compact('clients'));
     }
@@ -46,11 +47,12 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create( Doctor $doctor, Caremanager $caremanager)
+    public function create( Doctor $doctor, Caremanager $caremanager, User $user)
     {
         $doctors  = Doctor::get();
         $caremanagers  = Caremanager::get();
-        return view('admin.client.create',compact('doctors','caremanagers'));
+        $users = User::get();
+        return view('admin.client.create',compact('doctors','caremanagers','users'));
     }
 
 
@@ -94,8 +96,9 @@ class ClientController extends Controller
     {
         $doctors  = Doctor::select('id','doctor_name')->get();
         $caremanagers  = Caremanager::select('id','caremanager_name')->get();
+        $users = User::select('id','name')->get();
         $client = Client::find($id);
-        return view('admin.client.edit', compact('client','doctors','caremanagers'));
+        return view('admin.client.edit', compact('client','doctors','caremanagers','users'));
     }
 
 
