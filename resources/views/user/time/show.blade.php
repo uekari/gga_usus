@@ -14,6 +14,7 @@
                   {{$time->risk_title1}}</p>
                 <div class="mb-2 gga_border"></div>
                 <p class="text-sm">{{$time->risk_content1}}</p>
+                <img src="{{ Storage::url($time->risk_img1) }}" width="25%">
               </div>
               @if($time->risk_title2)
               <div class="flex flex-col mb-8 text-gray-900">
@@ -21,6 +22,7 @@
                   {{$time->risk_title2}}</p>
                 <div class="mb-2 gga_border"></div>
                 <p class="text-sm">{{$time->risk_content2}}</p>
+                <img src="{{ Storage::url($time->risk_img2) }}" width="25%">
               </div>
               @endif
               @if($time->risk_title3)
@@ -29,6 +31,7 @@
                   {{$time->risk_title3}}</p>
                 <div class="mb-2 gga_border"></div>
                 <p class="text-sm">{{$time->risk_content3}}</p>
+                <img src="{{ Storage::url($time->risk_img3) }}" width="25%">
               </div>
               @endif
             </div>

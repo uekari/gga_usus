@@ -31,7 +31,17 @@
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-32" for="carelevel">介護度</label>
-              <input class="w-80 border border-1 border-gray-300 py-2 px-3 " type="text" name="carelevel" id="carelevel">
+              <select name="carelevel" class="w-80 border border-1 border-gray-300 py-2 px-3">
+                <option id="carelevel" value="要支援１">要支援１</option>
+                <option id="carelevel" value="要支援２">要支援２</option>
+                <option id="carelevel" value="要介護１">要介護１</option>
+                <option id="carelevel" value="要介護２">要介護２</option>
+                <option id="carelevel" value="要介護３">要介護３</option>
+                <option id="carelevel" value="要介護４">要介護４</option>
+                <option id="carelevel" value="要介護５">要介護５</option>
+                <option id="carelevel" value="医療">医療</option>
+                <option id="carelevel" value="その他">その他</option>
+              </select>
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-32" for="doctor_id">主治医</label>

@@ -30,10 +30,10 @@
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $treatment->content }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $treatment->point }}</td>
 
-                  <!-- 案件登録ボタン -->
+                  <!-- 処置編集ボタン -->
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">
                     <a href="{{ route('admin.treatment.edit',$treatment->id )}}">
-                      <p class="">編集：リンク未</p>
+                      <p class="">編集</p>
                     </a>
                   </td>
                 </tr>
