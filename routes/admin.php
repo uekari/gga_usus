@@ -52,8 +52,6 @@ Route::put('client/{client}/schedule', [ScheduleController::class, 'update'])->n
 
 
 
-
-
 // treatment
 Route::resource('client/{client}/treatment', TreatmentController::class) ->only(['index','show','create','store']);
 Route::get('treatment/{treatment}/edit', [TreatmentController::class, 'edit'])->name('treatment.edit');
@@ -70,13 +68,14 @@ Route::put('treatment/{treatment}', [TreatmentController::class, 'update'])->nam
 
 
 // time
-   Route::get('schedule/{schedule}/time', [TimeController::class, 'index'])->name('time.index')->middleware('auth:admin');
-   Route::get('schedule/{schedule}/time/create', [TimeController::class, 'create'])->name('time.create')->middleware('auth:admin');
-   Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name('time.store')->middleware('auth:admin');
+Route::get('schedule/{schedule}/time', [TimeController::class, 'index'])->name('time.index')->middleware('auth:admin');
+Route::get('schedule/{schedule}/time/create', [TimeController::class, 'create'])->name('time.create')->middleware('auth:admin');
+Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name('time.store')->middleware('auth:admin');
 
-   Route::get('time/{time}', [TimeController::class, 'show'])->name('time.show')->middleware('auth:admin');
-   Route::get('time/{time}/edit', [TimeController::class, 'edit'])->name('time.edit');
-   Route::put('time/{time}', [TimeController::class, 'update'])->name('time.update');
+Route::get('time/{time}', [TimeController::class, 'show'])->name('time.show')->middleware('auth:admin');
+Route::get('time/{time}/edit', [TimeController::class, 'edit'])->name('time.edit')->middleware('auth:admin');
+Route::put('time/{time}', [TimeController::class, 'update'])->name('time.update');
+
 
 
 //TimeTreatment

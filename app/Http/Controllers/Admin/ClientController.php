@@ -63,7 +63,7 @@ class ClientController extends Controller
             'client_name2' => 'required | max:191',
             'desease' => 'required',
             'age' => 'required | max:5',
-            'carelevel' => 'required | max:5',
+            'carelevel' => 'required | max:10',
             'treatment_title' => 'required',
             'treatment_content' => 'required',
             'treatment_point' => 'required',

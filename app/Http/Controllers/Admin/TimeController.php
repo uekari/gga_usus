@@ -8,6 +8,7 @@ use Validator;
 use App\Models\Time;
 use App\Models\Schedule;
 use App\Models\Treatment;
+use Illuminate\Support\Facades\Storage;
 
 
 class TimeController extends Controller
@@ -18,10 +19,11 @@ class TimeController extends Controller
         $this->middleware('auth:admin');
     }
 
+
     public function index($schedule_id)
     {
-       $schedule = Schedule::findOrFail($schedule_id);
-       $times = $schedule -> times()->with('treatments') ->get();
+        $schedule = Schedule::findOrFail($schedule_id);
+        $times = $schedule -> times()->with('treatments') ->get();
 
         return view('admin.time.index',
         compact('times'));
@@ -60,7 +62,7 @@ class TimeController extends Controller
 
         // dd($time);
 
-
+        
         $time->save();
 
         return redirect()->route('admin.time.index',$schedule -> id);
@@ -77,22 +79,95 @@ class TimeController extends Controller
 
     public function edit($id)
     {
-     $time = Time::find($id);
-    //  dd($time);
-    return view('admin.time.edit', compact('time'));
+        $time = Time::find($id);
+        //  dd($time);
+        return view('admin.time.edit', compact('time'));
     }
 
 
     public function update(Request $request,  $id)
     {
+
+        //バリデーション
+        $validator = Validator::make($request->all(), [
+            'content' => 'required|max:255',
+            'time' => 'required',
+        ]);
+        //バリデーション:エラー
+        if ($validator->fails()) {
+            return redirect()
+                ->route('admin.time.edit', $id)
+                ->withInput()
+                ->withErrors($validator);
+        }
+
         //データ更新処理
-        $result = Time::find($id)->update($request->all());
-        return redirect()->route('admin.schedule.index');
+        $time = Time::find($id);
+        $time->content = $request->input('content');
+        $time->time = $request->input('time');
+        $time->is_move = $request->input('is_move');
+        $time->risk_title1 = $request->input('risk_title1');
+        $time->risk_content1 = $request->input('risk_content1');
+        $time->risk_title2 = $request->input('risk_title2');
+        $time->risk_content2 = $request->input('risk_content2');
+        $time->risk_title3 = $request->input('risk_title3');
+        $time->risk_content3 = $request->input('risk_content3');
+        $time->save();
+
+        //画像更新処理
+        if ($request->hasFile('risk_img1')) {
+            $old_path = $time->risk_img1;
+            if ($old_path) {
+                // 古い画像がある場合は削除する
+                Storage::disk('public')->delete($old_path);
+            }
+            // 新しい画像を保存する
+            $path = $request->file('risk_img1')->store('risk_img1', 'public');
+            $time->risk_img1 = $path;
+            $time->save();
+        }
+
+        if ($request->hasFile('risk_img2')) {
+            $old_path = $time->risk_img2;
+            if ($old_path) {
+                // 古い画像がある場合は削除する
+                Storage::disk('public')->delete($old_path);
+            }
+            // 新しい画像を保存する
+            $path = $request->file('risk_img2')->store('risk_img2', 'public');
+            $time->risk_img2 = $path;
+            $time->save();
+        }
+
+        if ($request->hasFile('risk_img3')) {
+            $old_path = $time->risk_img3;
+            if ($old_path) {
+                // 古い画像がある場合は削除する
+                Storage::disk('public')->delete($old_path);
+            }
+            // 新しい画像を保存する
+            $path = $request->file('risk_img3')->store('risk_img3', 'public');
+            $time->risk_img3 = $path;
+            $time->save();
+        }
+
+        return redirect()->route('admin.time.show', $time->id);
     }
 
 
     public function destroy(string $id)
     {
-        //
+        // 画像ファイルパスを取得
+        $risk_img1_cur = $time->risk_img1;
+
+        // 登録されていれば削除
+        if ($image_cur !== '' && !is_null($risk_img1_cur)) {
+            Storage::disk('public')->delete($risk_img1_cur);
+        }
+        // 削除
+        $post->delete();
+
+        return redirect()->route('admin.schedule.index');
     }
+
 }

@@ -60,8 +60,9 @@
               <textarea name="risk_content1" id="risk_content1" cols="30" rows="5" class="flex-auto border border-1 border-gray-300 py-2 px-3"></textarea>
             </div>
             <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40"> </label>
+              <label class="w-40"> 画像 </label>
               <input type="file" id="risk_img1" name="risk_img1">
+              <!-- <input type="file" id="risk_img1[]" name="risk_img1[]" multiple> -->
             </div>
 
             <div class="flex items-center mb-4 text-gray-900">
