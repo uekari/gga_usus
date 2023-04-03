@@ -14,13 +14,13 @@
             @csrf
 
             <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="content">行き先</label>
+              <label class="w-40" for="content">行き先：</label>
               <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="content" id="content">
             </div>
 
 
             <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="time">時間</label>
+              <label class="w-40" for="time">時間：</label>
               <input class="w-80 border border-1 border-gray-300 py-2 px-3" type="time" name="time" id="time" list="data-list">
               <span></span>
               <datalist id="data-list">
@@ -39,12 +39,12 @@
 
 
             <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="time">移動の有無</label>
+              <label class="w-40" for="time">移動：</label>
               <div class="form-group row">
                 <div class="col-md-6">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input mr-2" type="radio" name="is_move" id="is_move1" value="0">移動あり
-                    <input class="form-check-input mr-2" type="radio" name="is_move" id="is_move2" value="1">移動なし
+                    <input class="form-check-input mr-2" type="radio" name="is_move" id="is_move1" value="0" checked>あり
+                    <input class="form-check-input mr-2" type="radio" name="is_move" id="is_move2" value="1">なし
                   </div>
                 </div>
               </div>
@@ -52,7 +52,7 @@
 
 
             <div class="flex items-center mb-4 text-gray-900">
-              <label class="w-40" for="risk">リスク情報の登録&thinsp;①</label>
+              <label class="w-40" for="risk">リスク情報の登録&thinsp;①：</label>
               <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type=" text" name="risk_title1" id="risk_title1">
             </div>
             <div class="flex items-center mb-4 text-gray-900">
@@ -60,13 +60,13 @@
               <textarea name="risk_content1" id="risk_content1" cols="30" rows="5" class="flex-auto border border-1 border-gray-300 py-2 px-3"></textarea>
             </div>
             <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40"> 画像 </label>
+              <label class="w-40">画像：</label>
               <input type="file" id="risk_img1" name="risk_img1">
               <!-- <input type="file" id="risk_img1[]" name="risk_img1[]" multiple> -->
             </div>
 
             <div class="flex items-center mb-4 text-gray-900">
-              <label class="w-40" for="risk">リスク情報の登録&thinsp;②</label>
+              <label class="w-40" for="risk">リスク情報の登録&thinsp;②：</label>
               <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type=" text" name="risk_title2" id="risk_title2">
             </div>
             <div class="flex items-center mb-4 text-gray-900">
@@ -79,7 +79,7 @@
             </div>
 
             <div class="flex items-center mb-4 text-gray-900">
-              <label class="w-40" for="risk">リスク情報の登録&thinsp;③</label>
+              <label class="w-40" for="risk">リスク情報の登録&thinsp;③：</label>
               <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type=" text" name="risk_title3" id="risk_title3">
             </div>
             <div class="flex items-center mb-4 text-gray-900">

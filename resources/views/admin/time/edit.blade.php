@@ -38,8 +38,8 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="is_move" id="is_move1" value="0">移動あり
-                    <input class="form-check-input" type="radio" name="is_move" id="is_move2" value="1">移動なし
+                    <input class="form-check-input" type="radio" name="is_move" id="is_move1" value="0" @if($time->is_move == 0) checked @endif>移動あり
+                    <input class="form-check-input" type="radio" name="is_move" id="is_move2" value="1" @if($time->is_move == 1) checked @endif>移動なし
                   </div>
                 </div>
               </div>
