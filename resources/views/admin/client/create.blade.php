@@ -59,6 +59,14 @@
                 @endforeach
               </select>
             </div>
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="user_id">サポーター</label>
+              <select name="user_id" class="w-80 border border-1 border-gray-300 py-2 px-3">
+                @foreach ($users as $user)
+                <option id="user_id" value=" {{$user -> id}}">{{$user -> name}}</option>
+                @endforeach
+              </select>
+            </div>
             <div class="text-center pt-4">
               <button type=" submit" class="pt-2.5 pb-2 px-12 text-base border border-1 border-gray-800 rounded-md ">登録を完了する</button>
             </div>
