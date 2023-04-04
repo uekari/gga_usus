@@ -1,8 +1,8 @@
 <x-app-layout>
-  <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
-      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
+  <div class="mb-16">
+    <div class=" max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
+      <div class="bg-white overflow-hidden sm:rounded-lg">
+        <div class="p-6 bg-white">
 
           <section class="text-gray-600 body-font">
             <p class="mb-8 text-xl text-center">  {{ __('特記事項・注意点') }}</p>
