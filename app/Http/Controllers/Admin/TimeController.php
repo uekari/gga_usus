@@ -45,29 +45,18 @@ class TimeController extends Controller
         $time->is_move = $request->is_move;
         $time->risk_title1 = $request->risk_title1;
         $time->risk_content1 = $request->risk_content1;
-        
-        // ディレクトリ名
-        $dir = 'ususimg';
-        // アップロードされたファイル名を取得
-        $file_name = $request->file('risk_img1');
-        // 取得したファイル名で保存
-        $request->file('risk_img1')->storeAs('public/' . $dir, $file_name);
-        // ファイル情報をDBに保存
-        $path = 'storage/' . $dir . '/' . $file_name;
+        $img1 = $request->file('risk_img1');
+        $path = $img1->store('risk_img1','public');
         $time->risk_img1 = $path;
-
         $time->risk_title2 = $request->risk_title2;
         $time->risk_content2 = $request->risk_content2;
-        $file_name = $request->file('risk_img2');
-        $request->file('risk_img2')->storeAs('public/' . $dir, $file_name);
-        $path = 'storage/' . $dir . '/' . $file_name;
+        $img2 = $request->file('risk_img2');
+        $path = $img2->store('risk_img2','public');
         $time->risk_img2 = $path;
-
         $time->risk_title3 = $request->risk_title3;
         $time->risk_content3 = $request->risk_content3;
-        $file_name = $request->file('risk_img3');
-        $request->file('risk_img3')->storeAs('public/' . $dir, $file_name);
-        $path = 'storage/' . $dir . '/' . $file_name;
+        $img3 = $request->file('risk_img3');
+        $path = $img3->store('risk_img3','public');
         $time->risk_img3 = $path;
 
 
@@ -78,6 +67,49 @@ class TimeController extends Controller
 
         return redirect()->route('admin.time.index',$schedule -> id);
     }
+
+    // public function store(Request $request, Schedule $schedule)
+    // {
+    //     $time = new Time;
+    //     $time->schedule_id = $schedule -> id;
+    //     $time->time = $request->time;
+    //     $time->content = $request->content;
+    //     $time->is_move = $request->is_move;
+    //     $time->risk_title1 = $request->risk_title1;
+    //     $time->risk_content1 = $request->risk_content1;
+        
+    //     // ディレクトリ名
+    //     $dir = 'ususimg';
+    //     // アップロードされたファイル名を取得
+    //     $file_name = $request->file('risk_img1');
+    //     // 取得したファイル名で保存
+    //     $request->file('risk_img1')->storeAs('public/' . $dir, $file_name);
+    //     // ファイル情報をDBに保存
+    //     $path = 'storage/' . $dir . '/' . $file_name;
+    //     $time->risk_img1 = $path;
+
+    //     $time->risk_title2 = $request->risk_title2;
+    //     $time->risk_content2 = $request->risk_content2;
+    //     $file_name = $request->file('risk_img2');
+    //     $request->file('risk_img2')->storeAs('public/' . $dir, $file_name);
+    //     $path = 'storage/' . $dir . '/' . $file_name;
+    //     $time->risk_img2 = $path;
+
+    //     $time->risk_title3 = $request->risk_title3;
+    //     $time->risk_content3 = $request->risk_content3;
+    //     $file_name = $request->file('risk_img3');
+    //     $request->file('risk_img3')->storeAs('public/' . $dir, $file_name);
+    //     $path = 'storage/' . $dir . '/' . $file_name;
+    //     $time->risk_img3 = $path;
+
+
+        // dd($time);
+
+        
+    //     $time->save();
+
+    //     return redirect()->route('admin.time.index',$schedule -> id);
+    // }
 
 
     public function show($id)
