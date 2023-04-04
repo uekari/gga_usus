@@ -50,6 +50,14 @@
                 @endforeach
               </select>
             </div>
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-32" for="user_id">サポーター</label>
+              <select name="user_id" class="w-80 border border-1 border-gray-300 py-2 px-3">
+                @foreach ($users as $user)
+                <option id="caremanager_id" value=" {{$caremanager -> id}}">{{$user -> name}}</option>
+                @endforeach
+              </select>
+            </div>
             <div class="flex justify-evenly">
               <a href="{{ url()->previous() }}" class="block text-center w-5/12 py-3 font-medium tracking-widest text-black uppercase bg-gray-100 shadow-sm focus:outline-none hover:bg-gray-200 hover:shadow-none">
                 Back
