@@ -10,6 +10,7 @@
           </p>
           </div>
 
+          <section class="text-gray-900 text-center body-font">
           @foreach ($treatments as $treatment)
           <div class="accordion-container">
             <h4 class="accordion-title jsAccordionTitle">{{$treatment->title}}</h4>
@@ -31,6 +32,7 @@
             </div>
           </div>
           @endforeach
+          </section>
 
 
         </div>

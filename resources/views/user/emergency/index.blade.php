@@ -20,7 +20,7 @@
                   <p>{{$doctor->doctor_name}}</p>
                 </div>
                 <div class=" flex-auto">
-                  <p>{{$doctor->tel}}</p>
+                  <a href="tel:{{$doctor->tel}}">{{$doctor->tel}}</a>
                 </div>
               </div>
               @endforeach
@@ -35,7 +35,7 @@
                   <p>{{$caremanager->caremanager_name}}</p>
                 </div>
                 <div class=" flex-auto">
-                  <p>{{$caremanager->tel}}</p>
+                  <a href="tel:{{$caremanager->tel}}">{{$caremanager->tel}}</a>
                 </div>
               </div>
               @endforeach
