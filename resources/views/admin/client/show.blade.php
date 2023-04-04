@@ -56,6 +56,15 @@
           </div>
 
 
+          <div class="flex">
+            <div class="w-1/5">
+              <p class="py-5">サポーター</p>
+            </div>
+            <div class=" flex-auto">
+              <p class="py-5">{{$client->user->name}}</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

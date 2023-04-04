@@ -39,7 +39,7 @@
               </div>
               <div class="flex items-center">
                 <div class="w-3/12">
-                  <p class="pt-3">介護度</p>
+                  <p class="pt-3 text-sm">介護度</p>
                 </div>
                 <div class=" flex-auto">
                   <p class="pt-3">{{ $clent->carelevel  }}</p>
