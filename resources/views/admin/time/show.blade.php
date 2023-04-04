@@ -3,6 +3,9 @@
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
       {{ __('スケジュール情報') }}
     </h2>
+    <a href="{{ route('admin.time.index',$time->id) }}">
+      戻る
+    </a>
   </x-slot>
 
   <div class="py-12">

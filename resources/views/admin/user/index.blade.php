@@ -1,8 +1,11 @@
 <x-app-layout>
   <x-slot name="header">
+    <a href="{{ route('admin.schedule.index') }}">
+      << 戻る
+    </a>
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ __('サポーター情報一覧') }}
-      </h2>
+      {{ __('サポーター情報一覧') }}
+    </h2>
   </x-slot>
 
   <div class="py-12">
@@ -30,7 +33,7 @@
                 <tr>
                   <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">サポーター名</th>
                   <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">メールアドレス</th>
-
+                  <th class="px-4 py-3 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                 </tr>
               </thead>
 
@@ -39,8 +42,12 @@
                 <tr class="hover:bg-grey-lighter">
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $user->name }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $user->email }}</td>
-
-
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <form action="{{ route('admin.user.edit',$user->id) }}" method="GET" class="text-center">
+                      @csrf
+                      <button type="submit">編集</button>
+                    </form>
+                  </td>
                 </tr>
                 @endforeach
               </tbody>

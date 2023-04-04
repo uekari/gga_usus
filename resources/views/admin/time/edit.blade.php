@@ -55,9 +55,10 @@
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_img1">リスク①：画像</label>
-              @if ($time->risk_img1 ==='')
-              <img src="{{ Storage::url($time->risk_img1) }}" width="50%">
+              @if ($time->risk_img1 !=='')
+              <img src="{{ Storage::url($time->risk_img1) }}" width="25%">
               @else
+              <p>画像がありません</p>
               @endif
               <input type="file" id="risk_img1" name="risk_img1">
             </div>
@@ -72,9 +73,10 @@
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_img2">リスク②：画像</label>
-              @if ($time->risk_img2 ==='')
-              <img src="{{ Storage::url($time->risk_img2) }}" width="50%">
+              @if ($time->risk_img2 !=='')
+              <img src="{{ Storage::url($time->risk_img2) }}" width="25%">
               @else
+              <p>画像がありません</p>
               @endif
               <input type="file" id="risk_img2" name="risk_img2">
             </div>
@@ -88,9 +90,10 @@
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_img3">リスク③：画像</label>
-              @if ($time->risk_img3 ==='')
-              <img src="{{ Storage::url($time->risk_img3) }}" width="50%">
+              @if ($time->risk_img3 !=='')
+              <img src="{{ Storage::url($time->risk_img3) }}" width="25%">
               @else
+              <p>画像がありません</p>
               @endif
               <input type="file" id="risk_img3" name="risk_img3">
             </div>
