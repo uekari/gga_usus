@@ -1,11 +1,8 @@
 <x-app-layout>
-
-
-  <div class="py-12">
+  <div class="mb-16">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
-      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
-
+      <div class="bg-white overflow-hidden sm:rounded-lg">
+        <div class="p-6 bg-white">
           <section class="text-gray-900 body-font">
             <div class="flex justify-center items-center mb-8">
               <p class="text-xl text-center pr-4">  {{ __('患者情報 ') }}</p>

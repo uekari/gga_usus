@@ -1,9 +1,8 @@
 <x-app-layout>
-  　
-  <div class="py-12">
+  <div class="mb-16">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12  ">
-      <div class="overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
+      <div class="overflow-hidden sm:rounded-lg">
+        <div class="p-6 bg-white">
           <div class="mb-6">
             <div class="text-gray-900">
               <div class="mb-4">
