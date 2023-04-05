@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('/build/assets/app-6f479d34.css') }}"> 
+<!-- <link rel="stylesheet" href="{{ asset('/build/assets/app-6f479d34.css') }}">  -->
 
 <x-app-layout>
   <div class="sm:mt-12 sm:pb-12">
