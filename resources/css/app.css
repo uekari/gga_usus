@@ -75,3 +75,7 @@
 .gga_border {
     border: 0.75px solid #dadada;
 }
+
+.min-height {
+    min-height: 78vh;
+}
