@@ -55,8 +55,16 @@
               @if($time->risk_content1 ==! NULL)
               <p class="py-5">{{$time->risk_content1}}</p>
               @endif
-              @if($time->risk_img1 ==! NULL)
+              <!-- @if($time->risk_img1 ==! NULL)
               <img src="{{ asset("storage/".$time->risk_img1) }}" width="25%">
+              @endif -->
+              @if($time->risk_img1 ==! NULL)
+              @if(app('env')=='local')
+                <img src="{{ asset("storage/".$time->risk_img1) }}" width="25%">
+              @endif
+              @if(app('env')=='production')
+                <img src="{{ secure_asset("storage/".$time->risk_img1) }}" width="25%">
+              @endif
               @endif
 
               @if($time->risk_title2 ==! NULL)
@@ -65,8 +73,16 @@
               @if($time->risk_content2 ==! NULL)
               <p class="py-5">{{$time->risk_content2}}</p>
               @endif
-              @if($time->risk_img2 ==! NULL)
+              <!-- @if($time->risk_img2 ==! NULL)
               <img src="{{ asset("storage/".$time->risk_img2) }}" width="25%">
+              @endif -->
+              @if($time->risk_img2 ==! NULL)
+              @if(app('env')=='local')
+                <img src="{{ asset("storage/".$time->risk_img2) }}" width="25%">
+              @endif
+              @if(app('env')=='production')
+                <img src="{{ secure_asset("storage/".$time->risk_img2) }}" width="25%">
+              @endif
               @endif
 
               @if($time->risk_title3 ==! NULL)
@@ -75,8 +91,16 @@
               @if($time->risk_content3 ==! NULL)
               <p class="py-5">{{$time->risk_content3}}</p>
               @endif
-              @if($time->risk_img3 ==! NULL)
+              <!-- @if($time->risk_img3 ==! NULL)
               <img src="{{ asset("storage/".$time->risk_img3) }}" width="25%">
+              @endif -->
+              @if($time->risk_img3 ==! NULL)
+              @if(app('env')=='local')
+                <img src="{{ asset("storage/".$time->risk_img3) }}" width="25%">
+              @endif
+              @if(app('env')=='production')
+                <img src="{{ secure_asset("storage/".$time->risk_img3) }}" width="25%">
+              @endif
               @endif
             </div>
           </div>
