@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
 <x-app-layout>
   <div class="sm:mt-12 sm:pb-12">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
