@@ -40,14 +40,28 @@ class UserController extends Controller
 
     public function edit(string $id)
     {
-
+        $user = User::find($id);
+        return view('admin.user.edit', compact('user'));
     }
 
 
     public function update(Request $request, string $id)
     {
-
-
+        //バリデーション
+        $validator = Validator::make($request->all(), [
+            'name' => 'required | max:191',
+            'email' => 'required',
+        ]);
+        //バリデーション:エラー
+        if ($validator->fails()) {
+            return redirect()
+                ->route('admin.user.edit', $id)
+                ->withInput()
+                ->withErrors($validator);
+            }
+        //データ更新処理
+        $result = User::find($id)->update($request->all());
+        return redirect()->route('admin.user.index');
     }
 
     /**

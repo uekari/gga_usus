@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tokyo',
 
     /*
     |--------------------------------------------------------------------------
@@ -208,7 +208,7 @@ return [
     |
     */
 
-    'aliases' => 
+    'aliases' =>
         Facade::defaultAliases()->merge([
             // 'ExampleClass' => App\Example\ExampleClass::class,
         ])->toArray(),

@@ -1,7 +1,7 @@
 <x-app-layout>
-  <div class="mb-24">
-    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
-      <div class="bg-white overflow-hidden sm:rounded-lg">
+  <div class="sm:mt-12 sm:pb-12">
+    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
+      <div class="bg-white overflow-hidden sm:rounded-lg min-height">
 
         <div class="p-6 bg-white">
           <div class="flex justify-center items-center mb-8">
@@ -10,27 +10,29 @@
           </p>
           </div>
 
-          @foreach ($treatments as $treatment)
-          <div class="accordion-container">
-            <h4 class="accordion-title jsAccordionTitle">{{$treatment->title}}</h4>
-            <div class="accordion-content">
-              <div class="flex flex-col text-gray-900">
-                <div class=mb-6>
-                  <p class="mb-1">手順</p>
-                  <div class="mb-2 gga_border">
+          <section class="text-gray-900 text-center body-font">
+            @foreach ($treatments as $treatment)
+            <div class="accordion-container">
+              <h4 class="accordion-title jsAccordionTitle">{{$treatment->title}}</h4>
+              <div class="accordion-content">
+                <div class="flex flex-col text-gray-900">
+                  <div class=mb-6>
+                    <p class="mb-1">手順</p>
+                    <div class="mb-2 gga_border">
+                    </div>
+                    <p class="text-sm">{{$treatment->content}}</p>
                   </div>
-                  <p class="text-sm">{{$treatment->content}}</p>
-                </div>
-                <div>
-                  <p class="mb-1">ポイント</p>
-                  <div class="mb-2 gga_border">
+                  <div>
+                    <p class="mb-1">ポイント</p>
+                    <div class="mb-2 gga_border">
+                    </div>
+                    <p class="text-sm">{{$treatment->point}}</p>
                   </div>
-                  <p class="text-sm">{{$treatment->point}}</p>
                 </div>
               </div>
             </div>
-          </div>
-          @endforeach
+            @endforeach
+          </section>
 
 
         </div>
