@@ -66,7 +66,7 @@
               <p class="py-5">{{$time->risk_content2}}</p>
               @endif
               @if($time->risk_img2 ==! NULL)
-              <img src="{{ Storage::url($time->risk_img2) }}" width="25%">
+              <img src="{{ asset("storage/".$time->risk_img2) }}" width="25%">
               @endif
 
               @if($time->risk_title3 ==! NULL)
@@ -76,7 +76,7 @@
               <p class="py-5">{{$time->risk_content3}}</p>
               @endif
               @if($time->risk_img3 ==! NULL)
-              <img src="{{ Storage::url($time->risk_img3) }}" width="25%">
+              <img src="{{ asset("storage/".$time->risk_img3) }}" width="25%">
               @endif
             </div>
           </div>
