@@ -1,14 +1,14 @@
 <x-app-layout>
-  <div class="mb-16">
-    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
-      <div class="bg-white overflow-hidden sm:rounded-lg">
-        <div class="py-16 bg-white">
+  <div class="sm:mt-12 sm:pb-12">
+    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
+      <div class="bg-white overflow-hidden sm:rounded-lg min-height">
+        <div class="pt-8 bg-white">
 
           <section class="text-gray-900 text-center body-font">
             <div class="container px-5 mx-auto">
               <div class="lg:w-4/5 w-full mx-auto overflow-auto">
                 @foreach ($schedules as $schedule)
-                <div class="pb-16">
+                <div class="pb-12">
                   <p class="pb-4 text-base">{{ $schedule->client ->client_name }}&ensp;様</p>
                   <a href="{{ route('user.schedule.show', $schedule->id) }}">
                     <div class="py-8 border border-1 border-gray-900 rounded">

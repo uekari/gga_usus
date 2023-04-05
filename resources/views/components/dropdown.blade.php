@@ -10,7 +10,7 @@ $alignmentClasses = 'origin-top';
 break;
 case 'right':
 default:
-$alignmentClasses = 'origin-top-right right-0 bottom-0';
+$alignmentClasses = 'origin-top-right right-0';
 break;
 }
 
