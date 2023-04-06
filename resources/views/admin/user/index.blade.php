@@ -1,8 +1,5 @@
 <x-app-layout>
   <x-slot name="header">
-    <a href="{{ route('admin.schedule.index') }}">
-      << 戻る
-    </a>
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
       {{ __('サポーター情報一覧') }}
     </h2>
