@@ -61,7 +61,12 @@
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_img1">リスク情報の画像</label>
               @if ($time->risk_img1 !=='')
-              <img src="{{ Storage::url($time->risk_img1) }}" width="25%">
+              @if(app('env')=='local')
+              <img src="{{ asset("storage/".$time->risk_img1) }}" width="25%">
+              @endif
+              @if(app('env')=='production')
+              <img src="{{ secure_asset("storage/".$time->risk_img1) }}" width="25%">
+              @endif
               @else
               <p>画像がありません</p>
               @endif
@@ -80,7 +85,12 @@
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_img2">リスク情報の画像</label>
               @if ($time->risk_img2 !=='')
-              <img src="{{ Storage::url($time->risk_img2) }}" width="25%">
+              @if(app('env')=='local')
+              <img src="{{ asset("storage/".$time->risk_img2) }}" width="25%">
+              @endif
+              @if(app('env')=='production')
+              <img src="{{ secure_asset("storage/".$time->risk_img2) }}" width="25%">
+              @endif
               @else
               <p>画像がありません</p>
               @endif
@@ -97,7 +107,12 @@
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_img3">リスク情報の画像</label>
               @if ($time->risk_img3 !=='')
-              <img src="{{ Storage::url($time->risk_img3) }}" width="25%">
+              @if(app('env')=='local')
+              <img src="{{ asset("storage/".$time->risk_img3) }}" width="25%">
+              @endif
+              @if(app('env')=='production')
+              <img src="{{ secure_asset("storage/".$time->risk_img3) }}" width="25%">
+              @endif
               @else
               <p>画像がありません</p>
               @endif
