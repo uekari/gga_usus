@@ -1,22 +1,28 @@
 <x-app-layout>
-  <div class="sm:mt-12 sm:pb-12">
+  <div class="sm:mt-12 pb-12">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg min-height">
         <div class="p-6 bg-white">
+          <div class="mb-6 ml-1">
+            <a href="{{ url()->previous() }}">
+              <p class="w-4 h-4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M4.7 244.7c-6.2 6.2-6.2 16.4 0 22.6l176 176c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L54.6 272 432 272c8.8 0 16-7.2 16-16s-7.2-16-16-16L54.6 240 203.3 91.3c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0l-176 176z"/></svg></p>
+            </a>
+          </div>
           <div class="mb-6">
             <div class="text-gray-900">
               <div class="mb-4">
-                <p class="pb-6 text-xl text-center">{{$schedule->title}}</p>
+                <p class="pb-2 text-2xl text-center">{{$schedule->title}}</p>
+                <p class="pb-2 text-sm text-center">{{date('Y/m/d', strtotime($schedule->date))}}</p>
               </div>
 
               @foreach ($schedule->times as $time)
-              <div class="mb-2 border border-1 border-gray-200 rounded">
-
-                <div class="flex items-center justify-between">
+              <div class="mb-4 border border-1 border-gray-200 rounded">
+                <div class="flex items-center">
                   <p class="py-2 pl-3 w-20">{{substr($time->time, 0, 5) }}</p>
                   <p class="py-2 w-3/6 text-lg">{{$time->content}}</p>
+
+                  @if($time->risk_title1)
                   <div class="w-32">
-                    @if($time->risk_title1)
                     <a href="{{ route('user.time.show',$time->id )}}">
                       <div class="flex justify-center items-center text-sm">
                         <p class="mr-1">リスクあり</p>
@@ -25,9 +31,9 @@
                         </div>
                       </div>
                     </a>
-                    @endif
-
                   </div>
+                  @endif
+
                 </div>
 
 
@@ -47,7 +53,7 @@
 
               </div>
               @if($time->is_move == 0)
-              <div class="flex ml-2 mb-2">
+              <div class="flex ml-2 mb-4">
                 <p>↓&ensp;</p>
                 <div class="flex justify-left items-center text-sm">
                   @if($time->is_move == 0)
@@ -67,8 +73,8 @@
 
             </div>
           </div>
+
         </div>
       </div>
     </div>
-  </div>
 </x-app-layout>
