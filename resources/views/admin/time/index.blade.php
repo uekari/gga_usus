@@ -49,7 +49,7 @@
                 </a>
               </div>
               <div class="w-56 p-4"> <a href="{{ route('admin.timetreatment.index',[$time->schedule_id, $time->id])}}">
-                  <p class="px-3 py-2 bg-black rounded text-white text-sm">処置編集ページへ</p>
+                  <p class="px-3 py-2 bg-black rounded text-white text-sm">処置選択ページへ</p>
                 </a>
               </div>
             </div>
