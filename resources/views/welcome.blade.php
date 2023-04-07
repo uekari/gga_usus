@@ -26,7 +26,7 @@
         <p class="text-xs sm:text-sm pb-12">サポーターの方は<br class="block sm:hidden">こちらからログインしてください</p>
         <div class="border border-1 border-gray-800 w-44 sm:w-56 mx-auto">
           @auth('users')
-          <a href="{{url('/dashboard') }}" class="text-sm inline-block py-2 sm:py-3">ログインはこちら</a>
+          <a href="{{url('/user/schedule') }}" class="text-sm inline-block py-2 sm:py-3">ログインはこちら</a>
           @else
           <a href="{{  route('user.login') }}" class="text-xs inline-block py-2 sm:py-3">ログインはこちら</a>
           <!-- @if (Route::has('admin.register'))

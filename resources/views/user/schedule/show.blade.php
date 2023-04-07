@@ -17,12 +17,13 @@
 
               @foreach ($schedule->times as $time)
               <div class="mb-4 border border-1 border-gray-200 rounded">
-                <div class="flex items-center">
-                  <p class="py-2 pl-3 w-20">{{substr($time->time, 0, 5) }}</p>
-                  <p class="py-2 w-3/6 text-lg">{{$time->content}}</p>
-
+                <div class="flex justify-between items-center">
+                  <div class="flex">
+                    <p class="py-2 pl-3 w-20">{{substr($time->time, 0, 5) }}</p>
+                    <p class="py-2 text-lg">{{$time->content}}</p>
+                  </div>
                   @if($time->risk_title1)
-                  <div class="w-32">
+                  <div class="pr-2">
                     <a href="{{ route('user.time.show',$time->id )}}">
                       <div class="flex justify-center items-center text-sm">
                         <p class="mr-1">リスクあり</p>
@@ -37,7 +38,7 @@
                 </div>
 
 
-                <div class="flex justify-start ml-20">
+                <div class="flex ml-20">
                   @foreach ($time -> treatments as $treatment)
                   @if($time->treatments)
 

@@ -17,7 +17,7 @@
 
 </head>
 <body class="font-sans antialiased">
-  <div class="min-h-screen sm:bg-gray-100">
+  <div class="min-h-screen min-h-screen bg-white sm:bg-gray-100">
 
     @if(auth('admin')->user())
     @include('layouts.admin-navigation')
