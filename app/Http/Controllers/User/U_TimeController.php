@@ -20,7 +20,7 @@ class U_TimeController extends Controller
     }
 
 
-    
+
     public function show($id)//timeのIDが入る
     {
 
@@ -31,14 +31,13 @@ class U_TimeController extends Controller
         //これは、関係に制約を追加できる whereHas メソッドに渡されるクロージャーを使用して行われます。
         //最後に、クエリを実行し、結果の Time モデル インスタンスを返します。
         //全体として、このコードはデータベースから特定の Time モデル レコードを取得していますが、それは現在認証されているユーザーに属する Schedule モデルに関連付けられている場合のみです。
-       $time = Time::whereHas('schedule',function($query){
+        $time = Time::whereHas('schedule',function($query){
         $query -> where('user_id',Auth::user()->id);
        }) ->find($id);
 
     //  dd($time);
         return view('user.time.show',
         compact('time'));
-
 
     }
 

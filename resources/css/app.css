@@ -87,3 +87,13 @@
         min-height: 78vh;
     }
 }
+
+.riskImg_container {
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+}
+.riskImg_container img {
+    width: 100%;
+    height: auto;
+}
