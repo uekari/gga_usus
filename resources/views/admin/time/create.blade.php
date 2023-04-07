@@ -6,7 +6,7 @@
       </a>
     </div>
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('スケジュール登録') }}
+      {{ __('案件詳細登録') }}
     </h2>
   </x-slot>
 

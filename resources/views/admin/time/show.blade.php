@@ -6,7 +6,7 @@
       </a>
     </div>
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('スケジュール情報') }}
+      {{ __('時間別詳細情報') }}
     </h2>
   </x-slot>
 

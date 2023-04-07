@@ -5,8 +5,8 @@
         <div class="pt-8 bg-white">
 
           <section class="text-gray-900 text-center body-font">
-            <div class="container px-5 mx-auto">
-              <div class="lg:w-4/5 w-full mx-auto overflow-auto">
+            <div class="container mx-auto">
+              <div class="w-8/12 sm:w-4/5 mx-auto overflow-auto">
                 @foreach ($schedules as $schedule)
                 <div class="pb-12">
                   <p class="pb-4 text-base">{{ $schedule->client ->client_name }}&ensp;様</p>
