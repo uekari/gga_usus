@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             TimeSeeder::class,
             TreatmentSeeder::class,
             TimeTreatmentSeeder::class,
-
+            EmergencyhospitalSeeder::class,
          ]);
 
         // \App\Models\User::factory(10)->create();

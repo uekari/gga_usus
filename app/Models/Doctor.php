@@ -11,9 +11,6 @@ class Doctor extends Model
 {
     use HasFactory;
 
-    // アプリケーション側から変更できないカラムを指定する「$guarded:ブラックリスト」
-    // 対して「$fillable:ホワイトリスト」は、アプリケーション側から変更できるカラムを指定する
-    // どちらか一方しか使えない
     protected $guarded = [
     'id',
     'created_at',

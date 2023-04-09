@@ -10,13 +10,14 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
 
-          <section class="text-gray-600 body-font">
+          <section class="text-gray-600 body-font mb-6">
             <table class="text-center w-full border-collapse">
               <thead>
                 <tr>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">日程</th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">依頼者</th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">旅行タイトル</th>
+                  <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
@@ -31,6 +32,16 @@
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">
                     <a href="{{ route('admin.schedule.edit',$schedule->id)}}">
                       <p class="">案件編集</p>
+                    </a>
+                  </td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <a href="{{ route('admin.emergencyhospital.index',$schedule->id)}}">
+                      <p class="">緊急連絡先<br>一覧</p>
+                    </a>
+                  </td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <a href="{{ route('admin.emergencyhospital.create',$schedule->id)}}">
+                      <p class="">緊急連絡先<br>登録</p>
                     </a>
                   </td>
                   <!-- 詳細登録ボタン -->
@@ -54,6 +65,7 @@
               </tbody>
             </table>
           </section>
+          {{ $schedules->links() }}
         </div>
       </div>
     </div>

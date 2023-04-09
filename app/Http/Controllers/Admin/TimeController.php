@@ -68,7 +68,7 @@ class TimeController extends Controller
 
         // dd($time);
 
-        
+
         $time->save();
 
         return redirect()->route('admin.time.index',$schedule -> id);
@@ -83,7 +83,7 @@ class TimeController extends Controller
     //     $time->is_move = $request->is_move;
     //     $time->risk_title1 = $request->risk_title1;
     //     $time->risk_content1 = $request->risk_content1;
-        
+
     //     // ディレクトリ名
     //     $dir = 'ususimg';
     //     // アップロードされたファイル名を取得
@@ -111,7 +111,7 @@ class TimeController extends Controller
 
         // dd($time);
 
-        
+
     //     $time->save();
 
     //     return redirect()->route('admin.time.index',$schedule -> id);

@@ -21,11 +21,10 @@ class ScheduleController extends Controller
 
     public function index()
     {
-        $schedules = Schedule::with('client:id,client_name,client_name2','user:id,name')->get();
+      $schedules = Schedule::with('client:id,client_name,client_name2','user:id,name')->orderBy('date','desc')->paginate(2);
 
-        // $schedules = Schedule::select('id','title','date','created_at')->get();
-        return view('admin.schedule.index',
-        compact('schedules'));
+      return view('admin.schedule.index',
+      compact('schedules'));
     }
 
     public function create(Client $client, User $user)

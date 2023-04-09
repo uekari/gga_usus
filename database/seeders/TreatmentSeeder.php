@@ -59,9 +59,16 @@ class TreatmentSeeder extends Seeder
                ],
              [
                 'client_id' => '2' ,
-                'title' => '患者2:吸引' ,
+                'title' => '吸引' ,
                 'content' => 'リスクの手順です',
                 'point' => 'MRSAあり。防護をきちんとする',
+                'created_at' => Now(),
+               ],
+             [
+                'client_id' => '3' ,
+                'title' => '吸引' ,
+                'content' => 'リスクの手順です',
+                'point' => '痰の量が多いため、窒息に十分注意が必要',
                 'created_at' => Now(),
                ],
 

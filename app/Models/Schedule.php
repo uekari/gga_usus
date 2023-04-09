@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Client;
 use App\Models\User;
 use App\Models\Time;
+use App\Models\Emergencyhospital;
+
 
 class Schedule extends Model
 {
@@ -32,5 +34,8 @@ class Schedule extends Model
     {
         return $this->hasMany(Time::class);
     }
-
+    public function Emergencyhospitals()
+    {
+        return $this->hasMany(Emergencyhospital::class);
+    }
 }
