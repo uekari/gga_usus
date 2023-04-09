@@ -25,6 +25,7 @@
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">内容・手順</th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">ポイント</th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
+                  <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                 </tr>
               </thead>
               <tbody>
@@ -40,6 +41,14 @@
                     <a href="{{ route('admin.treatment.edit',$treatment->id )}}">
                       <p class="">編集</p>
                     </a>
+                  </td>
+                  <!-- 処置削除ボタン -->
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <form action="{{ route('admin.treatment.destroy',$treatment->id ) }}" method="POST">
+                      @method('delete')
+                      @csrf
+                      <button type="submit">削除</button>
+                    </form>
                   </td>
                 </tr>
                 @endforeach

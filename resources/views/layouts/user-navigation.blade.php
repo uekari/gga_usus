@@ -1,7 +1,7 @@
-<nav x-data="{ open: false }" class="bg-white border-t border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-t border-gray-100 nav">
   <!-- Primary Navigation Menu -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-10 lg:px-8">
+    <div class="flex justify-between h-20">
       <div class="flex">
         <!-- Logo -->
         <div class=" flex-shrink-0 flex items-center ">
@@ -11,7 +11,7 @@
         </div>
 
         <!-- Navigation Links -->
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+        <div class="hidden space-x-6 sm:-my-px sm:ml-10 lg:flex text-sm">
           <x-nav-link :href="route('user.schedule.index')" :active="request()->routeIs('user.schedule.index')">
             {{ __('旅行スケジュール') }}
           </x-nav-link>
@@ -105,7 +105,7 @@
 
 <nav x-data="{ open: false }" class="pl-4 pr-4 bg-white border-t border-gray-100 fixed bottom-0 w-screen z-50">
 
-  <div class="sm:hidden">
+  <div class="lg:hidden">
     <div class="space-y-1 flex">
       <x-responsive-nav-link :href="route('user.schedule.index')" :active="request()->routeIs('user.dschedule.index')">
         <div class="flex flex-col">

@@ -56,6 +56,7 @@ Route::put('client/{client}/schedule', [ScheduleController::class, 'update'])->n
 Route::resource('client/{client}/treatment', TreatmentController::class) ->only(['index','show','create','store']);
 Route::get('treatment/{treatment}/edit', [TreatmentController::class, 'edit'])->name('treatment.edit');
 Route::put('treatment/{treatment}', [TreatmentController::class, 'update'])->name('treatment.update');
+Route::delete('treatment/{treatment}', [TreatmentController::class, 'destroy'])->name('treatment.destroy');
 
 // Route::prefix('treatment')->
 //     middleware('auth:admin')->group(function(){
