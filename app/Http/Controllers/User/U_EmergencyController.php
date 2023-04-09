@@ -26,7 +26,7 @@ class U_EmergencyController extends Controller
     {
 
         $doctors = Doctor::where('id',\Auth::user()->id)->get();
-        $schedules = \Auth::user()->schedules;
+        $caremanagers = Caremanager::where('id',\Auth::user()->id)->get();
         $hospitals=Emergencyhospital::where('schedule_id',\Auth::user()->id)->get();
 
         return view('user.emergency.index',
