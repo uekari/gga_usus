@@ -101,6 +101,8 @@ class TreatmentController extends Controller
 
     public function destroy($id)
     {
-        //
+      $result = Treatment::find($id)->delete();
+
+      return redirect()->route('admin.client.index');
     }
 }

@@ -21,16 +21,18 @@
                   </a>
                 </div>
                 @endforeach
+
+              </div>
+
+              <div class="illust">
+                <img src="{{ asset('illust/bg01.png')}}">
               </div>
             </div>
 
+
           </section>
         </div>
-        <section>
-          <div class="illust">
-            <img src="{{ asset('illust/bg01.png')}}">
-          </div>
-        </section>
+
       </div>
     </div>
   </div>

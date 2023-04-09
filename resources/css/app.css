@@ -108,7 +108,21 @@
     width: 2px;
 }
 .illust {
-    width: 100vw;
-    bottom: 120px;
-    position: absolute;
+    width: 100%;
+    padding-top: 40px;
+    margin-bottom: 60px;
+}
+
+.bg-color {
+    background-color: #fff;
+}
+
+@media screen and (min-width: 640px) {
+    .bg-color {
+        background-color: #f6f7fa;
+    }
+}
+
+.nav {
+    border-radius: 0 0 48px 48px;
 }
