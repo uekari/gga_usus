@@ -39,6 +39,20 @@
                   </div>
                   @endforeach
                 </div>
+                <div class="pt-7">
+                  <p class="mb-12 text-2xl text-center">旅行先周辺病院の緊急連絡先</p>
+                  @foreach ($hospitals as $hospital)
+                  <div class="mb-8">
+                    <div class="flex items-center pb-2 ml-1">
+                      <p class="w-4/12">病院名 :{{$hospital->hospital}}</p>
+                      <p class="w-6/12">担当者 : {{$hospital->name}}</p>
+                    </div>
+                    <div class="pb-3 border-b border-1 border-gray-400 text-4xl">
+                      <a href="tel:{{$doctor->tel}}">{{$hospital->tel}}</a>
+                    </div>
+                  </div>
+                  @endforeach
+
 
           </section>
 

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Models\Client; //Elquentエロクアント
 use App\Models\User;
+use App\Models\Doctor;
+use App\Models\Caremanager;
 use Illuminate\Support\Facades\DB; //QueryBuilderクエリビルダ
 
 class U_ClientController extends Controller
@@ -23,14 +25,15 @@ class U_ClientController extends Controller
     public function index()
     {
 
-        // $clients = Client::select('client_name', 'desease','age', 'carelevel', 'created_at')->get();
-
         $clients = \Auth::user()->clients;
         // dd($clients);
-
+        $doctors = Doctor::where('id',\Auth::user()->id)->get();
+        // dd($doctors);
+        $caremanagers = Caremanager::where('id',\Auth::user()->id)->get();
+        // dd($caremanagers);
 
         return view('user.client.index',
-        compact('clients'));
+        compact('clients','doctors','caremanagers'));
 
 
     }

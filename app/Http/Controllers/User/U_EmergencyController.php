@@ -10,6 +10,8 @@ use App\Models\Emergency;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Caremanager;
+use App\Models\Schedule;
+use App\Models\Emergencyhospital;
 use Illuminate\Support\Facades\DB;
 
 class U_EmergencyController extends Controller
@@ -24,11 +26,11 @@ class U_EmergencyController extends Controller
     {
 
         $doctors = Doctor::where('id',\Auth::user()->id)->get();
-        // dd($doctors);
-        $caremanagers = Caremanager::where('id',\Auth::user()->id)->get();
-        // dd($caremanagers);
+        $schedules = \Auth::user()->schedules;
+        $hospitals=Emergencyhospital::where('schedule_id',\Auth::user()->id)->get();
+
         return view('user.emergency.index',
-        compact('doctors','caremanagers'));
+        compact('doctors','caremanagers','hospitals'));
 
     }
 }
