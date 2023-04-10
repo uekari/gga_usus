@@ -9,7 +9,19 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
-
+          <div class='flex justify-end mb-4'>
+            <form>
+              <div class='text-sm'>
+                <input type="search" class="w-60 border border-1 border-gray-600 rounded-sm text-sm" name="search" value="{{request('search')}}" placeholder="キーワードを入力" aria-label="検索...">
+                <input type="submit" value="検索" class="ml-3 mr-1">
+                <button>
+                  <a href="{{ route('admin.schedule.index') }}" class="">
+                    クリア
+                  </a>
+                </button>
+              </div>
+            </form>
+          </div>
           <section class="text-gray-600 body-font mb-6">
             <table class="text-center w-full border-collapse">
               <thead>
@@ -17,6 +29,7 @@
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">日程</th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">依頼者</th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">旅行タイトル</th>
+                  <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
@@ -34,16 +47,7 @@
                       <p class="">案件編集</p>
                     </a>
                   </td>
-                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
-                    <a href="{{ route('admin.emergencyhospital.index',$schedule->id)}}">
-                      <p class="">緊急連絡先<br>一覧</p>
-                    </a>
-                  </td>
-                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
-                    <a href="{{ route('admin.emergencyhospital.create',$schedule->id)}}">
-                      <p class="">緊急連絡先<br>登録</p>
-                    </a>
-                  </td>
+
                   <!-- 詳細登録ボタン -->
                   <td class="py-4 px-4 text-base border border-1 border-gray-300">
                     <div>
@@ -59,6 +63,16 @@
                         <p class="py-2 px-3 bg-black rounded text-white text-sm">詳細一覧</p>
                       </a>
                     </div>
+                  </td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <a href="{{ route('admin.emergencyhospital.index',$schedule->id)}}">
+                      <p class="">緊急連絡先<br>一覧</p>
+                    </a>
+                  </td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <a href="{{ route('admin.emergencyhospital.create',$schedule->id)}}">
+                      <p class="">緊急連絡先<br>登録</p>
+                    </a>
                   </td>
                 </tr>
                 @endforeach

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('hospital');
             $table->string('name');
             $table->string('address');
+            $table->string('url');
             $table->string('tel');
             $table->string('fax');
             $table->timestamps();

@@ -18,11 +18,6 @@
           <form class="mb-6" action="{{ route('admin.time.store',$schedule->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="content">行き先</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="content" id="content">
-            </div>
-
 
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="time">時間</label>
@@ -40,6 +35,16 @@
                 <option value="12:00"></option>
                 <option value="12:30"></option>
               </datalist>
+            </div>
+
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-40" for="content">行き先</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="content" id="content">
+            </div>
+
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-40" for="url">住所URL</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="url" id="url">
             </div>
 
 

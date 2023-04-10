@@ -16,32 +16,31 @@
         <div class="py-12  px-16 bg-white ">
           @include('common.errors')
 
-          <form class="mb-6" action="{{ route('admin.emergencyhospital.store',$schedule->id) }}" method="POST">
+          <form class="mb-6" action="{{ route('admin.emergencyhospital.update',[$hospital->schedule_id, $hospital->id])}}" method="POST">
             @csrf
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-32" for="hospital">病院名</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="hospital" id="hospital">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="hospital" id="hospital" value="{{$hospital->hospital}}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-32" for="name">担当者</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="name" id="name">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="name" id="name" value="{{$hospital->name}}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-32" for="address">住所</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="address" id="address">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="address" id="address" value="{{$hospital->address}}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-32" for="url">住所URL</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="url" id="url">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="url" id="url" value="{{$hospital->url}}">
             </div>
-
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-32" for="tel">電話番号</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="tel" id="tel">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="tel" id="tel" value="{{$hospital->tel}}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-32" for="fax">FAX番号</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="fax" id="fax">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="fax" id="fax" value="{{$hospital->fax}}">
             </div>
 
             <div class="text-center pt-4">
