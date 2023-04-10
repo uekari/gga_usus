@@ -42,9 +42,11 @@ class TimeController extends Controller
         $time->schedule_id = $schedule -> id;
         $time->time = $request->time;
         $time->content = $request->content;
+        $time->url = $request->url;
         $time->is_move = $request->is_move;
         $time->risk_title1 = $request->risk_title1;
         $time->risk_content1 = $request->risk_content1;
+
         if($request->hasFile('risk_img1')) {
             $img1 = $request->file('risk_img1');
             $path = $img1->store('risk_img1','public');
@@ -66,56 +68,11 @@ class TimeController extends Controller
         }
 
 
-        // dd($time);
-
-
         $time->save();
 
         return redirect()->route('admin.time.index',$schedule -> id);
     }
 
-    // public function store(Request $request, Schedule $schedule)
-    // {
-    //     $time = new Time;
-    //     $time->schedule_id = $schedule -> id;
-    //     $time->time = $request->time;
-    //     $time->content = $request->content;
-    //     $time->is_move = $request->is_move;
-    //     $time->risk_title1 = $request->risk_title1;
-    //     $time->risk_content1 = $request->risk_content1;
-
-    //     // ディレクトリ名
-    //     $dir = 'ususimg';
-    //     // アップロードされたファイル名を取得
-    //     $file_name = $request->file('risk_img1');
-    //     // 取得したファイル名で保存
-    //     $request->file('risk_img1')->storeAs('public/' . $dir, $file_name);
-    //     // ファイル情報をDBに保存
-    //     $path = 'storage/' . $dir . '/' . $file_name;
-    //     $time->risk_img1 = $path;
-
-    //     $time->risk_title2 = $request->risk_title2;
-    //     $time->risk_content2 = $request->risk_content2;
-    //     $file_name = $request->file('risk_img2');
-    //     $request->file('risk_img2')->storeAs('public/' . $dir, $file_name);
-    //     $path = 'storage/' . $dir . '/' . $file_name;
-    //     $time->risk_img2 = $path;
-
-    //     $time->risk_title3 = $request->risk_title3;
-    //     $time->risk_content3 = $request->risk_content3;
-    //     $file_name = $request->file('risk_img3');
-    //     $request->file('risk_img3')->storeAs('public/' . $dir, $file_name);
-    //     $path = 'storage/' . $dir . '/' . $file_name;
-    //     $time->risk_img3 = $path;
-
-
-        // dd($time);
-
-
-    //     $time->save();
-
-    //     return redirect()->route('admin.time.index',$schedule -> id);
-    // }
 
 
     public function show($id)
@@ -154,6 +111,7 @@ class TimeController extends Controller
         $time = Time::find($id);
         $time->content = $request->input('content');
         $time->time = $request->input('time');
+        $time->url = $request->input('url');
         $time->is_move = $request->input('is_move');
         $time->risk_title1 = $request->input('risk_title1');
         $time->risk_content1 = $request->input('risk_content1');
@@ -213,10 +171,30 @@ class TimeController extends Controller
         if ($image_cur !== '' && !is_null($risk_img1_cur)) {
             Storage::disk('public')->delete($risk_img1_cur);
         }
+        // 画像ファイルパスを取得
+        $risk_img2_cur = $time->risk_img2;
+
+        // 登録されていれば削除
+        if ($image_cur !== '' && !is_null($risk_img2_cur)) {
+            Storage::disk('public')->delete($risk_img2_cur);
+        }
+        // 画像ファイルパスを取得
+        $risk_img3_cur = $time->risk_img3;
+
+        // 登録されていれば削除
+        if ($image_cur !== '' && !is_null($risk_img3_cur)) {
+            Storage::disk('public')->delete($risk_img3_cur);
+        }
         // 削除
         $post->delete();
 
         return redirect()->route('admin.schedule.index');
     }
+
+
+        public function deleteimg(string $id,  string $img){
+
+
+        }
 
 }

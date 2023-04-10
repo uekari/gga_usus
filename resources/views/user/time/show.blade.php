@@ -1,5 +1,5 @@
 <x-app-layout>
-  <div class="sm:mt-12 pb-12">
+  <div class="sm:mt-12 pb-20">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg min-height">
         <div class="p-6 bg-white">

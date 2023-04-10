@@ -21,7 +21,7 @@
 
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-32" for="date">旅行日</label>
-              <input class="w-80 border border-1 border-gray-300 py-2 px-3 " type="date" name="date" id="date" value="{{$schedule->date}}">
+              <input class="w-80 border border-1 border-gray-300 py-2 px-3 " type="date" name="date" id="date" value="{{ date('Y-m-d', strtotime($schedule->date)) }}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-32" for="title">旅行名</label>
@@ -31,11 +31,11 @@
               <label class="w-32" for="title">サポーター</label>
               <select class="w-80 border border-1 border-gray-300 py-2 px-3" name="user_id">
                 @foreach ($users as $user)
-                <option id="user_id" value=" {{$user -> id}}">{{$user -> name}}</option>
+                <option @if($user -> id == $schedule->user_id) selected @endif
+                  id="user_id" value=" {{$user -> id}}">{{$user -> name}}</option>
                 @endforeach
               </select>
             </div>
-
 
             <div class="flex justify-evenly">
               <div class="text-center">

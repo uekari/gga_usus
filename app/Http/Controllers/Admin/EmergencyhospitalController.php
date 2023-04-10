@@ -35,6 +35,7 @@ class EmergencyhospitalController extends Controller
         $hospital = new Emergencyhospital;
         $hospital->schedule_id = $schedule -> id;
         $hospital->hospital = $request->hospital;
+        $hospital->url = $request->url;
         $hospital->name = $request->name;
         $hospital->address = $request->address;
         $hospital->tel = $request->tel;
@@ -48,24 +49,47 @@ class EmergencyhospitalController extends Controller
 
     public function show($id)
     {
-        //
+
     }
 
 
-    public function edit($id)
+    public function edit(Schedule $schedule, $emergencyhospital)
     {
-        //
+    $schedule = Schedule::select('id','title')->get();
+    // dd($schedule);
+    $hospital = Emergencyhospital::find($emergencyhospital);
+
+         return view('admin.emergencyhospital.edit',compact('schedule','hospital'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Schedule $schedule, $emergencyhospital)
     {
-        //
+        $hospital = Emergencyhospital::find($emergencyhospital);
+        $hospital->schedule_id = $schedule -> id;
+        $hospital->hospital = $request->hospital;
+         $hospital->url = $request->url;
+        $hospital->name = $request->name;
+        $hospital->address = $request->address;
+        $hospital->tel = $request->tel;
+        $hospital->fax = $request->fax;
+        // dd($hospital);
+        $hospital->save();
+
+         return redirect()->route('admin.emergencyhospital.index', $schedule->id);
     }
 
 
-    public function destroy($id)
+    public function destroy(Schedule $schedule, $emergencyhospital)
     {
-        //
+        $result = Emergencyhospital::find($emergencyhospital)->delete();
+        return redirect()->route('admin.emergencyhospital.index',$schedule->id);
     }
+
+    // public function destroy($id)
+    // {
+    //   $result = Emergencyhospital::find($id)->delete();
+
+    //   return redirect()->route('admin.schedule.index');
+    // }
 }

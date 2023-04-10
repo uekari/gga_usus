@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('schedule_id')->constrained();
             $table->time('time');
             $table->string('content');
+            $table->string('url')->nullable();
             $table->boolean('is_move')->default(0);
             $table->string('risk_title1')->nullable();
             $table->string('risk_content1')->nullable();

@@ -9,7 +9,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
-          <div class="hidden space-x-8 mb-6 sm:flex">
+          <div class="flex mb-1">
 
             <div class="pt-2.5 pb-2 px-6 text-base border border-1 border-gray-800 rounded-md ">
               <a href=" {{route('admin.client.create')}}">
@@ -21,8 +21,21 @@
                 </div>
               </a>
             </div>
-
           </div>
+          <div class='flex justify-end mb-4'>
+            <form>
+              <div class='text-sm'>
+                <input type="search" class="w-60 border border-1 border-gray-600 rounded-sm text-sm" name="search" value="{{request('search')}}" placeholder="キーワードを入力" aria-label="検索...">
+                <input type="submit" value="検索" class="ml-3 mr-1">
+                <button>
+                  <a href="{{ route('admin.client.index') }}" class="">
+                    クリア
+                  </a>
+                </button>
+              </div>
+            </form>
+          </div>
+
 
           <section class="text-gray-600 body-font">
             <table class=" text-center table-auto w-full text-left whitespace-no-wrap">
@@ -46,7 +59,9 @@
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $client->client_name }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $client->desease }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $client->age }}</td>
-                  <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $client->carelevel }}</td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <a href="?search={{ $client->carelevel }}">{{ $client->carelevel }}</a>
+                  </td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">
                     <!-- 詳細ボタン -->
 

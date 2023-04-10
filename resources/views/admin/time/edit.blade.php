@@ -19,10 +19,6 @@
             @csrf
             @method('put')
             <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="item">予定</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="content" id="content" value="{{$time->content}}">
-            </div>
-            <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="item">時間</label>
               <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="time" name="time" id="time" list="data-list" value="{{$time->time}}">
               <span></span>
@@ -39,6 +35,15 @@
                 <option value="12:30"></option>
               </datalist>
             </div>
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-40" for="item">予定</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="content" id="content" value="{{$time->content}}">
+            </div>
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-40" for="item">住所URL</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="url" id="url" value="{{$time->url}}">
+            </div>
+
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="time">移動</label>
               <div class="form-group row">

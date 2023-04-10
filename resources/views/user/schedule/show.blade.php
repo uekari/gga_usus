@@ -1,5 +1,5 @@
 <x-app-layout>
-  <div class="sm:mt-12 pb-12">
+  <div class="sm:mt-12 pb-20">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg min-height">
         <div class="p-6 bg-white">
@@ -21,6 +21,26 @@
                   <div class="flex">
                     <p class="py-2 pl-3 w-20">{{substr($time->time, 0, 5) }}</p>
                     <p class="py-2 text-lg">{{$time->content}}</p>
+                    @if($time->url)
+                    <div class="py-2 pl-4">
+                      <a href="{{$time->url}}" target='_blank'>
+                        <div class="w-3 h-3 pt-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                            <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <defs>
+                              <style>
+                              .fa-secondary {
+                                opacity: .4
+                              }
+                              </style>
+                            </defs>
+                            <path class="fa-primary" d="M160 288A144 144 0 1 0 160 0a144 144 0 1 0 0 288zM96 144c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-53 43-96 96-96c8.8 0 16 7.2 16 16s-7.2 16-16 16c-35.3 0-64 28.7-64 64z" />
+                            <path class="fa-secondary" d="M128 284.4V480c0 17.7 14.3 32 32 32s32-14.3 32-32V284.4c-10.3 2.3-21 3.6-32 3.6s-21.7-1.2-32-3.6z" />
+                          </svg>
+                        </div>
+                      </a>
+                    </div>
+                    @endif
                   </div>
                   @if($time->risk_title1)
                   <div class="pr-2">

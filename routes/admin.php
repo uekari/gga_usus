@@ -70,6 +70,8 @@ Route::get('time/{time}', [TimeController::class, 'show'])->name('time.show')->m
 Route::get('time/{time}/edit', [TimeController::class, 'edit'])->name('time.edit')->middleware('auth:admin');
 Route::put('time/{time}', [TimeController::class, 'update'])->name('time.update');
 
+Route::delete('time/{time}/{img}', [TimeController::class, 'deleteimg'])->name('time.deleteimg');
+
 
 
 //Emergencyhospital

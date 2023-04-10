@@ -1,8 +1,8 @@
 <x-app-layout>
-  <div class="sm:mt-12 pb-12">
+  <div class="sm:mt-12 pb-20">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg pb-10 min-height">
-        <div class="px-6 pt-6 pb-12 bg-white">
+        <div class="px-6 pt-6 bg-white">
           <div class="mb-6 ml-1">
             <a href="{{ url()->previous() }}">
               <p class="w-4 h-4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M4.7 244.7c-6.2 6.2-6.2 16.4 0 22.6l176 176c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L54.6 272 432 272c8.8 0 16-7.2 16-16s-7.2-16-16-16L54.6 240 203.3 91.3c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0l-176 176z"/></svg></p>

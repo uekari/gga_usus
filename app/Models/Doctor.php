@@ -17,12 +17,6 @@ class Doctor extends Model
     'updated_at',
     ];
 
-    public static function getAllOrderByUpdated_at()
-    {
-        // 更新日時が新しい順にソートしてデータを表示する関数
-        // self = Hospitalモデル、orderBy() = SQLと同じものの理解でOK
-        return self::orderBy('updated_at', 'desc')->get();
-    }
 
     public function clients()
     {

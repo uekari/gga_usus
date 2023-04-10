@@ -10,35 +10,27 @@ use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
+        $doctors = Doctor::orderBy('created_at', 'asc')->where(function ($query) {
 
-        $doctors = Doctor::select('id','doctor_name','belong','address', 'tel', 'fax' ,'created_at')->get();
+            // 検索機能
+            if ($search = request('search')) {
+                $query->where('doctor_name', 'LIKE', "%{$search}%")->orWhere('belong','LIKE',"%{$search}%")->orWhere('address','LIKE',"%{$search}%");
+            }
+
+        })->get();
         return view('admin.doctor.index',
         compact('doctors'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('admin.doctor.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
 
@@ -64,37 +56,21 @@ class DoctorController extends Controller
         return redirect()->route('admin.doctor.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $doctor = Doctor::find($id);
         return view('admin.doctor.show', compact('doctor'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $doctor = Doctor::find($id);
         return view('admin.doctor.edit', compact('doctor'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //バリデーション
@@ -117,12 +93,7 @@ class DoctorController extends Controller
             return redirect()->route('admin.doctor.index');
         }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

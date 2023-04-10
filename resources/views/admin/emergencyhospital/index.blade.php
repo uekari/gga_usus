@@ -25,6 +25,8 @@
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">住所</th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">TEL</th>
                   <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300">FAX</th>
+                  <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
+                  <th class="px-4 py-4 title-font tracking-wider font-bold text-gray-900 text-base border border-1 border-gray-300"></th>
 
                 </tr>
               </thead>
@@ -36,6 +38,21 @@
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $hospital->address }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $hospital->tel }}</td>
                   <td class="px-4 py-3 text-base border border-1 border-gray-300">{{ $hospital->fax }}</td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <!-- 更新ボタン -->
+                    <a href="{{  route('admin.emergencyhospital.edit',[$hospital->schedule_id, $hospital->id])}}">
+                      <p>編集</p>
+                    </a>
+                  </td>
+                  <td class="px-4 py-3 text-base border border-1 border-gray-300">
+                    <!-- 削除ボタン -->
+                    <form action="{{  route('admin.emergencyhospital.destroy',[$hospital->schedule_id, $hospital->id])}}" method="POST">
+                      @method('delete')
+                      @csrf
+                      <button type="submit">削除</button>
+                    </form>
+
+                  </td>
                 </tr>
                 @endforeach
               </tbody>
