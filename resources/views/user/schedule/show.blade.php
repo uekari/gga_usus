@@ -19,10 +19,10 @@
               <div class="mb-4 border border-1 border-gray-200 rounded">
                 <div class="flex justify-between items-center">
                   <div class="flex">
-                    <p class="py-2 pl-3 w-20">{{substr($time->time, 0, 5) }}</p>
+                    <p class="py-2 pl-3 w-16">{{substr($time->time, 0, 5) }}</p>
                     <p class="py-2 text-lg">{{$time->content}}</p>
                     @if($time->url)
-                    <div class="py-2 pl-4">
+                    <div class="py-2 pl-2">
                       <a href="{{$time->url}}" target='_blank'>
                         <div class="w-3 h-3 pt-1">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -58,7 +58,7 @@
                 </div>
 
 
-                <div class="flex ml-20">
+                <div class="flex ml-16">
                   @foreach ($time -> treatments as $treatment)
                   @if($time->treatments)
 
