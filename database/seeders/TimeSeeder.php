@@ -35,7 +35,7 @@ class TimeSeeder extends Seeder
                 'time' => '09:40' ,
                 'content' => '家を出る' ,
                 'url' => null,
-                'is_move' => '0',//1移動あり
+                'is_move' => '0',//0移動あり
                 'risk_title1' => 'リスク1のタイトルが入る',
                 'risk_content1' => 'リスク1の内容が入る',
                 'risk_img1' => null,
