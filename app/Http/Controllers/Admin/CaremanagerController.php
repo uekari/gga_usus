@@ -11,34 +11,27 @@ use Illuminate\Support\Facades\DB;
 class CaremanagerController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $caremanagers = Caremanager::select('id','caremanager_name','belong','address', 'tel', 'fax' ,'created_at')->get();
+        $caremanagers = Caremanager::orderBy('created_at', 'asc')->where(function ($query) {
+
+            // 検索機能
+            if ($search = request('search')) {
+                $query->where('caremanager_name', 'LIKE', "%{$search}%")->orWhere('belong','LIKE',"%{$search}%")->orWhere('address','LIKE',"%{$search}%");
+            }
+
+        })->get();
         return view('admin.caremanager.index',
         compact('caremanagers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('admin.caremanager.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         // バリデーション
@@ -63,37 +56,21 @@ class CaremanagerController extends Controller
         return redirect()->route('admin.caremanager.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $caremanager = Caremanager::find($id);
         return view('admin.caremanager.show', compact('caremanager'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $caremanager = Caremanager::find($id);
         return view('admin.caremanager.edit', compact('caremanager'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //バリデーション
@@ -116,12 +93,7 @@ class CaremanagerController extends Controller
             return redirect()->route('admin.caremanager.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

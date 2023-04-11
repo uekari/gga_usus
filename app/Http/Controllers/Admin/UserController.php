@@ -13,8 +13,13 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::select('id','name','email','created_at')->get();
-        // dd($users);
+        $users = User::orderBy('created_at', 'asc')->where(function ($query) {
+
+            // 検索機能
+            if ($search = request('search')) {
+                $query->where('name', 'LIKE', "%{$search}%");
+            }
+        })->get();
         return view('admin.user.index',compact('users'));
     }
 

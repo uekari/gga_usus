@@ -19,14 +19,20 @@ class ScheduleController extends Controller
 
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $schedules = Schedule::with('client:id,client_name,client_name2','user:id,name')->get();
+        $schedules = Schedule::with('client:id,client_name,client_name2','user:id,name')
+        ->orderBy('date','desc')
+        ->where(function ($query) {
+            // 検索機能
+            if ($search = request('search')) {
+                $query->where('title', 'LIKE', "%{$search}%")->orWhere('date','LIKE',"%{$search}%");
+                }
+            })->paginate(5);
 
-        // $schedules = Schedule::select('id','title','date','created_at')->get();
-        return view('admin.schedule.index',
-        compact('schedules'));
+      return view('admin.schedule.index',compact('schedules'));
     }
+
 
     public function create(Client $client, User $user)
     {

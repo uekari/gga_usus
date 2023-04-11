@@ -37,6 +37,28 @@ class ClientSeeder extends Seeder
                 'user_id' => '2',
                 'created_at' => Now(),
                ],
+               [
+                'client_name' => '鈴木翼' ,
+                'client_name2' => 'すずきつばさ' ,
+                'age' => '90' ,
+                'desease' => '廃用症候群',
+                'carelevel' => '要介護4',
+                'doctor_id' => '3',
+                'caremanager_id' => '3',
+                'user_id' => '3',
+                'created_at' => Now(),
+               ],
+               [
+                'client_name' => '白田加奈' ,
+                'client_name2' => 'しろたかな' ,
+                'age' => '68' ,
+                'desease' => '脳性麻痺',
+                'carelevel' => '要介護5',
+                'doctor_id' => '1',
+                'caremanager_id' => '2',
+                'user_id' => '4',
+                'created_at' => Now(),
+               ],
         ]);
     }
 }

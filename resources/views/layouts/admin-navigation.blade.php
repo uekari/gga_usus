@@ -13,9 +13,6 @@
 
         <!-- Navigation Links -->
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-          <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-            {{ __('Dashboard') }}
-          </x-nav-link>
           <x-nav-link :href="route('admin.schedule.index')" :active="request()->routeIs('admin.schedule.index')">
             {{ ('案件管理') }}
           </x-nav-link>
@@ -78,8 +75,21 @@
   <!-- Responsive Navigation Menu -->
   <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
     <div class="pt-2 pb-3 space-y-1">
-      <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-        {{ __('Dashboard') }}
+
+      <x-responsive-nav-link :href="route('admin.schedule.index')" :active="request()->routeIs('admin.schedule.index')">
+        {{ ('案件管理') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('admin.client.index')" :active="request()->routeIs('admin.client.index')">
+        {{ ('患者管理') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('admin.doctor.index')" :active="request()->routeIs('admin.doctor.index')">
+        {{ ('医師管理') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('admin.caremanager.index')" :active="request()->routeIs('admin.caremanager.index')">
+        {{ ('ケアマネ管理') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('admin.user.index')" :active="request()->routeIs('admin.user.index')">
+        {{ ('サポーター管理') }}
       </x-responsive-nav-link>
     </div>
 

@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\TimeController;
 use App\Http\Controllers\Admin\TreatmentController;
 use App\Http\Controllers\Admin\TimeTreatmentController;
-// use App\Http\Controllers\Admin\RiskController;
+use App\Http\Controllers\Admin\EmergencyhospitalController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,13 +58,6 @@ Route::get('treatment/{treatment}/edit', [TreatmentController::class, 'edit'])->
 Route::put('treatment/{treatment}', [TreatmentController::class, 'update'])->name('treatment.update');
 Route::delete('treatment/{treatment}', [TreatmentController::class, 'destroy'])->name('treatment.destroy');
 
-// Route::prefix('treatment')->
-//     middleware('auth:admin')->group(function(){
-//         Route::get('/', [TreatmentController::class, 'index'])->name('treatment.index');
-// });
-// Route::get('client/{client}/treatment', [TreatmentController::class, 'create'])->name('treatment.create');
-// Route::post('client/{client}/treatment', [TreatmentController::class, 'store'])->name('treatment.store');
-// Route::post('client/{client}/treatment', [TreatmentController::class, 'store'])->name('treatment.show');
 
 
 
@@ -76,6 +69,14 @@ Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name(
 Route::get('time/{time}', [TimeController::class, 'show'])->name('time.show')->middleware('auth:admin');
 Route::get('time/{time}/edit', [TimeController::class, 'edit'])->name('time.edit')->middleware('auth:admin');
 Route::put('time/{time}', [TimeController::class, 'update'])->name('time.update');
+
+Route::delete('time/{time}/{img}', [TimeController::class, 'deleteimg'])->name('time.deleteimg');
+
+
+
+//Emergencyhospital
+Route::resource('schedule/{schedule}/emergencyhospital', EmergencyhospitalController::class)
+->middleware('auth:admin');
 
 
 

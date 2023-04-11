@@ -25,19 +25,17 @@ class ClientController extends Controller
 
 
 
-    public function index()
+    public function index(Request $request)
     {
-        // $e_all = Client::all();  //Elquentエロクアント
-        // $q_get = DB::table('clients')->select('client_name')->get();//QueryBuilderクエリビルダ
-        // $q_first = DB::table('clients')->select('client_name')->first();
-        // $c_test = collect([
-        // 'test' => 'test'
-        //  ]);
+        $clients = Client::orderBy('created_at', 'asc')->where(function ($query) {
 
-        // var_dump($q_get);
-        // dd($e_all, $q_get, $q_first, $c_test);
+            // 検索機能
+            if ($search = request('search')) {
+                $query->where('client_name', 'LIKE', "%{$search}%")->orWhere('desease','LIKE',"%{$search}%")->orWhere('age','LIKE',"%{$search}%")->orWhere('carelevel','LIKE',"%{$search}%")
+                ;
+            }
+        })->get();
 
-    $clients = Client::with('treatments','doctor','caremanager','user')->get();
     return view('admin.client.index',
     compact('clients'));
     }

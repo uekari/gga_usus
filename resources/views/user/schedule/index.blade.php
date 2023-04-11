@@ -2,7 +2,7 @@
   <div class="sm:mt-12 pb-12">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg min-height">
-        <div class="mt-14 bg-white">
+        <div class="mt-24 bg-white">
 
           <section class="text-gray-900 text-center body-font">
             <div class="container mx-auto">
