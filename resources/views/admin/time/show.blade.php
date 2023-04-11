@@ -19,7 +19,7 @@
             <div class="w-1/5">
               <p class="py-5">時間</p>
             </div>
-            <div class=" flex-auto">
+            <div class=" w-4/5">
               <p class="py-5">{{ substr($time->time, 0, 5) }}</p>
             </div>
           </div>
@@ -28,7 +28,7 @@
             <div class="w-1/5">
               <p class="py-5">予定</p>
             </div>
-            <div class=" flex-auto">
+            <div class=" w-4/5">
               <p class="py-5">{{$time->content}}</p>
             </div>
           </div>
@@ -36,7 +36,7 @@
             <div class="w-1/5">
               <p class="py-5">住所URL</p>
             </div>
-            <div class=" flex-auto">
+            <div class=" w-4/5">
               <div class="py-5">
                 @if($time->url)
 
@@ -69,7 +69,7 @@
             <div class="w-1/5">
               <p class="py-5">移動</p>
             </div>
-            <div class=" flex-auto">
+            <div class=" w-4/5">
               @if($time->is_move == "0")
               <p class="py-5">移動あり</p>
               @elseif($time->is_move == "1")
@@ -82,22 +82,22 @@
             <div class="w-1/5">
               <p class="py-5">リスクの情報</p>
             </div>
-            <div class=" flex-auto">
+            <div class=" w-4/5">
               @if($time->risk_title1 ==! NULL)
-              <p class="pt-5">{{$time->risk_title1}}</p>
+              <p class="pt-5">{{$time->risk_titlse1}}</p>
               @endif
               @if($time->risk_content1 ==! NULL)
               <p class="py-5">{{$time->risk_content1}}</p>
               @endif
               <!-- @if($time->risk_img1 ==! NULL)
-              <img src="{{ asset("storage/".$time->risk_img1) }}" width="25%">
+              <img src="{{ asset("storage/".$time->risk_img1) }}" >
               @endif -->
               @if($time->risk_img1 ==! NULL)
               @if(app('env')=='local')
-              <img src="{{ asset("storage/".$time->risk_img1) }}" width="25%">
+              <img src="{{ asset("storage/".$time->risk_img1) }}">
               @endif
               @if(app('env')=='production')
-              <img src="{{ secure_asset("storage/".$time->risk_img1) }}" width="25%">
+              <img src="{{ secure_asset("storage/".$time->risk_img1) }}">
               @endif
               @endif
 
@@ -108,14 +108,14 @@
               <p class="py-5">{{$time->risk_content2}}</p>
               @endif
               <!-- @if($time->risk_img2 ==! NULL)
-              <img src="{{ asset("storage/".$time->risk_img2) }}" width="25%">
+              <img src="{{ asset("storage/".$time->risk_img2) }}" >
               @endif -->
               @if($time->risk_img2 ==! NULL)
               @if(app('env')=='local')
-              <img src="{{ asset("storage/".$time->risk_img2) }}" width="25%">
+              <img src="{{ asset("storage/".$time->risk_img2) }}">
               @endif
               @if(app('env')=='production')
-              <img src="{{ secure_asset("storage/".$time->risk_img2) }}" width="25%">
+              <img src="{{ secure_asset("storage/".$time->risk_img2) }}">
               @endif
               @endif
 
@@ -126,14 +126,14 @@
               <p class="py-5">{{$time->risk_content3}}</p>
               @endif
               <!-- @if($time->risk_img3 ==! NULL)
-              <img src="{{ asset("storage/".$time->risk_img3) }}" width="25%">
+              <img src="{{ asset("storage/".$time->risk_img3) }}" >
               @endif -->
               @if($time->risk_img3 ==! NULL)
               @if(app('env')=='local')
-              <img src="{{ asset("storage/".$time->risk_img3) }}" width="25%">
+              <img src="{{ asset("storage/".$time->risk_img3) }}">
               @endif
               @if(app('env')=='production')
-              <img src="{{ secure_asset("storage/".$time->risk_img3) }}" width="25%">
+              <img src="{{ secure_asset("storage/".$time->risk_img3) }}">
               @endif
               @endif
             </div>
