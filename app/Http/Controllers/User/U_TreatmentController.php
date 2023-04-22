@@ -10,7 +10,7 @@ use App\Models\Schedule; //Elquentエロクアント
 use App\Models\Client;
 use App\Models\User;
 use App\Models\Treatment;
-use App\Models\Time;
+use App\Models\Destination;
 use Illuminate\Support\Facades\DB; //QueryBuilderクエリビルダ
 
 class U_TreatmentController extends Controller

@@ -34,9 +34,9 @@ Route::get('/dashboard', function () {
     return view('user.dashboard');
 })->middleware(['auth:users', 'verified'])->name('dashboard');
 
-// Route::get('/', [TimeController::class, 'index'])->name('admin.time.index');
-// Route::get('/create', [TimeController::class, 'create'])->name('admin.time.create');
-// Route::post('/store', [TimeController::class, 'store'])->name('admin.time.store');
+// Route::get('/', [TimeController::class, 'index'])->name('admin.destination.index');
+// Route::get('/create', [TimeController::class, 'create'])->name('admin.destination.create');
+// Route::post('/store', [TimeController::class, 'store'])->name('admin.destination.store');
 
 // Route::middleware('auth:users')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

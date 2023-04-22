@@ -11,7 +11,7 @@ use App\Http\Controllers\User\Auth\RegisteredUserController;
 use App\Http\Controllers\User\Auth\VerifyEmailController;
 use App\Http\Controllers\User\U_ClientController;
 use App\Http\Controllers\User\U_ScheduleController;
-use App\Http\Controllers\User\U_TimeController;
+use App\Http\Controllers\User\U_DestinationController;
 use App\Http\Controllers\User\U_EmergencyController;
 use App\Http\Controllers\User\U_TreatmentController;
 use Illuminate\Support\Facades\Route;
@@ -60,8 +60,8 @@ Route::middleware('auth:users') ->group(function(){
     Route::resource('schedule', U_ScheduleController::class)
     ->only(['show','index']);
 
-    Route::get('time/{time}/risk', [U_TimeController::class, 'show'])
-    ->name('time.show');
+    Route::get('destination/{destination}/risk', [U_DestinationController::class, 'show'])
+    ->name('destination.show');
 });
 
 

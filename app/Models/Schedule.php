@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Client;
 use App\Models\User;
-use App\Models\Time;
+use App\Models\Destination;
 use App\Models\Emergencyhospital;
 
 
@@ -30,9 +30,9 @@ class Schedule extends Model
         return $this->belongsTo(Client::class);
     }
 
-        public function times()
+        public function destinations()
     {
-        return $this->hasMany(Time::class);
+        return $this->hasMany(Destination::class);
     }
     public function Emergencyhospitals()
     {

@@ -7,14 +7,14 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class TimeSeeder extends Seeder
+class DestinationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('times')->insert([
+        DB::table('destinations')->insert([
                [
                 'schedule_id' => '1' ,
                 'time' => '09:10' ,

@@ -5,27 +5,27 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request; //インスタンスクラスを読み込み
 use Validator;
-use App\Models\Time;
+use App\Models\Destination;
 use App\Models\Schedule;
 use App\Models\Treatment;
 
-class TimeTreatmentController extends Controller
+class DestinationTreatmentController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth:admin');
     }
 
-    public function index($schedule_id, $time_id)
+    public function index($schedule_id, $destination_id)
     {
 
 
         $schedule=Schedule::findOrFail($schedule_id);
         $treatments = Treatment::where('client_id',$schedule->client_id)->get();
-        $time = Time::with('treatments')->findOrFail($time_id);
+        $destination = Destination::with('treatments')->findOrFail($destination_id);
 
-        return view('admin.timetreatment.index',
-        compact('schedule','treatments','time'));
+        return view('admin.destinationtreatment.index',
+        compact('schedule','treatments','destination'));
 
     }
 
@@ -41,11 +41,11 @@ class TimeTreatmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $schedule_id, $time_id)
+    public function store(Request $request, $schedule_id, $destination_id)
     {
-        $time = Time::findOrFail($time_id);
-        $time->treatments()->sync($request -> treatment);
-      return redirect()->route('admin.time.index',[$time->schedule_id, $time->id]);
+        $destination = Destination::findOrFail($destination_id);
+        $destination->treatments()->sync($request -> treatment);
+      return redirect()->route('admin.destination.index',[$destination->schedule_id, $destination->id]);
     }
 
     /**
