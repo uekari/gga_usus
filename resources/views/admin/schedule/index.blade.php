@@ -84,4 +84,7 @@
       </div>
     </div>
   </div>
+  <div class="map-wrap">
+    <div id="map" class="map"></div>
+  </div>
 </x-app-layout>

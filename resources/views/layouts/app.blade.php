@@ -39,5 +39,29 @@
       {{ $slot }}
     </main>
   </div>
+
+  <script type="text/javascript">
+  window.initMap = () => {
+
+    let map;
+
+    const area = document.getElementById("map"); // マップを表示させるHTMLの箱
+    // マップの中心位置(例:原宿駅)
+    const center = {
+      lat: 35.667379,
+      lng: 139.7054965
+    };
+
+    //マップ作成
+    map = new google.maps.Map(area, {
+      center,
+      zoom: 17,
+    });
+  }
+  </script>
+  <!-- "YOUR_API_KEY" の部分に、作成したAPIキーを貼り付ける -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX0xI6EtxVVp3U4bJ5-O8tm8KiTGVO0PM&callback=initMap" async defer></script>
+
+
 </body>
 </html>
