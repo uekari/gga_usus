@@ -15,17 +15,17 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
           <div class="flex mb-4">
-            <p class="mr-5 ">{{ substr($time->time, 0, 5) }}</p>
-            <p>{{$time -> content}}</p>
+            <p class="mr-5 ">{{ substr($destination->time, 0, 5) }}</p>
+            <p>{{$destination -> content}}</p>
           </div>
 
 
-          <form class="mb-6" action="{{ route('admin.timetreatment.store',[$time->schedule_id, $time->id])}}" method="POST">
+          <form class="mb-6" action="{{ route('admin.destinationtreatment.store',[$destination->schedule_id, $destination->id])}}" method="POST">
             @csrf
             <div class="flex">
               @foreach($treatments as $treatment)
               <div class="mr-5">
-                <input class="" type="checkbox" id="{{$treatment->id}}" name="treatment[]" value="{{$treatment->id}}" @if($time->treatments->contains(fn($t) => $t->id == $treatment->id))checked @endif >
+                <input class="" type="checkbox" id="{{$treatment->id}}" name="treatment[]" value="{{$treatment->id}}" @if($destination->treatments->contains(fn($t) => $t->id == $treatment->id))checked @endif >
                 <label class="ml-1" for="{{$treatment->id}}">{{$treatment->title}}</label>
               </div>
               @endforeach

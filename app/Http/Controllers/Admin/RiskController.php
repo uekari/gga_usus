@@ -25,22 +25,22 @@ class RiskController extends Controller
     }
 
 
-    public function create(Time $time)
+    public function create(Time $destination)
     {
         return view('admin.risk.create', compact('time'));
     }
 
 
-    public function store(Request $request, Time $time)
+    public function store(Request $request, Time $destination)
     {
         $risk= new Risk;
-        $risk->time_id = $time -> id;
+        $risk->time_id = $destination -> id;
         $risk->title = $request->title;
         $risk->content = $request->content;
         // dd($risk);
         $risk->save();
 
-       return redirect()->route('admin.risk.index', $time->id);
+       return redirect()->route('admin.risk.index', $destination->id);
     }
 
 

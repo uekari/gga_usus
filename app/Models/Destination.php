@@ -8,7 +8,7 @@ use App\Models\Schedule;
 use App\Models\Risk;
 use App\Models\Treatment;
 
-class Time extends Model
+class Destination extends Model
 {
     use HasFactory;
 
@@ -22,7 +22,7 @@ class Time extends Model
     'is_move' => 'boolean',
     ];
 
-    protected $table = 'times';
+    protected $table = 'destinations';
 
     // protected $fillable = [
     //     'risk_img1',
@@ -33,10 +33,7 @@ class Time extends Model
         return $this->belongsTo(Schedule::class);
     }
 
-    public function time()
-    {
-        return $this->belongsTo(Time::class);
-    }
+
 
 //      public function risk()
 //     {

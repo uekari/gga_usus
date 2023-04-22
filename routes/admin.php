@@ -13,9 +13,9 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\CaremanagerController;
 use App\Http\Controllers\Admin\ScheduleController;
-use App\Http\Controllers\Admin\TimeController;
+use App\Http\Controllers\Admin\DestinationController;
 use App\Http\Controllers\Admin\TreatmentController;
-use App\Http\Controllers\Admin\TimeTreatmentController;
+use App\Http\Controllers\Admin\DestinationTreatmentController;
 use App\Http\Controllers\Admin\EmergencyhospitalController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,16 +61,16 @@ Route::delete('treatment/{treatment}', [TreatmentController::class, 'destroy'])-
 
 
 
-// time
-Route::get('schedule/{schedule}/time', [TimeController::class, 'index'])->name('time.index')->middleware('auth:admin');
-Route::get('schedule/{schedule}/time/create', [TimeController::class, 'create'])->name('time.create')->middleware('auth:admin');
-Route::post('schedule/{schedule}/time', [TimeController::class, 'store'])->name('time.store')->middleware('auth:admin');
+// destination
+Route::get('schedule/{schedule}/destination', [DestinationController::class, 'index'])->name('destination.index')->middleware('auth:admin');
+Route::get('schedule/{schedule}/destination/create', [DestinationController::class, 'create'])->name('destination.create')->middleware('auth:admin');
+Route::post('schedule/{schedule}/destination', [DestinationController::class, 'store'])->name('destination.store')->middleware('auth:admin');
 
-Route::get('time/{time}', [TimeController::class, 'show'])->name('time.show')->middleware('auth:admin');
-Route::get('time/{time}/edit', [TimeController::class, 'edit'])->name('time.edit')->middleware('auth:admin');
-Route::put('time/{time}', [TimeController::class, 'update'])->name('time.update');
+Route::get('destination/{destination}', [DestinationController::class, 'show'])->name('destination.show')->middleware('auth:admin');
+Route::get('destination/{destination}/edit', [DestinationController::class, 'edit'])->name('destination.edit')->middleware('auth:admin');
+Route::put('destination/{destination}', [DestinationController::class, 'update'])->name('destination.update');
 
-Route::delete('time/{time}/{img}', [TimeController::class, 'deleteimg'])->name('time.deleteimg');
+Route::delete('destination/{destination}/{img}', [DestinationController::class, 'deleteimg'])->name('destination.deleteimg');
 
 
 
@@ -80,8 +80,8 @@ Route::resource('schedule/{schedule}/emergencyhospital', EmergencyhospitalContro
 
 
 
-//TimeTreatment
-Route::resource('schedule/{schedule}/time/{time}/timetreatment', TimeTreatmentController::class)
+//DestinationTreatment
+Route::resource('schedule/{schedule}/destination/{destination}/destinationtreatment', DestinationTreatmentController::class)
 ->middleware('auth:admin');
 
 
@@ -91,8 +91,8 @@ Route::resource('schedule/{schedule}/time/{time}/timetreatment', TimeTreatmentCo
 //     middleware('auth:admin')->group(function(){
 //         Route::get('/', [RiskController::class, 'index'])->name('risk.index');
 // });
-// Route::get('time/{time}/risk', [RiskController::class, 'create'])->name('risk.create');
-// Route::post('time/{time}/risk', [RiskController::class, 'store'])->name('risk.store');
+// Route::get('destination/{destination}/risk', [RiskController::class, 'create'])->name('risk.create');
+// Route::post('destination/{destination}/risk', [RiskController::class, 'store'])->name('risk.store');
 
 
 // user

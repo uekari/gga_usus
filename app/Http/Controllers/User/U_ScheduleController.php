@@ -39,8 +39,8 @@ class U_ScheduleController extends Controller
         $schedule = Schedule::with('times')->where('user_id',\Auth::user()->id)->find($id); //ログインしている情報のみ
 
         $treatments = Treatment::where('client_id',$schedule->client_id)->get();
-        $time = Time::with('treatments')->find($id);
-        // dd($time);
+        $destination = Time::with('treatments')->find($id);
+        // dd($destination);
         return view('user.schedule.show', compact('schedule','time'));
     }
 

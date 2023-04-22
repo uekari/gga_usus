@@ -15,7 +15,7 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white">
           @include('common.errors')
-          <form class="mb-6" action="{{ route('admin.time.store',$schedule->id) }}" method="POST" enctype="multipart/form-data">
+          <form class="mb-6" action="{{ route('admin.destination.store',$schedule->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
 
