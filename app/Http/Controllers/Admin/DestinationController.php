@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request; //インスタンスクラスを読み込み
 use Validator;
-use App\Models\Time;
+use App\Models\Destination;
 use App\Models\Schedule;
 use App\Models\Treatment;
 use Illuminate\Support\Facades\Storage;
 
 
-class TimeController extends Controller
+class DestinationController extends Controller
 {
 
     public function __construct()
@@ -23,10 +23,10 @@ class TimeController extends Controller
     public function index($schedule_id)
     {
         $schedule = Schedule::findOrFail($schedule_id);
-        $destinations = $schedule -> times()->with('treatments') ->get();
+        $destinations = $schedule -> destinations()->with('treatments') ->get();
 
         return view('admin.destination.index',
-        compact('times'));
+        compact('destinations'));
     }
 
 
@@ -38,9 +38,9 @@ class TimeController extends Controller
 
     public function store(Request $request, Schedule $schedule)
     {
-        $destination = new Time;
+        $destination = new Destination;
         $destination->schedule_id = $schedule -> id;
-        $destination->time = $request->time;
+        $destination->destination = $request->destination;
         $destination->content = $request->content;
         $destination->url = $request->url;
         $destination->is_move = $request->is_move;
@@ -78,16 +78,16 @@ class TimeController extends Controller
     public function show($id)
     {
 
-        $destination = Time::find($id);
-        return view('admin.destination.show', compact('time'));
+        $destination = Destination::find($id);
+        return view('admin.destination.show', compact('destination'));
     }
 
 
     public function edit($id)
     {
-        $destination = Time::find($id);
+        $destination = Destination::find($id);
         //  dd($destination);
-        return view('admin.destination.edit', compact('time'));
+        return view('admin.destination.edit', compact('destination'));
     }
 
 
@@ -97,7 +97,7 @@ class TimeController extends Controller
         //バリデーション
         $validator = Validator::make($request->all(), [
             'content' => 'required|max:255',
-            'time' => 'required',
+            'destination' => 'required',
         ]);
         //バリデーション:エラー
         if ($validator->fails()) {
@@ -108,9 +108,9 @@ class TimeController extends Controller
         }
 
         //データ更新処理
-        $destination = Time::find($id);
+        $destination = Destination::find($id);
         $destination->content = $request->input('content');
-        $destination->time = $request->input('time');
+        $destination->destination = $request->input('destination');
         $destination->url = $request->input('url');
         $destination->is_move = $request->input('is_move');
         $destination->risk_title1 = $request->input('risk_title1');

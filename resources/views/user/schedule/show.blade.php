@@ -15,7 +15,7 @@
                 <p class="pb-2 text-sm text-center">{{date('Y/m/d', strtotime($schedule->date))}}</p>
               </div>
 
-              @foreach ($schedule->times as $destination)
+              @foreach ($schedule->destinations as $destination)
               <div class="mb-4 border border-1 border-gray-200 rounded">
                 <div class="flex justify-between items-center">
                   <div class="flex">
@@ -44,7 +44,7 @@
                   </div>
                   @if($destination->risk_title1)
                   <div class="pr-2">
-                    <a href="{{ route('user.time.show',$destination->id )}}">
+                    <a href="{{ route('user.destination.show',$destination->id )}}">
                       <div class="flex justify-center items-center text-sm">
                         <p class="mr-1">リスクあり</p>
                         <div class="mb-0.5">

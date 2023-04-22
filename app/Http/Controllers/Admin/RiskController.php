@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\Risk;
-use App\Models\Time;
+use App\Models\Destination;
 
 class RiskController extends Controller
 {
@@ -18,23 +18,23 @@ class RiskController extends Controller
 
     public function index()
     {
-        $risks = Time::with('time:id')->get();
+        $risks = Destination::with('destination:id')->get();
         // dd($risks);
         return view('admin.risk.index',
         compact('risks'));
     }
 
 
-    public function create(Time $destination)
+    public function create(Destination $destination)
     {
-        return view('admin.risk.create', compact('time'));
+        return view('admin.risk.create', compact('destination'));
     }
 
 
-    public function store(Request $request, Time $destination)
+    public function store(Request $request, Destination $destination)
     {
         $risk= new Risk;
-        $risk->time_id = $destination -> id;
+        $risk->destination_id = $destination -> id;
         $risk->title = $request->title;
         $risk->content = $request->content;
         // dd($risk);

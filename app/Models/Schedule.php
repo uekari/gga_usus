@@ -30,7 +30,7 @@ class Schedule extends Model
         return $this->belongsTo(Client::class);
     }
 
-        public function times()
+        public function destinations()
     {
         return $this->hasMany(Destination::class);
     }

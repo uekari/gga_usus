@@ -42,5 +42,4 @@ class Destination extends Model
    public function treatments() {
       return $this->belongsToMany(Treatment::class);
     }
-
 }
