@@ -40,7 +40,7 @@ class DestinationController extends Controller
     {
         $destination = new Destination;
         $destination->schedule_id = $schedule -> id;
-        $destination->destination = $request->destination;
+        $destination->time = $request->time;
         $destination->content = $request->content;
         $destination->url = $request->url;
         $destination->is_move = $request->is_move;
@@ -97,7 +97,7 @@ class DestinationController extends Controller
         //バリデーション
         $validator = Validator::make($request->all(), [
             'content' => 'required|max:255',
-            'destination' => 'required',
+            'time' => 'required',
         ]);
         //バリデーション:エラー
         if ($validator->fails()) {
@@ -110,7 +110,8 @@ class DestinationController extends Controller
         //データ更新処理
         $destination = Destination::find($id);
         $destination->content = $request->input('content');
-        $destination->destination = $request->input('destination');
+        $destination->time = $request->input('time');
+        $destination->address = $request->input('address');
         $destination->url = $request->input('url');
         $destination->is_move = $request->input('is_move');
         $destination->risk_title1 = $request->input('risk_title1');

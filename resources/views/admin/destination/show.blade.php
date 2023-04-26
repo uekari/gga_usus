@@ -34,6 +34,14 @@
           </div>
           <div class="flex">
             <div class="w-1/5">
+              <p class="py-5">住所</p>
+            </div>
+            <div class=" w-4/5">
+              <p class="py-5">{{$destination->address}}</p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-1/5">
               <p class="py-5">住所URL</p>
             </div>
             <div class=" w-4/5">

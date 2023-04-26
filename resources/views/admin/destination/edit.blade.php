@@ -40,7 +40,11 @@
               <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="content" id="content" value="{{$destination->content}}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="item">住所URL</label>
+              <label class="w-40" for="address">住所</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="address" id="address" value="{{$destination->address}}">
+            </div>
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-40" for="url">住所URL</label>
               <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="url" id="url" value="{{$destination->url}}">
             </div>
 
