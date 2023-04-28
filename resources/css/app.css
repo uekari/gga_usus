@@ -104,8 +104,8 @@
 }
 .move_border {
     border-left: 2px dashed #767676;
-    height: 68px;
-    width: 2px;
+    /* height: 68px; */
+    /* width: 2px; */
 }
 .illust {
     width: 100%;

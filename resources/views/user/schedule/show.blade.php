@@ -5,90 +5,87 @@
         <div class="p-6 bg-white">
           <div class="mb-6 ml-1">
             <a href="{{ url()->previous() }}">
-              <p class="w-4 h-4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M4.7 244.7c-6.2 6.2-6.2 16.4 0 22.6l176 176c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L54.6 272 432 272c8.8 0 16-7.2 16-16s-7.2-16-16-16L54.6 240 203.3 91.3c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0l-176 176z"/></svg></p>
+              <p class="w-4 h-4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M4.7 244.7c-6.2 6.2-6.2 16.4 0 22.6l176 176c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L54.6 272 432 272c8.8 0 16-7.2 16-16s-7.2-16-16-16L54.6 240 203.3 91.3c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0l-176 176z" />
+                </svg>
+              </p>
             </a>
           </div>
           <div class="mb-6">
             <div class="text-gray-900">
               <div class="mb-4">
-                <p class="pb-2 text-2xl text-center">{{$schedule->title}}</p>
-                <p class="pb-2 text-sm text-center">{{date('Y/m/d', strtotime($schedule->date))}}</p>
+                <p class="pb-2 text-2xl text-center">{{ $schedule->title }}</p>
+                <p class="pb-2 text-sm text-center">{{ date('Y/m/d', strtotime($schedule->date)) }}</p>
               </div>
 
+              {{-- 各目的地 --}}
               @foreach ($schedule->destinations as $destination)
-              <div class="mb-4 border border-1 border-gray-200 rounded">
-                <div class="flex justify-between items-center">
-                  <div class="flex">
-                    <p class="py-2 pl-3 w-16">{{substr($destination->time, 0, 5) }}</p>
-                    <p class="py-2 text-lg">{{$destination->content}}</p>
-                    @if($destination->url)
-                    <div class="py-2 pl-2">
-                      <a href="{{$destination->url}}" target='_blank'>
-                        <div class="w-3 h-3 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <div class="flex  justify-between items-center mb-1 border border-1 border-gray-200 rounded">
+                  <div class="py-2 flex justify-center items-center">
+                    <p class="px-3">{{ substr($destination->time, 0, 5) }}</p>
+                    <p class="text-lg">{{ $destination->content }}</p>
+                  </div>
+                  @if ($destination->url)
+                    <div class="flex justify-center items-center px-3">
+                      <a href="{{ $destination->url }}" target='_blank'>
+                        <div class="w-3 h-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                             <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <defs>
-                              <style>
-                              .fa-secondary {
-                                opacity: .4
-                              }
-                              </style>
-                            </defs>
-                            <path class="fa-primary" d="M160 288A144 144 0 1 0 160 0a144 144 0 1 0 0 288zM96 144c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-53 43-96 96-96c8.8 0 16 7.2 16 16s-7.2 16-16 16c-35.3 0-64 28.7-64 64z" />
-                            <path class="fa-secondary" d="M128 284.4V480c0 17.7 14.3 32 32 32s32-14.3 32-32V284.4c-10.3 2.3-21 3.6-32 3.6s-21.7-1.2-32-3.6z" />
+                            <path
+                              d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
                           </svg>
                         </div>
                       </a>
                     </div>
-                    @endif
-                  </div>
-                  @if($destination->risk_title1)
-                  <div class="pr-2">
-                    <a href="{{ route('user.destination.show',$destination->id )}}">
-                      <div class="flex justify-center items-center text-sm">
-                        <p class="mr-1">リスクあり</p>
-                        <div class="mb-0.5">
-                          <p class='w-2.5 h-2.5 bg-amber-500 rounded-full'></p>
+                  @endif
+                </div>
+
+                {{-- リストの下に表示する情報 --}}
+                <div class="py-8 pt-0 ml-4 pl-4 {{ $destination->is_move == 0 ? "move_border " : "" }}" >
+                  {{-- 注意事項 --}}
+                  @if (count($destination->risks)>0)
+                    <div class="w-full mb-1">
+                      <a href="{{ route('user.destination.show', $destination->id) }}">
+                        <div class="flex items-center text-sm">
+                          <p class="mr-1">注意事項あり</p>
+                          <p class='flex justify-center items-center w-3 h-3 bg-amber-500  rounded-full'>
+                            <svg class="w-2 h-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                              <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                              <path fill="#ffffff"
+                                d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                            </svg>
+                          </p>
                         </div>
-                      </div>
-                    </a>
-                  </div>
+                      </a>
+                    </div>
                   @endif
 
-                </div>
-
-
-                <div class="flex ml-16">
-                  @foreach ($destination -> treatments as $treatment)
-                  @if($destination->treatments)
-
-                  <div class="mr-4 mb-3 pt-0.5 px-2 text-sm border border-1 border-gray-900 rounded-full">
-                    <a href="{{route('user.treatment.show', $treatment->id )}}">{{ $treatment -> title}}</a>
-                  </div>
-
-
+                  {{-- 処置 --}}
+                  @if ($destination->treatments)
+                    <div class="flex">
+                      @foreach ($destination->treatments as $treatment)
+                        <div class="mr-4 pt-0.5 px-2 text-sm border border-1 border-gray-900 rounded-full">
+                          <a href="{{ route('user.treatment.show', $treatment->id) }}">{{ $treatment->title }}</a>
+                        </div>
+                      @endforeach
+                    </div>
                   @endif
-                  @endforeach
-                </div>
-              </div>
 
-              @if($destination->is_move == 0)
-              <div class="move_container">
-                <div class="move_border"></div>
-                <div class="flex items-center text-sm">
-                  @if($destination->is_move == 0)
-                  <p class="pl-4">移動あり</p>
-                  @endif
+                  {{-- 移動あり --}}
+                @if ($destination->is_move == 0)
+                      <p class="py-8 pb-1 text-sm">移動あり</p>
+                @endif
+
                 </div>
-              </div>
-              @endif
 
               @endforeach
-
             </div>
           </div>
-
         </div>
       </div>
     </div>
+  </div>
 </x-app-layout>
