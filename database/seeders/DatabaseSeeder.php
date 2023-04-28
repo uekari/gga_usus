@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
             DoctorSeeder::class,
             ClientSeeder::class,
             ScheduleSeeder::class,
-            TimeSeeder::class,
+            DestinationSeeder::class,
             TreatmentSeeder::class,
-            TimeTreatmentSeeder::class,
+            DestinationTreatmentSeeder::class,
             EmergencyhospitalSeeder::class,
          ]);
 

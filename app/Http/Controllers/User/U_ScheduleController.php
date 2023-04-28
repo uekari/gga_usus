@@ -10,7 +10,7 @@ use App\Models\Schedule; //Elquentエロクアント
 use App\Models\Client;
 use App\Models\User;
 use App\Models\Treatment;
-use App\Models\Time;
+use App\Models\Destination;
 use Illuminate\Support\Facades\DB; //QueryBuilderクエリビルダ
 
 class U_ScheduleController extends Controller
@@ -36,12 +36,12 @@ class U_ScheduleController extends Controller
 
     public function show($id)
     {
-        $schedule = Schedule::with('times')->where('user_id',\Auth::user()->id)->find($id); //ログインしている情報のみ
+        $schedule = Schedule::with('destinations')->where('user_id',\Auth::user()->id)->find($id); //ログインしている情報のみ
 
         $treatments = Treatment::where('client_id',$schedule->client_id)->get();
-        $time = Time::with('treatments')->find($id);
-        // dd($time);
-        return view('user.schedule.show', compact('schedule','time'));
+        $destination = Destination::with('treatments')->find($id);
+        // dd($destination);
+        return view('user.schedule.show', compact('schedule','destination'));
     }
 
 

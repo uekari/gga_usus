@@ -51,7 +51,7 @@
                   <!-- 詳細登録ボタン -->
                   <td class="py-4 px-4 text-base border border-1 border-gray-300">
                     <div>
-                      <a href="{{ route('admin.time.create',$schedule->id )}}">
+                      <a href="{{ route('admin.destination.create',$schedule->id )}}">
                         <p class="py-2 px-3 bg-black rounded text-white text-sm">詳細登録</p>
                       </a>
                     </div>
@@ -59,7 +59,7 @@
                   <!-- 詳細一覧ボタン -->
                   <td class="py-4 px-4 text-base border border-1 border-gray-300">
                     <div>
-                      <a href="{{ route('admin.time.index',$schedule->id )}}">
+                      <a href="{{ route('admin.destination.index',$schedule->id )}}">
                         <p class="py-2 px-3 bg-black rounded text-white text-sm">詳細一覧</p>
                       </a>
                     </div>
@@ -83,5 +83,8 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="map-wrap">
+    <div id="map" class="map"></div>
   </div>
 </x-app-layout>

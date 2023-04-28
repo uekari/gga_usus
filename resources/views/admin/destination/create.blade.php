@@ -15,7 +15,7 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white">
           @include('common.errors')
-          <form class="mb-6" action="{{ route('admin.time.store',$schedule->id) }}" method="POST" enctype="multipart/form-data">
+          <form class="mb-6" action="{{ route('admin.destination.store',$schedule->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
 
@@ -40,6 +40,11 @@
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="content">行き先</label>
               <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="content" id="content">
+            </div>
+
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-40" for="address">住所</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="address" id="address">
             </div>
 
             <div class="flex items-center mb-8 text-gray-900">

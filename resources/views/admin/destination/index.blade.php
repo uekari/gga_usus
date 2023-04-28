@@ -14,41 +14,41 @@
     <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
-          @foreach ($times as $time)
+          @foreach ($destinations as $destination)
           @if ($loop->first)
-          <p class="pb-5 text-lg">{{ $time-> schedule -> title }}</p>
+          <p class="pb-5 text-lg">{{ $destination-> schedule -> title }}</p>
           @endif
           @endforeach
 
-          @foreach ($times as $time)
+          @foreach ($destinations as $destination)
           <div class="mb-8">
             <div class=" flex items-center text-center">
-              <div class="w-24 py-3 border border-1 border-gray-200">{{ substr($time->time, 0, 5) }}</div>
-              <div class="w-80 py-3 border border-1 border-gray-200 text-left pl-6">{{ $time->content }}</div>
+              <div class="w-24 py-3 border border-1 border-gray-200">{{ substr($destination->time, 0, 5) }}</div>
+              <div class="w-80 py-3 border border-1 border-gray-200 text-left pl-6">{{ $destination->content }}</div>
               <div class="w-40 py-3 border border-1 border-gray-200">
-                @if($time->is_move == "0")
+                @if($destination->is_move == "0")
                 <p>移動あり</p>
-                @elseif($time->is_move == "1")
+                @elseif($destination->is_move == "1")
                 <p>移動なし</p>
                 @endif
               </div>
               <div class="w-80 py-3 border border-1 border-gray-200 text-left pl-6">
                 <p>処置&nbsp;：&nbsp;
-              @foreach ($time -> treatments as $treatment)
+              @foreach ($destination -> treatments as $treatment)
               {{ $treatment -> title}}
               @endforeach</p>
               </div>
             </div>
             <div class="flex justify-center items-center text-center border border-1 border-gray-200">
-              <div class="w-44 p-4"> <a href="{{ route('admin.time.show',$time->id )}}">
+              <div class="w-44 p-4"> <a href="{{ route('admin.destination.show',$destination->id )}}">
                   <p class="px-3 py-2 bg-black rounded text-white text-sm">詳細ページへ</p>
                 </a>
               </div>
-              <div class="w-44 p-4"> <a href="{{ route('admin.time.edit',$time->id )}}">
+              <div class="w-44 p-4"> <a href="{{ route('admin.destination.edit',$destination->id )}}">
                   <p class="px-3 py-2 bg-black rounded text-white text-sm">編集ページへ</p>
                 </a>
               </div>
-              <div class="w-56 p-4"> <a href="{{ route('admin.timetreatment.index',[$time->schedule_id, $time->id])}}">
+              <div class="w-56 p-4"> <a href="{{ route('admin.destinationtreatment.index',[$destination->schedule_id, $destination->id])}}">
                   <p class="px-3 py-2 bg-black rounded text-white text-sm">処置選択ページへ</p>
                 </a>
               </div>
@@ -61,4 +61,25 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript">
+  window.initMap = () => {
+
+    let map;
+
+    const area = document.getElementById("map"); // マップを表示させるHTMLの箱
+    // マップの中心位置
+    const center = {
+      lat: 35.667379,
+      lng: 139.7054965
+    };
+
+    //マップ作成
+    map = new google.maps.Map(area, {
+      center,
+      zoom: 17,
+    });
+  }
+  </script>
+  <!-- 作成したAPIキーを貼り付ける -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX0xI6EtxVVp3U4bJ5-O8tm8KiTGVO0PM&callback=initMap" async defer></script>
 </x-app-layout>

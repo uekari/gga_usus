@@ -15,6 +15,9 @@
           <x-nav-link :href="route('user.schedule.index')" :active="request()->routeIs('user.schedule.index')">
             {{ __('旅行スケジュール') }}
           </x-nav-link>
+          <x-nav-link :href="route('user.map.index')" :active="request()->routeIs('user.map.index')">
+            {{ __('地図') }}
+          </x-nav-link>
           <x-nav-link :href="route('user.client.index')" :active="request()->routeIs('user.client.index')">
             {{ ('患者情報') }}
           </x-nav-link>
@@ -113,6 +116,14 @@
             <p class="w-5 h-5 mb-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M221.2 13.3C230.8 5.7 242.6 0 256 0c26.9 0 47.1 21.6 59.2 41.8C327.9 62.9 336 89.1 336 109.7v52.5l151.8 86.8c15 8.5 24.2 24.5 24.2 41.7v56.2c0 21.3-20.3 36.6-40.8 30.8L336 338.9V376l51.2 38.4c8.1 6 12.8 15.5 12.8 25.6v42c0 16.6-13.4 30-30 30c-2.8 0-5.6-.4-8.2-1.2l0 0L256 480.6 150.3 510.8l0 0c-2.7 .8-5.5 1.2-8.3 1.2c-16.6 0-30-13.4-30-30V440c0-10.1 4.7-19.6 12.8-25.6L176 376l0-37.1L40.8 377.6C20.3 383.4 0 368 0 346.8V290.6c0-17.2 9.2-33.1 24.2-41.7L176 162.1V109.7c0-20.7 8.4-46.9 21.2-67.9c6.5-10.7 14.5-20.8 24-28.4zm3.3 45C214.1 75.6 208 96.2 208 109.7v61.7c0 5.7-3.1 11-8.1 13.9L40.1 276.7c-5 2.8-8.1 8.2-8.1 13.9v56.2l155.6-44.5c4.8-1.4 10-.4 14 2.6s6.4 7.8 6.4 12.8l0 66.3c0 5-2.4 9.8-6.4 12.8L144 440v39.4l107.6-30.7c2.9-.8 5.9-.8 8.8 0L368 479.4V440l-57.6-43.2c-4-3-6.4-7.8-6.4-12.8V317.7c0-5 2.4-9.8 6.4-12.8s9.2-4 14-2.6L480 346.8V290.6c0-5.7-3.1-11-8.1-13.9L312.1 185.3c-5-2.8-8.1-8.2-8.1-13.9V109.7c0-13.6-5.9-34.2-16.2-51.4C276.9 40.2 265.1 32 256 32c-4.1 0-9 1.7-14.8 6.3c-5.8 4.6-11.5 11.5-16.7 20z"/></svg></p>
           </div>
           <p>{{ __('旅行スケジュール') }}</p>
+        </div>
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('user.map.index')" :active="request()->routeIs('user.dmap.index')">
+        <div class="flex flex-col">
+          <div class='mx-auto mb-2'>
+           <p class="w-5 h-5 mb-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M565.6 36.2C572.1 40.7 576 48.1 576 56V392c0 10-6.2 18.9-15.5 22.4l-168 64c-5.2 2-10.9 2.1-16.1 .3L192.5 417.5l-160 61c-7.4 2.8-15.7 1.8-22.2-2.7S0 463.9 0 456V120c0-10 6.1-18.9 15.5-22.4l168-64c5.2-2 10.9-2.1 16.1-.3L383.5 94.5l160-61c7.4-2.8 15.7-1.8 22.2 2.7zM48 136.5V421.2l120-45.7V90.8L48 136.5zM360 422.7V137.3l-144-48V374.7l144 48zm48-1.5l120-45.7V90.8L408 136.5V421.2z"/></svg></p>
+          </div>
+          <p>{{ __('地図') }}</p>
         </div>
       </x-responsive-nav-link>
       <x-responsive-nav-link :href="route('user.client.index')" :active="request()->routeIs('user.client.index')">

@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Time;
+use App\Models\Destination;
 
 class Risk extends Model
 {
     use HasFactory;
 
- public function time()
+ public function destination()
     {
-        return $this->belongsTo(Time::class);
+        return $this->belongsTo(Destination::class);
     }
 
 }

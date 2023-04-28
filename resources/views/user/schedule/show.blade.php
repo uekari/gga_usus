@@ -15,15 +15,15 @@
                 <p class="pb-2 text-sm text-center">{{date('Y/m/d', strtotime($schedule->date))}}</p>
               </div>
 
-              @foreach ($schedule->times as $time)
+              @foreach ($schedule->destinations as $destination)
               <div class="mb-4 border border-1 border-gray-200 rounded">
                 <div class="flex justify-between items-center">
                   <div class="flex">
-                    <p class="py-2 pl-3 w-16">{{substr($time->time, 0, 5) }}</p>
-                    <p class="py-2 text-lg">{{$time->content}}</p>
-                    @if($time->url)
+                    <p class="py-2 pl-3 w-16">{{substr($destination->time, 0, 5) }}</p>
+                    <p class="py-2 text-lg">{{$destination->content}}</p>
+                    @if($destination->url)
                     <div class="py-2 pl-2">
-                      <a href="{{$time->url}}" target='_blank'>
+                      <a href="{{$destination->url}}" target='_blank'>
                         <div class="w-3 h-3 pt-1">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                             <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -42,9 +42,9 @@
                     </div>
                     @endif
                   </div>
-                  @if($time->risk_title1)
+                  @if($destination->risk_title1)
                   <div class="pr-2">
-                    <a href="{{ route('user.time.show',$time->id )}}">
+                    <a href="{{ route('user.destination.show',$destination->id )}}">
                       <div class="flex justify-center items-center text-sm">
                         <p class="mr-1">リスクあり</p>
                         <div class="mb-0.5">
@@ -59,8 +59,8 @@
 
 
                 <div class="flex ml-16">
-                  @foreach ($time -> treatments as $treatment)
-                  @if($time->treatments)
+                  @foreach ($destination -> treatments as $treatment)
+                  @if($destination->treatments)
 
                   <div class="mr-4 mb-3 pt-0.5 px-2 text-sm border border-1 border-gray-900 rounded-full">
                     <a href="{{route('user.treatment.show', $treatment->id )}}">{{ $treatment -> title}}</a>
@@ -72,11 +72,11 @@
                 </div>
               </div>
 
-              @if($time->is_move == 0)
+              @if($destination->is_move == 0)
               <div class="move_container">
                 <div class="move_border"></div>
                 <div class="flex items-center text-sm">
-                  @if($time->is_move == 0)
+                  @if($destination->is_move == 0)
                   <p class="pl-4">移動あり</p>
                   @endif
                 </div>

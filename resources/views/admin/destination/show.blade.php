@@ -20,7 +20,7 @@
               <p class="py-5">時間</p>
             </div>
             <div class=" w-4/5">
-              <p class="py-5">{{ substr($time->time, 0, 5) }}</p>
+              <p class="py-5">{{ substr($destination->time, 0, 5) }}</p>
             </div>
           </div>
 
@@ -29,7 +29,15 @@
               <p class="py-5">予定</p>
             </div>
             <div class=" w-4/5">
-              <p class="py-5">{{$time->content}}</p>
+              <p class="py-5">{{$destination->content}}</p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="w-1/5">
+              <p class="py-5">住所</p>
+            </div>
+            <div class=" w-4/5">
+              <p class="py-5">{{$destination->address}}</p>
             </div>
           </div>
           <div class="flex">
@@ -38,9 +46,9 @@
             </div>
             <div class=" w-4/5">
               <div class="py-5">
-                @if($time->url)
+                @if($destination->url)
 
-                <a href="{{$time->url}}" target='_blank'>
+                <a href="{{$destination->url}}" target='_blank'>
                   <div class="w-3 h-3 pt-1">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                       <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -70,9 +78,9 @@
               <p class="py-5">移動</p>
             </div>
             <div class=" w-4/5">
-              @if($time->is_move == "0")
+              @if($destination->is_move == "0")
               <p class="py-5">移動あり</p>
-              @elseif($time->is_move == "1")
+              @elseif($destination->is_move == "1")
               <p class="py-5">移動なし</p>
               @endif
             </div>
@@ -83,57 +91,57 @@
               <p class="py-5">リスクの情報</p>
             </div>
             <div class=" w-4/5">
-              @if($time->risk_title1 ==! NULL)
-              <p class="pt-5">{{$time->risk_titlse1}}</p>
+              @if($destination->risk_title1 ==! NULL)
+              <p class="pt-5">{{$destination->risk_titlse1}}</p>
               @endif
-              @if($time->risk_content1 ==! NULL)
-              <p class="py-5">{{$time->risk_content1}}</p>
+              @if($destination->risk_content1 ==! NULL)
+              <p class="py-5">{{$destination->risk_content1}}</p>
               @endif
-              <!-- @if($time->risk_img1 ==! NULL)
-              <img src="{{ asset("storage/".$time->risk_img1) }}" >
+              <!-- @if($destination->risk_img1 ==! NULL)
+              <img src="{{ asset("storage/".$destination->risk_img1) }}" >
               @endif -->
-              @if($time->risk_img1 ==! NULL)
+              @if($destination->risk_img1 ==! NULL)
               @if(app('env')=='local')
-              <img src="{{ asset("storage/".$time->risk_img1) }}">
+              <img src="{{ asset("storage/".$destination->risk_img1) }}">
               @endif
               @if(app('env')=='production')
-              <img src="{{ secure_asset("storage/".$time->risk_img1) }}">
+              <img src="{{ secure_asset("storage/".$destination->risk_img1) }}">
               @endif
               @endif
 
-              @if($time->risk_title2 ==! NULL)
-              <p class="pt-5">{{$time->risk_title2}}</p>
+              @if($destination->risk_title2 ==! NULL)
+              <p class="pt-5">{{$destination->risk_title2}}</p>
               @endif
-              @if($time->risk_content2 ==! NULL)
-              <p class="py-5">{{$time->risk_content2}}</p>
+              @if($destination->risk_content2 ==! NULL)
+              <p class="py-5">{{$destination->risk_content2}}</p>
               @endif
-              <!-- @if($time->risk_img2 ==! NULL)
-              <img src="{{ asset("storage/".$time->risk_img2) }}" >
+              <!-- @if($destination->risk_img2 ==! NULL)
+              <img src="{{ asset("storage/".$destination->risk_img2) }}" >
               @endif -->
-              @if($time->risk_img2 ==! NULL)
+              @if($destination->risk_img2 ==! NULL)
               @if(app('env')=='local')
-              <img src="{{ asset("storage/".$time->risk_img2) }}">
+              <img src="{{ asset("storage/".$destination->risk_img2) }}">
               @endif
               @if(app('env')=='production')
-              <img src="{{ secure_asset("storage/".$time->risk_img2) }}">
+              <img src="{{ secure_asset("storage/".$destination->risk_img2) }}">
               @endif
               @endif
 
-              @if($time->risk_title3 ==! NULL)
-              <p class="pt-5">{{$time->risk_title3}}</p>
+              @if($destination->risk_title3 ==! NULL)
+              <p class="pt-5">{{$destination->risk_title3}}</p>
               @endif
-              @if($time->risk_content3 ==! NULL)
-              <p class="py-5">{{$time->risk_content3}}</p>
+              @if($destination->risk_content3 ==! NULL)
+              <p class="py-5">{{$destination->risk_content3}}</p>
               @endif
-              <!-- @if($time->risk_img3 ==! NULL)
-              <img src="{{ asset("storage/".$time->risk_img3) }}" >
+              <!-- @if($destination->risk_img3 ==! NULL)
+              <img src="{{ asset("storage/".$destination->risk_img3) }}" >
               @endif -->
-              @if($time->risk_img3 ==! NULL)
+              @if($destination->risk_img3 ==! NULL)
               @if(app('env')=='local')
-              <img src="{{ asset("storage/".$time->risk_img3) }}">
+              <img src="{{ asset("storage/".$destination->risk_img3) }}">
               @endif
               @if(app('env')=='production')
-              <img src="{{ secure_asset("storage/".$time->risk_img3) }}">
+              <img src="{{ secure_asset("storage/".$destination->risk_img3) }}">
               @endif
               @endif
             </div>

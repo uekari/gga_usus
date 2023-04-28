@@ -15,12 +15,12 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
           @include('common.errors')
-          <form class="mb-6" action="{{ route('admin.time.update',$time->id) }}" method="POST" enctype="multipart/form-data">
+          <form class="mb-6" action="{{ route('admin.destination.update',$destination->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="item">時間</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="time" name="time" id="time" list="data-list" value="{{$time->time}}">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="time" name="time" id="time" list="data-list" value="{{$destination->time}}">
               <span></span>
               <datalist id="data-list">
                 <option value="08:00"></option>
@@ -37,11 +37,15 @@
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="item">予定</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="content" id="content" value="{{$time->content}}">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="content" id="content" value="{{$destination->content}}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="item">住所URL</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="url" id="url" value="{{$time->url}}">
+              <label class="w-40" for="address">住所</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="address" id="address" value="{{$destination->address}}">
+            </div>
+            <div class="flex items-center mb-8 text-gray-900">
+              <label class="w-40" for="url">住所URL</label>
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="url" id="url" value="{{$destination->url}}">
             </div>
 
             <div class="flex items-center mb-8 text-gray-900">
@@ -49,28 +53,28 @@
               <div class="form-group row">
                 <div class="col-md-6">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input mr-2" type="radio" name="is_move" id="is_move1" value="0" @if($time->is_move == 0) checked @endif>移動あり
-                    <input class="form-check-input mr-2" type="radio" name="is_move" id="is_move2" value="1" @if($time->is_move == 1) checked @endif>移動なし
+                    <input class="form-check-input mr-2" type="radio" name="is_move" id="is_move1" value="0" @if($destination->is_move == 0) checked @endif>移動あり
+                    <input class="form-check-input mr-2" type="radio" name="is_move" id="is_move2" value="1" @if($destination->is_move == 1) checked @endif>移動なし
                   </div>
                 </div>
               </div>
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_title1">リスク情報の登録&thinsp;①</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title1" id="risk_title1" value="{{$time->risk_title1}}">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title1" id="risk_title1" value="{{$destination->risk_title1}}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40"> </label>
-              <textarea name="risk_content1" id="risk_content1" cols="30" rows="5" class="flex-auto border border-1 border-gray-300 py-2 px-3">{{old('risk_content1',$time->risk_content1)}}</textarea>
+              <textarea name="risk_content1" id="risk_content1" cols="30" rows="5" class="flex-auto border border-1 border-gray-300 py-2 px-3">{{old('risk_content1',$destination->risk_content1)}}</textarea>
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_img1">リスク情報の画像</label>
-              @if ($time->risk_img1 !=='')
+              @if ($destination->risk_img1 !=='')
               @if(app('env')=='local')
-              <img src="{{ asset("storage/".$time->risk_img1) }}" width="25%">
+              <img src="{{ asset("storage/".$destination->risk_img1) }}" width="25%">
               @endif
               @if(app('env')=='production')
-              <img src="{{ secure_asset("storage/".$time->risk_img1) }}" width="25%">
+              <img src="{{ secure_asset("storage/".$destination->risk_img1) }}" width="25%">
               @endif
               @else
               <p>画像がありません</p>
@@ -80,21 +84,21 @@
 
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_title2">リスク情報の登録&thinsp;②</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title2" id="risk_title2" value="{{$time->risk_title2}}">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title2" id="risk_title2" value="{{$destination->risk_title2}}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40"></label>
-              <textarea name="risk_content2" id="risk_content2" cols="30" rows="5" class="flex-auto border border-1 border-gray-300 py-2 px-3">{{old('risk_content2',$time->risk_content2)}}</textarea>
+              <textarea name="risk_content2" id="risk_content2" cols="30" rows="5" class="flex-auto border border-1 border-gray-300 py-2 px-3">{{old('risk_content2',$destination->risk_content2)}}</textarea>
 
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_img2">リスク情報の画像</label>
-              @if ($time->risk_img2 !=='')
+              @if ($destination->risk_img2 !=='')
               @if(app('env')=='local')
-              <img src="{{ asset("storage/".$time->risk_img2) }}" width="25%">
+              <img src="{{ asset("storage/".$destination->risk_img2) }}" width="25%">
               @endif
               @if(app('env')=='production')
-              <img src="{{ secure_asset("storage/".$time->risk_img2) }}" width="25%">
+              <img src="{{ secure_asset("storage/".$destination->risk_img2) }}" width="25%">
               @endif
               @else
               <p>画像がありません</p>
@@ -103,20 +107,20 @@
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_title3">リスク情報の登録&thinsp;③</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title3" id="risk_title3" value="{{$time->risk_title3}}">
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title3" id="risk_title3" value="{{$destination->risk_title3}}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40"></label>
-              <textarea name="risk_content3" id="risk_content3" cols="30" rows="5" class="flex-auto border border-1 border-gray-300 py-2 px-3">{{old('risk_content3',$time->risk_content3)}}</textarea>
+              <textarea name="risk_content3" id="risk_content3" cols="30" rows="5" class="flex-auto border border-1 border-gray-300 py-2 px-3">{{old('risk_content3',$destination->risk_content3)}}</textarea>
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="risk_img3">リスク情報の画像</label>
-              @if ($time->risk_img3 !=='')
+              @if ($destination->risk_img3 !=='')
               @if(app('env')=='local')
-              <img src="{{ asset("storage/".$time->risk_img3) }}" width="25%">
+              <img src="{{ asset("storage/".$destination->risk_img3) }}" width="25%">
               @endif
               @if(app('env')=='production')
-              <img src="{{ secure_asset("storage/".$time->risk_img3) }}" width="25%">
+              <img src="{{ secure_asset("storage/".$destination->risk_img3) }}" width="25%">
               @endif
               @else
               <p>画像がありません</p>

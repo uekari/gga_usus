@@ -14,36 +14,36 @@
 
               <div class="flex flex-col mb-8 text-gray-900">
                 <p class="mb-1 uppercase text-xl">
-                {{$time->risk_title1}}</p>
+                {{$destination->risk_title1}}</p>
                 <div class="mb-2 gga_border"></div>
-                <p class="text-sm">{{$time->risk_content1}}</p>
+                <p class="text-sm">{{$destination->risk_content1}}</p>
 
-                @if($time->risk_img1 ==! NULL)
+                @if($destination->risk_img1 ==! NULL)
                 <div class="riskImg_container">
                   @if(app('env')=='local')
-                  <img src=" {{ asset("storage/".$time->risk_img1) }}" width="25%">
+                  <img src=" {{ asset("storage/".$destination->risk_img1) }}" width="25%">
                   @endif
                   @if(app('env')=='production')
-                  <img src="{{ secure_asset("storage/".$time->risk_img1) }}" width="25%">
+                  <img src="{{ secure_asset("storage/".$destination->risk_img1) }}" width="25%">
                   @endif
                 </div>
                 @endif
               </div>
 
-              @if($time->risk_title2)
+              @if($destination->risk_title2)
               <div class="flex flex-col mb-8 text-gray-900">
                 <p class="mb-1 uppercase text-xl">
-                  {{$time->risk_title2}}</p>
+                  {{$destination->risk_title2}}</p>
                 <div class="mb-2 gga_border"></div>
-                <p class="text-sm">{{$time->risk_content2}}</p>
+                <p class="text-sm">{{$destination->risk_content2}}</p>
 
-                @if($time->risk_img2 ==! NULL)
+                @if($destination->risk_img2 ==! NULL)
                 <div class="riskImg_container">
                   @if(app('env')=='local')
-                  <img src="{{ asset("storage/".$time->risk_img2) }}" width="25%">
+                  <img src="{{ asset("storage/".$destination->risk_img2) }}" width="25%">
                   @endif
                   @if(app('env')=='production')
-                  <img src="{{ secure_asset("storage/".$time->risk_img2) }}" width="25%">
+                  <img src="{{ secure_asset("storage/".$destination->risk_img2) }}" width="25%">
                   @endif
                 </div>
                 @endif
@@ -51,20 +51,20 @@
               @endif
 
 
-              @if($time->risk_title3)
+              @if($destination->risk_title3)
               <div class="flex flex-col mb-4 text-gray-900">
                 <p class="mb-1 uppercase text-xl">
-                  {{$time->risk_title3}}</p>
+                  {{$destination->risk_title3}}</p>
                 <div class="mb-2 gga_border"></div>
-                <p class="text-sm">{{$time->risk_content3}}</p>
+                <p class="text-sm">{{$destination->risk_content3}}</p>
 
-                @if($time->risk_img3 ==! NULL)
+                @if($destination->risk_img3 ==! NULL)
                 <div class="riskImg_container">
                   @if(app('env')=='local')
-                  <img src="{{ asset("storage/".$time->risk_img3) }}" width="25%">
+                  <img src="{{ asset("storage/".$destination->risk_img3) }}" width="25%">
                   @endif
                   @if(app('env')=='production')
-                  <img src="{{ secure_asset("storage/".$time->risk_img3) }}" width="25%">
+                  <img src="{{ secure_asset("storage/".$destination->risk_img3) }}" width="25%">
                   @endif
                 </div>
                 @endif

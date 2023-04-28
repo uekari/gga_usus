@@ -15,14 +15,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('time_treatment', function (Blueprint $table) {
-            $table->unsignedBigInteger('time_id');
+        Schema::create('destination_treatment', function (Blueprint $table) {
+            $table->unsignedBigInteger('destination_id');
             $table->unsignedBigInteger('treatment_id');
-            $table->primary(['time_id', 'treatment_id']);
+            $table->primary(['destination_id', 'treatment_id']);
 
 
         // 外部キー制約
-        $table->foreign('time_id')->references('id')->on('times')->onDelete('cascade');
+        $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade');
         $table->foreign('treatment_id')->references('id')->on('treatments')->onDelete('cascade');
 
         });
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('time_treatment');
+        Schema::dropIfExists('destination_treatment');
     }
 };

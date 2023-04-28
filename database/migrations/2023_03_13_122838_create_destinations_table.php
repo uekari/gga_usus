@@ -15,11 +15,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('times', function (Blueprint $table) {
+        Schema::create('destinations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('schedule_id')->constrained();
             $table->time('time');
             $table->string('content');
+            $table->string('address')->nullable();
             $table->string('url')->nullable();
             $table->boolean('is_move')->default(0);
             $table->string('risk_title1')->nullable();
@@ -42,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('times');
+        Schema::dropIfExists('destinations');
     }
 };
