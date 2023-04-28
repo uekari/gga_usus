@@ -72,20 +72,6 @@
             </div>
           </div>
 
-
-          <div class="flex">
-            <div class="w-1/5">
-              <p class="py-5">移動</p>
-            </div>
-            <div class=" w-4/5">
-              @if($destination->is_move == "0")
-              <p class="py-5">移動あり</p>
-              @elseif($destination->is_move == "1")
-              <p class="py-5">移動なし</p>
-              @endif
-            </div>
-          </div>
-
           <div class="flex">
             <div class="w-1/5">
               <p class="py-5">リスクの情報</p>

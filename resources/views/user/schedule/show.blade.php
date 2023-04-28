@@ -28,7 +28,7 @@
                     <p class="px-3">{{ substr($destination->time, 0, 5) }}</p>
                     <p class="text-lg">{{ $destination->content }}</p>
                   </div>
-                  @if ($destination->url)
+                  @if ($destination->address)
                     <div class="flex justify-center items-center px-3">
                       <a href="{{ $destination->url }}" target='_blank'>
                         <div class="w-3 h-3">
@@ -44,7 +44,8 @@
                 </div>
 
                 {{-- リストの下に表示する情報 --}}
-                <div class="py-8 pt-0 ml-4 pl-4 {{ $destination->is_move == 0 ? "move_border " : "" }}" >
+                {{-- ($loop->index < count($schedule->destinations) - 1 && $schedule->destinations[$loop->index + 1]->address) 次の行き先に住所が設定されていたら移動にする。 --}}
+                <div class="py-8 pt-0 ml-4 pl-4 {{ ($loop->index < count($schedule->destinations) - 1 && $schedule->destinations[$loop->index + 1]->address) ? "move_border " : "" }}" >
                   {{-- 注意事項 --}}
                   @if (count($destination->risks)>0)
                     <div class="w-full mb-1">
@@ -75,7 +76,7 @@
                   @endif
 
                   {{-- 移動あり --}}
-                @if ($destination->is_move == 0)
+                @if (($loop->index < count($schedule->destinations) - 1 && $schedule->destinations[$loop->index + 1]->address) )
                       <p class="py-8 pb-1 text-sm">移動あり</p>
                 @endif
 

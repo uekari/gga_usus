@@ -53,18 +53,6 @@
             </div>
 
 
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="time">移動</label>
-              <div class="form-group row">
-                <div class="col-md-6">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input mr-2" type="radio" name="is_move" id="is_move1" value="0" checked>あり
-                    <input class="form-check-input mr-2" type="radio" name="is_move" id="is_move2" value="1">なし
-                  </div>
-                </div>
-              </div>
-            </div>
-
 
             <div class="flex items-center mb-4 text-gray-900">
               <label class="w-40" for="risk">リスク情報の登録&thinsp;①</label>

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('content');
             $table->string('address')->nullable();
             $table->string('url')->nullable();
-            $table->boolean('is_move')->default(0);
             $table->string('risk_title1')->nullable();
             $table->string('risk_content1')->nullable();
             $table->string('risk_img1',100)->nullable();

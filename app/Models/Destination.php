@@ -18,9 +18,6 @@ class Destination extends Model
         'updated_at',
 
     ];
-    protected $casts = [
-    'is_move' => 'boolean',
-    ];
 
     protected $table = 'destinations';
 

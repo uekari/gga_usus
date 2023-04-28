@@ -43,7 +43,6 @@ class DestinationController extends Controller
         $destination->time = $request->time;
         $destination->content = $request->content;
         $destination->url = $request->url;
-        $destination->is_move = $request->is_move;
         $destination->risk_title1 = $request->risk_title1;
         $destination->risk_content1 = $request->risk_content1;
 
@@ -113,7 +112,6 @@ class DestinationController extends Controller
         $destination->time = $request->input('time');
         $destination->address = $request->input('address');
         $destination->url = $request->input('url');
-        $destination->is_move = $request->input('is_move');
         $destination->risk_title1 = $request->input('risk_title1');
         $destination->risk_content1 = $request->input('risk_content1');
         $destination->risk_title2 = $request->input('risk_title2');
