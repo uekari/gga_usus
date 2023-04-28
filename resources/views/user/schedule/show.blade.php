@@ -30,7 +30,9 @@
                   </div>
                   @if ($destination->address)
                     <div class="flex justify-center items-center px-3">
-                      <a href="{{ $destination->url }}" target='_blank'>
+                      {{-- 住所urlは住所指定できない地点にいくかもしれないから一応db上残しておく。 --}}
+                      {{-- <a href="{{ $destination->url }}" target='_blank'> --}}
+                      <a href="https://www.google.co.jp/maps/place/{{$hospital->address}}" target='_blank'>
                         <div class="w-3 h-3">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                             <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
