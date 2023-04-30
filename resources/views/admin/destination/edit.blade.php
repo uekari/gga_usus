@@ -50,88 +50,62 @@
               <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="address"
                 id="address" value="{{ $destination->address }}">
             </div>
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="risk_title1">リスク情報の登録&thinsp;①</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title1"
-                id="risk_title1" value="{{ $destination->risk_title1 }}">
-            </div>
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40"> </label>
-              <textarea name="risk_content1" id="risk_content1" cols="30" rows="5"
-                class="flex-auto border border-1 border-gray-300 py-2 px-3">{{ old('risk_content1', $destination->risk_content1) }}</textarea>
-            </div>
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="risk_img1">リスク情報の画像</label>
-              @if ($destination->risk_img1 !== '')
-                @if (app('env') == 'local')
-                  <img src="{{ asset('storage/' . $destination->risk_img1) }}" width="25%">
-                @endif
-                @if (app('env') == 'production')
-                  <img src="{{ secure_asset('storage/' . $destination->risk_img1) }}" width="25%">
-                @endif
-              @else
-                <p>画像がありません</p>
-              @endif
-              <input type="file" id="risk_img1" name="risk_img1">
+            <div id="risk_area">
+              <div>
+                @foreach ($risks as $risk)
+                  <div class="flex items-center mb-8 text-gray-900">
+                    <label class="w-40" for="risk_title{{ $loop->iteration }}">リスク情報の登録</label>
+                    <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text"
+                      name="risk_title[]" id="risk_title{{ $loop->iteration }}" value="{{ $risk->title }}">
+                  </div>
+                  <div class="flex items-center mb-8 text-gray-900">
+                    <label class="w-40" for="risk_content{{ $loop->iteration }}"> </label>
+                    <textarea name="risk_content[]" id="risk_content{{ $loop->iteration }}" cols="30" rows="5"
+                      class="flex-auto border border-1 border-gray-300 py-2 px-3">{{ old('risk_content', $risk->content) }}</textarea>
+                  </div>
+                @endforeach
+              </div>
             </div>
 
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="risk_title2">リスク情報の登録&thinsp;②</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title2"
-                id="risk_title2" value="{{ $destination->risk_title2 }}">
+            <div id="add_risk" class="flex  justify-center items-center mb-12">
+              <p class=" bg-black text-white  py-2 px-4">+ リスクの入力項目追加</p>
             </div>
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40"></label>
-              <textarea name="risk_content2" id="risk_content2" cols="30" rows="5"
-                class="flex-auto border border-1 border-gray-300 py-2 px-3">{{ old('risk_content2', $destination->risk_content2) }}</textarea>
 
-            </div>
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="risk_img2">リスク情報の画像</label>
-              @if ($destination->risk_img2 !== '')
-                @if (app('env') == 'local')
-                  <img src="{{ asset('storage/' . $destination->risk_img2) }}" width="25%">
-                @endif
-                @if (app('env') == 'production')
-                  <img src="{{ secure_asset('storage/' . $destination->risk_img2) }}" width="25%">
-                @endif
-              @else
-                <p>画像がありません</p>
-              @endif
-              <input type="file" id="risk_img2" name="risk_img2">
-            </div>
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="risk_title3">リスク情報の登録&thinsp;③</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title3"
-                id="risk_title3" value="{{ $destination->risk_title3 }}">
-            </div>
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40"></label>
-              <textarea name="risk_content3" id="risk_content3" cols="30" rows="5"
-                class="flex-auto border border-1 border-gray-300 py-2 px-3">{{ old('risk_content3', $destination->risk_content3) }}</textarea>
-            </div>
-            <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="risk_img3">リスク情報の画像</label>
-              @if ($destination->risk_img3 !== '')
-                @if (app('env') == 'local')
-                  <img src="{{ asset('storage/' . $destination->risk_img3) }}" width="25%">
-                @endif
-                @if (app('env') == 'production')
-                  <img src="{{ secure_asset('storage/' . $destination->risk_img3) }}" width="25%">
-                @endif
-              @else
-                <p>画像がありません</p>
-              @endif
-              <input type="file" id="risk_img3" name="risk_img3">
-            </div>
             <div class="text-center">
               <button type=" submit"
                 class="pt-2.5 pb-2 px-12 text-base border border-1 border-gray-800 rounded-md ">編集を完了する</button>
             </div>
+          </form>
         </div>
-        </form>
       </div>
     </div>
   </div>
-  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    let riskCounter = {{count($risks)}};
+
+    const addRiskElement = () => {
+      let element = `
+        <div>
+          <div class="flex items-center mb-8 text-gray-900">
+            <label class="w-40" for="risk_title${riskCounter}">リスク情報の登録</label>
+            <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title[]"
+              id="risk_title${riskCounter}" value="">
+          </div>
+          <div class="flex items-center mb-8 text-gray-900">
+            <label class="w-40" for="risk_content${riskCounter}"> </label>
+            <textarea name="risk_content[]" id="risk_content${riskCounter}" cols="30" rows="5"
+              class="flex-auto border border-1 border-gray-300 py-2 px-3"></textarea>
+          </div>
+          `
+
+      $("#risk_area").append(element);
+
+    }
+    $("#add_risk").on("click", function() {
+      addRiskElement();
+    })
+  </script>
 </x-app-layout>
