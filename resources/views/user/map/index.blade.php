@@ -76,6 +76,7 @@ geocoder.geocode({ 'address': origin }, function (results, status) {
                             center: center,
                             zoom: 14
                         });
+                        map.fitBounds(bounds);
                         var routeOptions = {
                             path: [],
                             geodesic: true,
@@ -111,4 +112,3 @@ geocoder.geocode({ 'address': origin }, function (results, status) {
 </script>
 
 </x-app-layout>
-
