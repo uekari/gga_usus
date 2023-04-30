@@ -1,5 +1,11 @@
 <x-app-layout>
   <div id="map"></div>
+
+  <!-- Google Maps JavaScript APIの読み込み -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA986Z_pTt3rUAU6K64WGcIyPvAMtzhyeU"></script>
+<!-- 地図を表示する要素 -->
+<div id="map" style="height: 500px;"></div>
+
   {{-- style --}}
   <style>
   /* スマホ */
@@ -18,82 +24,91 @@
   }
   </style>
 
-  {{-- script --}}
-  {{-- google API --}}
-  <script src="https://maps.google.com/maps/api/js?key=AIzaSyA986Z_pTt3rUAU6K64WGcIyPvAMtzhyeU&language=ja" async defer></script>
-
-
-  <script>
-
-
-  // DBから目的地を取得
-  let waypointsArray = [];
+<script>
+  let waypoints = [];
   @foreach($schedule -> destinations as $destination)
   @if($destination -> address)
-  waypointsArray.push({
-    location: '{{ $destination->address }}',
+  waypoints.push({
+    location: '{{$destination -> address}}',
   });
-  console.log('{{ $destination->address }}');
-  @endif
-  @endforeach
+  console.log('{{$destination -> address}}');
+  @endif;
+  @endforeach;
 
-  // ルート検索の条件
-  var routePoint = {
-    origin: waypointsArray.shift().location, // 最初の地点を取り出す
-    destination: waypointsArray.pop().location, // 最後の地点を取り出す
-    waypoints: waypointsArray,
-    travelMode: google.maps.DirectionsTravelMode.DRIVING, // 交通手段(WALKING, DRIVINGの場合は車)
-  };
 
-  // マップの生成
-  var map = new google.maps.Map(document.getElementById("map"), {
-    center: new google.maps.LatLng(35.681382, 139.766084), // マップの中心
-    zoom: 7, // ズームレベル
-    disableDefaultUI: true,
-    gestureHandling: "greedy",
-  });
+    // ランダムな2点を設定
+    var origin = waypoints.shift().location;
+    var destination = waypoints.pop().location;
+// Google Maps Geocoding APIを使用して、住所から緯度経度を取得
+var geocoder = new google.maps.Geocoder();
+geocoder.geocode({ 'address': origin }, function (results, status) {
+    if (status == 'OK') {
+        var origin_lat = results[0].geometry.location.lat();
+        var origin_lng = results[0].geometry.location.lng();
+        geocoder.geocode({ 'address': destination }, function (results, status) {
+            if (status == 'OK') {
+                var destination_lat = results[0].geometry.location.lat();
+                var destination_lng = results[0].geometry.location.lng();
+                // Google Maps Directions APIを使用して、2点間のルートを取得
+                var directionsService = new google.maps.DirectionsService();
+                var request = {
+                    origin: { lat: origin_lat, lng: origin_lng },
+                    destination: { lat: destination_lat, lng: destination_lng },
+                    waypoints: waypoints,
+                    optimizeWaypoints: true,
+                    travelMode: 'DRIVING'
+                };
+                directionsService.route(request, function (result, status) {
+                    if (status == 'OK') {
+                        var route = result.routes[0];
+                        // 地図の中心を決定するために、経路上の座標を取得
+                        var bounds = new google.maps.LatLngBounds();
+                        route.legs.forEach(function (leg) {
+                            leg.steps.forEach(function (step) {
+                                step.path.forEach(function (path) {
+                                    bounds.extend(path);
+                                });
+                            });
+                        });
+                        var center = bounds.getCenter();
+                        // Google Maps JavaScript APIを使用して、地図上にルートを表示
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            center: center,
+                            zoom: 14
+                        });
+                        var routeOptions = {
+                            path: [],
+                            geodesic: true,
+                            strokeColor: "#FF0000",
+                            strokeOpacity: 1.0,
+                            strokeWeight: 2
+                        };
+                        // ルートの座標を取得して、表示オプションに追加
+                        for (var i = 0; i < route.legs.length; i++) {
+                            var leg = route.legs[i];
+                            for (var j = 0; j < leg.steps.length; j++) {
+                                var step = leg.steps[j];
+                                for (var k = 0; k < step.path.length; k++) {
+                                var point = step.path[k];
+                                routeOptions.path.push(point);
+                                }
+                              }
+                            }
+                        var routePath = new google.maps.Polyline(routeOptions);
+                          routePath.setMap(map);
+                        } else {
+                          console.error("Directions request failed due to " + status);
+                        }
+                      });
+                        } else {
+                          console.error("Geocode was not successful for the following reason: " + status);
+                        }
+                      });
+                        } else {
+                          console.error("Geocode was not successful for the following reason: " + status);
+                        }
+                      });
+</script>
 
-  const directionObject = new google.maps.DirectionsService(); // ルート検索オブジェクト
-  const routeMapObject = new google.maps.DirectionsRenderer({ // ルート描画オブジェクト
-    map: map, // 描画先の地図
-    // preserveViewport: true, // 描画後に中心点をずらさない
-  });
-  // ルート検索
-  directionObject.route(routePoint, function(result, status) {
-    // OKの場合ルート描画
-    if (status == google.maps.DirectionsStatus.OK) {
-      routeMapObject.setDirections(result);
-    }
-  });
-
-  // 現在地取得
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-        var marker = new google.maps.Marker({
-          position: pos, //マーカーの位置（必須）
-          map: map, //マーカーを表示する地図
-          icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 10,
-            fillColor: "blue",
-            fillOpacity: 1,
-            strokeColor: "white",
-            strokeWeight: 4,
-          },
-        });
-      },
-      (error) => {
-        alert('位置情報の取得に対応していません。：' + error.code);
-      }
-    );
-  } else {
-    // Browser doesn't support Geolocation
-    alert('位置情報の取得に対応していません。：');
-  }
-  </script>
 </x-app-layout>
+
