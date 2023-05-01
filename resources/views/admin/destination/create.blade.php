@@ -24,13 +24,13 @@
             @csrf
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="content">行動</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="content"
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 rounded" type="text" name="content"
                 id="content">
             </div>
 
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="time">時間</label>
-              <input class="w-80 border border-1 border-gray-300 py-2 px-3" type="time" name="time" id="time"
+              <input class="w-80 border border-1 border-gray-300 py-2 px-3 rounded" type="time" name="time" id="time"
                 list="data-list">
               <datalist id="data-list">
                 <option value="08:00"></option>
@@ -48,7 +48,7 @@
 
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="address">住所</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="address"
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 rounded" type="text" name="address"
                 id="address">
             </div>
 
@@ -56,17 +56,17 @@
               <div>
                 <div class="flex items-center mb-4 text-gray-900">
                   <label class="w-40" for="risk_title1">リスク情報の登録</label>
-                  <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type=" text" name="risk_title[]"
+                  <input class="flex-auto border border-1 border-gray-300 py-2 px-3 rounded" type=" text" name="risk_title[]"
                     id="risk_title1">
                 </div>
                 <div class="flex items-center mb-4 text-gray-900">
                   <label class="w-40" for="risk_content1"> </label>
                   <textarea name="risk_content[]" id="risk_content1" cols="30" rows="5"
-                    class="flex-auto border border-1 border-gray-300 py-2 px-3"></textarea>
+                    class="flex-auto border border-1 border-gray-300 py-2 px-3 rounded"></textarea>
                 </div>
 
                 <div>
-                  <div class="flex items-center mb-8 text-gray-900">
+                  <div class="flex items-center mb-4 text-gray-900">
                     <div class="w-40"></div>
                     <label
                       class="bg-gray-200 p-2 rounded outline-gray-400 cursor-pointer border border-1 border-gray-300"
@@ -82,8 +82,11 @@
               </div>
             </div>
 
-            <div id="add_risk" class="flex  justify-center items-center mb-12" onclick="addRiskElement();">
-              <p class=" bg-black text-white  py-2 px-4">+ リスクの入力項目追加</p>
+            <div class="flex mb-12">
+              <div class="w-40"></div>
+              <div id="add_risk" onclick="addRiskElement();">
+                <p class=" bg-black text-white  py-2 px-4">+ リスクの入力項目追加</p>
+              </div>
             </div>
 
             <div class="text-center">

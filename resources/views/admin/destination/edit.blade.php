@@ -25,12 +25,12 @@
             @method('put')
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="item">行動</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="content"
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 rounded" type="text" name="content"
                 id="content" value="{{ $destination->content }}">
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="time">時間</label>
-              <input class=" border border-1 border-gray-300 py-2 px-3" type="time" name="time" id="time"
+              <input class=" border border-1 border-gray-300 py-2 px-3 rounded" type="time" name="time" id="time"
                 list="data-list" value="{{ $destination->time }}">
               <datalist id="data-list">
                 <option value="08:00"></option>
@@ -47,7 +47,7 @@
             </div>
             <div class="flex items-center mb-8 text-gray-900">
               <label class="w-40" for="address">住所</label>
-              <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="address"
+              <input class="flex-auto border border-1 border-gray-300 py-2 px-3 rounded" type="text" name="address"
                 id="address" value="{{ $destination->address }}">
             </div>
             <div id="risk_area">
@@ -55,13 +55,13 @@
                 @foreach ($risks as $risk)
                   <div class="flex items-center mb-8 text-gray-900">
                     <label class="w-40" for="risk_title{{ $loop->iteration }}">リスク情報の登録</label>
-                    <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text"
+                    <input class="flex-auto border border-1 border-gray-300 py-2 px-3 rounded" type="text"
                       name="risk_title[]" id="risk_title{{ $loop->iteration }}" value="{{ $risk->title }}">
                   </div>
                   <div class="flex items-center mb-8 text-gray-900">
                     <label class="w-40" for="risk_content{{ $loop->iteration }}"> </label>
                     <textarea name="risk_content[]" id="risk_content{{ $loop->iteration }}" cols="30" rows="5"
-                      class="flex-auto border border-1 border-gray-300 py-2 px-3">{{ old('risk_content', $risk->content) }}</textarea>
+                      class="flex-auto border border-1 border-gray-300 py-2 px-3 rounded">{{ old('risk_content', $risk->content) }}</textarea>
                   </div>
                   <div class="flex mb-8 text-gray-900">
                     <div class="w-40"></div>
@@ -108,7 +108,7 @@
         <div>
           <div class="flex items-center mb-8 text-gray-900">
             <label class="w-40" for="risk_title${riskCounter}">リスク情報の登録</label>
-            <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type="text" name="risk_title[]"
+            <input class="flex-auto border border-1 border-gray-300 py-2 px-3 rounded" type="text" name="risk_title[]"
               id="risk_title${riskCounter}" value="">
           </div>
           <div class="flex items-center mb-8 text-gray-900">
