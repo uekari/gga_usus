@@ -1,5 +1,3 @@
-<!-- タイムスケジュールテーブル -->
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -15,24 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('destinations', function (Blueprint $table) {
+        Schema::create('risk_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('schedule_id')->constrained();
-            $table->time('time');
-            $table->string('content');
-            $table->string('address')->nullable();
-            $table->string('url')->nullable();
+            $table->foreignId('risk_id')->constrained();
+            $table->string("img_path");
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
+     *  
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('destinations');
+        Schema::dropIfExists('risk_images');
     }
 };

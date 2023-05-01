@@ -7,6 +7,7 @@ use Illuminate\Http\Request; //インスタンスクラスを読み込み
 use Validator;
 use App\Models\Destination;
 use App\Models\Risk;
+use App\Models\RiskImage;
 use App\Models\Schedule;
 use App\Models\Treatment;
 use Illuminate\Support\Facades\Storage;
@@ -46,41 +47,31 @@ class DestinationController extends Controller
         $destination->content = $request->content;
         $destination->time = $request->time;
         $destination->address = $request->address;
-        // $destination->url = $request->url;
-        // $destination->risk_title1 = $request->risk_title1;
-        // $destination->risk_content1 = $request->risk_content1;
-
-        // if($request->hasFile('risk_img1')) {
-        //     $img1 = $request->file('risk_img1');
-        //     $path = $img1->store('risk_img1','public');
-        //     $destination->risk_img1 = $path;
-        // }
-        // $destination->risk_title2 = $request->risk_title2;
-        // $destination->risk_content2 = $request->risk_content2;
-        // if($request->hasFile('risk_img2')) {
-        //     $img2 = $request->file('risk_img2');
-        //     $path = $img2->store('risk_img2','public');
-        //     $destination->risk_img2 = $path;
-        // }
-        // $destination->risk_title3 = $request->risk_title3;
-        // $destination->risk_content3 = $request->risk_content3;
-        // if($request->hasFile('risk_img3')) {
-        //     $img3 = $request->file('risk_img3');
-        //     $path = $img3->store('risk_img3','public');
-        //     $destination->risk_img3 = $path;
-        // }
         $destination->save();
 
         // riskの登録
         $riskTitles = $request->input('risk_title');
         $riskContents = $request->input('risk_content');
+
         for ($i = 0; $i < count($riskTitles); $i++) {
-            if (!empty($riskTitles) || !empty($riskContents)) {
-                Risk::create([
+            if (!empty($riskTitles)) {
+                $risk = Risk::create([
                     'destination_id' => $destination->id,
                     'title' => $riskTitles[$i],
                     'content' => $riskContents[$i],
                 ]);
+            }
+            $risk_image = $request->file("risk" . $i + 1 . "_img");
+            if (!empty($risk_image)) {
+                for ($j = 0; $j < count($risk_image); $j++) {
+                    //画像をストレージに保存
+                    $path = $risk_image[$j]->store('risk_img', 'public');
+                    // DBにpathを保存
+                    RiskImage::create([
+                        'risk_id' => $risk->id,
+                        'img_path' => $path,
+                    ]);
+                }
             }
         }
 
@@ -110,7 +101,6 @@ class DestinationController extends Controller
     public function update(Request $request,  $id)
     {
 
-
         //バリデーション
         $validator = Validator::make($request->all(), [
             'content' => 'required|max:255',
@@ -129,13 +119,6 @@ class DestinationController extends Controller
         $destination->content = $request->input('content');
         $destination->time = $request->input('time');
         $destination->address = $request->input('address');
-        // $destination->url = $request->input('url');
-        // $destination->risk_title1 = $request->input('risk_title1');
-        // $destination->risk_content1 = $request->input('risk_content1');
-        // $destination->risk_title2 = $request->input('risk_title2');
-        // $destination->risk_content2 = $request->input('risk_content2');
-        // $destination->risk_title3 = $request->input('risk_title3');
-        // $destination->risk_content3 = $request->input('risk_content3');
         $destination->save();
 
 
@@ -155,43 +138,6 @@ class DestinationController extends Controller
                 ]);
             }
         }
-
-        //画像更新処理
-        // if ($request->hasFile('risk_img1')) {
-        //     $old_path = $destination->risk_img1;
-        //     if ($old_path) {
-        //         // 古い画像がある場合は削除する
-        //         Storage::disk('public')->delete($old_path);
-        //     }
-        //     // 新しい画像を保存する
-        //     $path = $request->file('risk_img1')->store('risk_img1', 'public');
-        //     $destination->risk_img1 = $path;
-        //     $destination->save();
-        // }
-
-        // if ($request->hasFile('risk_img2')) {
-        //     $old_path = $destination->risk_img2;
-        //     if ($old_path) {
-        //         // 古い画像がある場合は削除する
-        //         Storage::disk('public')->delete($old_path);
-        //     }
-        //     // 新しい画像を保存する
-        //     $path = $request->file('risk_img2')->store('risk_img2', 'public');
-        //     $destination->risk_img2 = $path;
-        //     $destination->save();
-        // }
-
-        // if ($request->hasFile('risk_img3')) {
-        //     $old_path = $destination->risk_img3;
-        //     if ($old_path) {
-        //         // 古い画像がある場合は削除する
-        //         Storage::disk('public')->delete($old_path);
-        //     }
-        //     // 新しい画像を保存する
-        //     $path = $request->file('risk_img3')->store('risk_img3', 'public');
-        //     $destination->risk_img3 = $path;
-        //     $destination->save();
-        // }
 
         return redirect()->route('admin.destination.show', $destination->id);
     }

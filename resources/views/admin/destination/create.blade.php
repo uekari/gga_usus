@@ -23,7 +23,7 @@
             enctype="multipart/form-data">
             @csrf
             <div class="flex items-center mb-8 text-gray-900">
-              <label class="w-40" for="content" >行動</label>
+              <label class="w-40" for="content">行動</label>
               <input class="flex-auto border border-1 border-gray-300 py-2 px-3 " type="text" name="content"
                 id="content">
             </div>
@@ -53,40 +53,53 @@
             </div>
 
             <div id="risk_area">
-              <div class="flex items-center mb-4 text-gray-900">
-                <label class="w-40" for="risk_title1">リスク情報の登録</label>
-                <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type=" text" name="risk_title[]"
-                  id="risk_title1">
-              </div>
-              <div class="flex items-center mb-4 text-gray-900">
-                <label class="w-40" for="risk_content1"> </label>
-                <textarea name="risk_content[]" id="risk_content1" cols="30" rows="5"
-                  class="flex-auto border border-1 border-gray-300 py-2 px-3"></textarea>
-              </div>
-              <div class="flex items-center mb-8 text-gray-900">
-                <label class="w-40">リスク情報の画像</label>
-                <input type="file" id="risk_img1" name="risk_img[]">
+              <div>
+                <div class="flex items-center mb-4 text-gray-900">
+                  <label class="w-40" for="risk_title1">リスク情報の登録</label>
+                  <input class="flex-auto border border-1 border-gray-300 py-2 px-3" type=" text" name="risk_title[]"
+                    id="risk_title1">
+                </div>
+                <div class="flex items-center mb-4 text-gray-900">
+                  <label class="w-40" for="risk_content1"> </label>
+                  <textarea name="risk_content[]" id="risk_content1" cols="30" rows="5"
+                    class="flex-auto border border-1 border-gray-300 py-2 px-3"></textarea>
+                </div>
+
+                <div>
+                  <div class="flex items-center mb-8 text-gray-900">
+                    <div class="w-40"></div>
+                    <label
+                      class="bg-gray-200 p-2 rounded outline-gray-400 cursor-pointer border border-1 border-gray-300"
+                      for="risk1_img">ファイルを選択</label>
+                    <input class="hidden" type="file" id="risk1_img" multiple name="risk1_img[]"
+                      onchange="previewImage(this,1);">
+                  </div>
+                  <div class="flex items-center mb-8 text-gray-900">
+                    <div class="w-40"></div>
+                    <div id="preview1" class="hidden grid-cols-2 gap-3"></div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div id="add_risk" class="flex  justify-center items-center mb-12">
+            <div id="add_risk" class="flex  justify-center items-center mb-12" onclick="addRiskElement();">
               <p class=" bg-black text-white  py-2 px-4">+ リスクの入力項目追加</p>
             </div>
 
             <div class="text-center">
-              <button type=" submit"
+              <button type="submit"
                 class="pt-2.5 pb-2 px-12 text-base border border-1 border-gray-800 rounded-md ">登録を完了する</button>
             </div>
+          </form>
         </div>
-        </form>
       </div>
     </div>
   </div>
   </div>
+
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script>
     let riskCounter = 2;
-
     const addRiskElement = () => {
       let element = `
         <div>
@@ -100,14 +113,58 @@
             <textarea name="risk_content[]" id="risk_content${riskCounter}" cols="30" rows="5"
               class="flex-auto border border-1 border-gray-300 py-2 px-3"></textarea>
           </div>
+          <div>
+            <div class="flex items-center mb-8 text-gray-900">
+              <div class="w-40"></div>
+              <label
+                class="bg-gray-200 p-2 rounded outline-gray-400 cursor-pointer border border-1 border-gray-300"
+                for="risk${riskCounter}_img">ファイルを選択</label>
+              <input class="hidden" type="file" id="risk${riskCounter}_img" multiple name="risk${riskCounter}_img[]"
+                onchange="previewImage(this,${riskCounter});">
+            </div>
+            <div class="flex items-center mb-8 text-gray-900">
+              <div class="w-40"></div>
+              <div id="preview${riskCounter}" class="hidden grid-cols-2 gap-3"></div>
+            </div>
+          </div>
         </div>
-      `
+        `;
       $("#risk_area").append(element);
-
+      riskCounter++;
     }
-    riskCounter++;
-    $("#add_risk").on("click", function() {
-      addRiskElement();
-    })
+
+    function previewImage(input, preview_id) {
+      const preview = $(`#preview${preview_id}`);
+
+      if (input.files) {
+        const fileList = input.files;
+
+        // 既存のプレビュー画像を削除
+        preview.html("");
+
+        // ファイルリスト内のすべての画像をプレビュー表示
+        for (let i = 0; i < fileList.length; i++) {
+          const file = fileList[i];
+          let imgElement;
+          console.log(file);
+          if (file.type.startsWith("image/")) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+              imgElement = `<img class="object-contain h-32 w-full p-2" src="${e.target.result}"/>`
+              preview.append(imgElement);
+            };
+            reader.readAsDataURL(file);
+
+
+          }
+        }
+        preview.removeClass("hidden");
+        preview.addClass("grid");
+      } else {
+        preview.removeClass("grid");
+        preview.addClass("hidden");
+      }
+    }
   </script>
 </x-app-layout>
