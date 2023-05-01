@@ -63,6 +63,23 @@
                     <textarea name="risk_content[]" id="risk_content{{ $loop->iteration }}" cols="30" rows="5"
                       class="flex-auto border border-1 border-gray-300 py-2 px-3">{{ old('risk_content', $risk->content) }}</textarea>
                   </div>
+                  <div class="flex mb-8 text-gray-900">
+                    <div class="w-40"></div>
+                    <div class="grid grid-cols-3 gap-3">
+                      @foreach ($risk->images as $image)
+                        @if ($image == !null)
+                          @if (app('env') == 'local')
+                            <img class="object-contain h-32 w-full m-2"
+                              src="{{ asset('storage/' . $image->img_path) }}">
+                          @endif
+                          @if (app('env') == 'production')
+                            <img class="object-contain h-32 w-full m-2"
+                              src="{{ secure_asset('storage/' . $image->img_path) }}">
+                          @endif
+                        @endif
+                      @endforeach
+                    </div>
+                  </div>
                 @endforeach
               </div>
             </div>
@@ -84,7 +101,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script>
-    let riskCounter = {{count($risks)}};
+    let riskCounter = {{ count($risks) }};
 
     const addRiskElement = () => {
       let element = `
