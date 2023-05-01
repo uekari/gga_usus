@@ -84,7 +84,7 @@ class DestinationController extends Controller
     {
 
         $destination = Destination::find($id);
-        $risks = Risk::where("destination_id", $id)->get();
+        $risks = Risk::where("destination_id", $id)->with("images")->get();
         return view('admin.destination.show', compact('destination', 'risks'));
     }
 

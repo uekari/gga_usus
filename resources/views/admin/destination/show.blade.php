@@ -55,6 +55,18 @@
                 <div class="mb-8">
                   <p class="mb-2">{{ $risk->title }}</p>
                   <p class="">{{ $risk->content }}</p>
+                  <div class="grid grid-cols-3 gap-3">
+                    @foreach ($risk->images as $image)
+                      @if ($image == !null)
+                        @if (app('env') == 'local')
+                          <img class="object-contain h-32 w-full m-2" src="{{ asset('storage/' . $image->img_path) }}">
+                        @endif
+                        @if (app('env') == 'production')
+                          <img class="object-contain h-32 w-full m-2" src="{{ secure_asset('storage/' . $image->img_path) }}">
+                        @endif
+                      @endif
+                    @endforeach
+                  </div>
                 </div>
               @endforeach
             </div>

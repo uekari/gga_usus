@@ -151,7 +151,7 @@
             const reader = new FileReader();
 
             reader.onload = function(e) {
-              imgElement = `<img class="object-contain h-32 w-full p-2" src="${e.target.result}"/>`
+              imgElement = `<img class="object-contain h-32 w-full m-2" src="${e.target.result}"/>`
               preview.append(imgElement);
             };
             reader.readAsDataURL(file);

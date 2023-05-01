@@ -18,37 +18,37 @@ class RiskImageSeeder extends Seeder
         DB::table('risk_images')->insert([
             [
                 'risk_id' => '1',
-                'img_path' => null,
+                'img_path' => 'risk_img/test.png',
                 'created_at' => Now(),
             ],
             [
                 'risk_id' => '1',
-                'img_path' => null,
+                'img_path' => 'risk_img/test.png',
                 'created_at' => Now(),
             ],
             [
                 'risk_id' => '1',
-                'img_path' => null,
+                'img_path' => 'risk_img/test.png',
                 'created_at' => Now(),
             ],
             [
                 'risk_id' => '2',
-                'img_path' => null,
+                'img_path' => 'risk_img/test.png',
                 'created_at' => Now(),
             ],
             [
                 'risk_id' => '2',
-                'img_path' => null,
+                'img_path' => 'risk_img/test.png',
                 'created_at' => Now(),
             ],
             [
                 'risk_id' => '3',
-                'img_path' => null,
+                'img_path' => 'risk_img/test.png',
                 'created_at' => Now(),
             ],
             [
                 'risk_id' => '3',
-                'img_path' => null,
+                'img_path' => 'risk_img/test.png',
                 'created_at' => Now(),
             ],
         ]);

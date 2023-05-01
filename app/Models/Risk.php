@@ -16,6 +16,11 @@ class Risk extends Model
 
     ];
 
+    public function images()
+    {
+        return $this->hasMany(RiskImage::class);
+    }
+
     public function destination()
     {
         return $this->belongsTo(Destination::class);
