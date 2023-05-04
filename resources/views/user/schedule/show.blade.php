@@ -24,9 +24,14 @@
               {{-- {{ddd($schedule->destinations)}} --}}
               {{-- 各目的地 --}}
               @foreach ($destinations as $destination)
-                <div class="flex  justify-between items-center mb-1 border border-1 border-gray-200 rounded">
+                @if ($loop->index < count($destinations) && $destinations[$loop->index]->address)
+                  <div class="border border-1 border-gray-200 rounded">
+                @endif
+                <div class="flex  justify-between items-center ">
                   <div class="py-2 flex justify-center items-center">
-                    <p class="px-3">{{ substr($destination->time, 0, 5) }}</p>
+                    <div class="w-[60px] flex justify-center items-center">
+                    <p>{{ substr($destination->time, 0, 5) }}</p>
+                    </div>
                     <p class="text-lg">{{ $destination->content }}</p>
                   </div>
 
@@ -35,7 +40,7 @@
                     <div class="flex justify-center items-center px-3">
                       {{-- 住所urlは住所指定できない地点にいくかもしれないから一応db上残しておく。 --}}
                       {{-- <a href="{{ $destination->url }}" target='_blank'> --}}
-                      <a href="https://www.google.co.jp/maps/place/{{$destination->address}}" target='_blank'>
+                      <a href="https://www.google.co.jp/maps/place/{{ $destination->address }}" target='_blank'>
                         <div class="w-3 h-3">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                             <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -46,13 +51,13 @@
                       </a>
                     </div>
                   @endif
-                </div>
 
+                </div>
                 {{-- リストの下に表示する情報 --}}
                 {{-- ($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address) 次の行き先に住所が設定されていたら移動にする。 --}}
-                <div class="py-8 pt-0 ml-4 pl-4 {{ ($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address) ? "move_border " : "" }}" >
+                <div class="ml-[60px] mb-3">
                   {{-- 注意事項 --}}
-                  @if (count($destination->risks)>0)
+                  @if (count($destination->risks) > 0)
                     <div class="w-full mb-1">
                       <a href="{{ route('user.destination.show', $destination->id) }}">
                         <div class="flex items-center text-sm">
@@ -80,18 +85,24 @@
                     </div>
                   @endif
 
-                  {{-- 移動あり --}}
-                @if (($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address) )
-                      <p class="py-8 pb-1 text-sm">移動あり</p>
-                @endif
-
+                  @if ($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address)
                 </div>
-
-              @endforeach
+              @endif
             </div>
+
+            <div class="ml-8 {{ $loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address ? 'move_border ' : '' }}">
+              {{-- 移動あり --}}
+              @if ($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address)
+                <p
+                  class="py-8 pl-4 text-sm ">
+                  移動あり</p>
+              @endif
+            </div>
+            @endforeach
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </x-app-layout>
