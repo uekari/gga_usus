@@ -36,8 +36,7 @@ class U_DestinationController extends Controller
         //     $query -> where('user_id',Auth::user()->id);
         //    }) ->find($id);
 
-        $risks = Risk::where("destination_id", $id)->get();
-        
+        $risks = Risk::where("destination_id", $id)->with("images")->get();
 
         //  dd($destination);
         return view('user.destination.show',
