@@ -10,15 +10,18 @@
           </div>
           <section class="text-gray-900 body-font">
             <p class="pr-4 text-3xl mb-10">  {{ __('特記事項・注意点 ') }}</p>
+
+            @foreach ($risks as $risk)
+            
             <div class="w-full mx-auto overflow-auto">
 
               <div class="flex flex-col mb-8 text-gray-900">
                 <p class="mb-1 uppercase text-xl">
-                {{$destination->risk_title1}}</p>
+                {{$risk->title}}</p>
                 <div class="mb-2 gga_border"></div>
-                <p class="text-sm">{{$destination->risk_content1}}</p>
+                <p class="text-sm">{{$risk->content}}</p>
 
-                @if($destination->risk_img1 ==! NULL)
+                {{-- @if($destination->risk_img1 ==! NULL)
                 <div class="riskImg_container">
                   @if(app('env')=='local')
                   <img src=" {{ asset("storage/".$destination->risk_img1) }}" width="25%">
@@ -27,51 +30,12 @@
                   <img src="{{ secure_asset("storage/".$destination->risk_img1) }}" width="25%">
                   @endif
                 </div>
-                @endif
+                @endif --}}
               </div>
-
-              @if($destination->risk_title2)
-              <div class="flex flex-col mb-8 text-gray-900">
-                <p class="mb-1 uppercase text-xl">
-                  {{$destination->risk_title2}}</p>
-                <div class="mb-2 gga_border"></div>
-                <p class="text-sm">{{$destination->risk_content2}}</p>
-
-                @if($destination->risk_img2 ==! NULL)
-                <div class="riskImg_container">
-                  @if(app('env')=='local')
-                  <img src="{{ asset("storage/".$destination->risk_img2) }}" width="25%">
-                  @endif
-                  @if(app('env')=='production')
-                  <img src="{{ secure_asset("storage/".$destination->risk_img2) }}" width="25%">
-                  @endif
-                </div>
-                @endif
-              </div>
-              @endif
-
-
-              @if($destination->risk_title3)
-              <div class="flex flex-col mb-4 text-gray-900">
-                <p class="mb-1 uppercase text-xl">
-                  {{$destination->risk_title3}}</p>
-                <div class="mb-2 gga_border"></div>
-                <p class="text-sm">{{$destination->risk_content3}}</p>
-
-                @if($destination->risk_img3 ==! NULL)
-                <div class="riskImg_container">
-                  @if(app('env')=='local')
-                  <img src="{{ asset("storage/".$destination->risk_img3) }}" width="25%">
-                  @endif
-                  @if(app('env')=='production')
-                  <img src="{{ secure_asset("storage/".$destination->risk_img3) }}" width="25%">
-                  @endif
-                </div>
-                @endif
-              </div>
-
-              @endif
             </div>
+
+            @endforeach
+
           </section>
         </div>
       </div>

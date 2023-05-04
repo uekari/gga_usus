@@ -25,13 +25,6 @@
             <div class=" flex items-center text-center">
               <div class="w-24 py-3 border border-1 border-gray-200">{{ substr($destination->time, 0, 5) }}</div>
               <div class="w-80 py-3 border border-1 border-gray-200 text-left pl-6">{{ $destination->content }}</div>
-              <div class="w-40 py-3 border border-1 border-gray-200">
-                @if($destination->is_move == "0")
-                <p>移動あり</p>
-                @elseif($destination->is_move == "1")
-                <p>移動なし</p>
-                @endif
-              </div>
               <div class="w-80 py-3 border border-1 border-gray-200 text-left pl-6">
                 <p>処置&nbsp;：&nbsp;
               @foreach ($destination -> treatments as $treatment)

@@ -9,6 +9,7 @@ use Validator;
 use App\Models\Destination; //Elquentエロクアント
 use App\Models\Schedule;
 use App\Models\Client;
+use App\Models\Risk;
 use App\Models\User;
 use Illuminate\Support\Facades\DB; //QueryBuilderクエリビルダ
 
@@ -31,13 +32,17 @@ class U_DestinationController extends Controller
         //これは、関係に制約を追加できる whereHas メソッドに渡されるクロージャーを使用して行われます。
         //最後に、クエリを実行し、結果の Destination モデル インスタンスを返します。
         //全体として、このコードはデータベースから特定の Destination モデル レコードを取得していますが、それは現在認証されているユーザーに属する Schedule モデルに関連付けられている場合のみです。
-        $destination = Destination::whereHas('schedule',function($query){
-        $query -> where('user_id',Auth::user()->id);
-       }) ->find($id);
+        //     $destination = Destination::whereHas('schedule',function($query){
+        //     $query -> where('user_id',Auth::user()->id);
+        //    }) ->find($id);
 
-    //  dd($destination);
+        $risks = Risk::where("destination_id", $id)->get();
+        
+
+        //  dd($destination);
         return view('user.destination.show',
-        compact('destination'));
+            compact('risks')
+        );
 
     }
 

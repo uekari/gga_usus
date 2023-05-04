@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Risk extends Model
+class RiskImage extends Model
 {
     use HasFactory;
+
 
     protected $guarded = [
         'id',
@@ -16,13 +17,8 @@ class Risk extends Model
 
     ];
 
-    public function images()
+    public function risk()
     {
-        return $this->hasMany(RiskImage::class);
-    }
-
-    public function destination()
-    {
-        return $this->belongsTo(Destination::class);
+        return $this->belongsTo(Risk::class);
     }
 }

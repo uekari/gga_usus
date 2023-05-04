@@ -18,9 +18,6 @@ class Destination extends Model
         'updated_at',
 
     ];
-    protected $casts = [
-    'is_move' => 'boolean',
-    ];
 
     protected $table = 'destinations';
 
@@ -35,10 +32,11 @@ class Destination extends Model
 
 
 
-//      public function risk()
-//     {
-//         return $this->hasMany(Risk::class);
-//     }
+    public function risks()
+    {
+        return $this->hasMany(Risk::class);
+    }
+    
    public function treatments() {
       return $this->belongsToMany(Treatment::class);
     }

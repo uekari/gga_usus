@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             ClientSeeder::class,
             ScheduleSeeder::class,
             DestinationSeeder::class,
+            RiskSeeder::class,
+            RiskImageSeeder::class,
             TreatmentSeeder::class,
             DestinationTreatmentSeeder::class,
             EmergencyhospitalSeeder::class,
