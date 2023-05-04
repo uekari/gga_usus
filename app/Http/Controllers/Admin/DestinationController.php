@@ -25,7 +25,7 @@ class DestinationController extends Controller
     public function index($schedule_id)
     {
         $schedule = Schedule::findOrFail($schedule_id);
-        $destinations = $schedule->destinations()->with('treatments')->get();
+        $destinations = $schedule->destinations()->with('treatments')->orderBy('time', 'asc')->get();
 
         return view(
             'admin.destination.index',

@@ -49,7 +49,7 @@
                 </div>
 
                 {{-- リストの下に表示する情報 --}}
-                {{-- ($loop->index < count($schedule->destinations) - 1 && $schedule->destinations[$loop->index + 1]->address) 次の行き先に住所が設定されていたら移動にする。 --}}
+                {{-- ($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address) 次の行き先に住所が設定されていたら移動にする。 --}}
                 <div class="py-8 pt-0 ml-4 pl-4 {{ ($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address) ? "move_border " : "" }}" >
                   {{-- 注意事項 --}}
                   @if (count($destination->risks)>0)
