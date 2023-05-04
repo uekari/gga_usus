@@ -36,12 +36,12 @@ class U_ScheduleController extends Controller
 
     public function show($id)
     {
-        $schedule = Schedule::with('destinations')->where('user_id',\Auth::user()->id)->find($id); //ログインしている情報のみ
+        $schedule = Schedule::where('user_id', \Auth::user()->id)->find($id); //ログインしている情報のみ
 
         $treatments = Treatment::where('client_id',$schedule->client_id)->get();
-        $destination = Destination::with('treatments')->find($id);
-        // dd($destination);
-        return view('user.schedule.show', compact('schedule','destination'));
+        $destinations = Destination::where('schedule_id', $id)->orderBy('time', 'asc')->get();
+        // dd($destinations);
+        return view('user.schedule.show', compact('schedule', 'destinations'));
     }
 
 

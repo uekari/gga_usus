@@ -21,13 +21,16 @@
                 <p class="pb-2 text-sm text-center">{{ date('Y/m/d', strtotime($schedule->date)) }}</p>
               </div>
 
+              {{-- {{ddd($schedule->destinations)}} --}}
               {{-- 各目的地 --}}
-              @foreach ($schedule->destinations as $destination)
+              @foreach ($destinations as $destination)
                 <div class="flex  justify-between items-center mb-1 border border-1 border-gray-200 rounded">
                   <div class="py-2 flex justify-center items-center">
                     <p class="px-3">{{ substr($destination->time, 0, 5) }}</p>
                     <p class="text-lg">{{ $destination->content }}</p>
                   </div>
+
+                  {{-- 住所があればアイコン表示 --}}
                   @if ($destination->address)
                     <div class="flex justify-center items-center px-3">
                       {{-- 住所urlは住所指定できない地点にいくかもしれないから一応db上残しておく。 --}}
@@ -47,7 +50,7 @@
 
                 {{-- リストの下に表示する情報 --}}
                 {{-- ($loop->index < count($schedule->destinations) - 1 && $schedule->destinations[$loop->index + 1]->address) 次の行き先に住所が設定されていたら移動にする。 --}}
-                <div class="py-8 pt-0 ml-4 pl-4 {{ ($loop->index < count($schedule->destinations) - 1 && $schedule->destinations[$loop->index + 1]->address) ? "move_border " : "" }}" >
+                <div class="py-8 pt-0 ml-4 pl-4 {{ ($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address) ? "move_border " : "" }}" >
                   {{-- 注意事項 --}}
                   @if (count($destination->risks)>0)
                     <div class="w-full mb-1">
@@ -78,7 +81,7 @@
                   @endif
 
                   {{-- 移動あり --}}
-                @if (($loop->index < count($schedule->destinations) - 1 && $schedule->destinations[$loop->index + 1]->address) )
+                @if (($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address) )
                       <p class="py-8 pb-1 text-sm">移動あり</p>
                 @endif
 
