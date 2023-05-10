@@ -4,21 +4,24 @@
   <!-- 地図を表示する要素 -->
 
   <section class="text-gray-900 body-font bg-appColor">
-    <p class="py-8 text-2xl text-center font-bold"> {{ __('地図 ') }}</p>
-    <div id="map"></div>
+    <p class="pt-4 pb-6 text-2xl text-center font-bold"> {{ __('地図 ') }}</p>
+    <div class="flex items-center justify-center min-h-full p-3">
+      <div id="map" class="rounded"></div>
+    </div>
   </section>
   {{-- style --}}
   <style>
     /* スマホ */
     #map {
-      height: calc(100vh - 80px - 113px);
+      height: calc(100vh - 80px - 80px - 75px);
+      /* height: 100vh; */
       width: 100%;
     }
 
     /* PC */
     @media (min-width: 1024px) {
       #map {
-        height: calc(100vh - 88px);
+        height: calc(100vh - 88px - 90px);
         width: 100%;
       }
     }
@@ -61,6 +64,7 @@
       }
       // preserveViewport: true, // 描画後に中心点をずらさない
     });
+    
     // ルート検索
     directionObject.route(routePoint, function(result, status) {
       // OKの場合ルート描画
@@ -71,34 +75,34 @@
 
 
     // 現在地取得
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          var marker = new google.maps.Marker({
-            position: pos, //マーカーの位置（必須）
-            map: map, //マーカーを表示する地図
-            icon: {
-              path: google.maps.SymbolPath.CIRCLE,
-              scale: 10,
-              fillColor: "blue",
-              fillOpacity: 1,
-              strokeColor: "white",
-              strokeWeight: 1,
-            },
-          });
-        },
-        (error) => {
-          alert('位置情報の取得に対応していません。：' + error.code);
-        }
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      alert('位置情報の取得に対応していません。：');
-    }
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(
+    //     (position) => {
+    //       const pos = {
+    //         lat: position.coords.latitude,
+    //         lng: position.coords.longitude,
+    //       };
+    //       var marker = new google.maps.Marker({
+    //         position: pos, //マーカーの位置（必須）
+    //         map: map, //マーカーを表示する地図
+    //         icon: {
+    //           path: google.maps.SymbolPath.CIRCLE,
+    //           scale: 10,
+    //           fillColor: "blue",
+    //           fillOpacity: 1,
+    //           strokeColor: "white",
+    //           strokeWeight: 1,
+    //         },
+    //       });
+    //     },
+    //     (error) => {
+    //       alert('位置情報の取得に対応していません。：' + error.code);
+    //     }
+    //   );
+    // } else {
+    //   // Browser doesn't support Geolocation
+    //   alert('位置情報の取得に対応していません。：');
+    // }
   </script>
 
 </x-app-layout>
