@@ -1,27 +1,27 @@
 <x-app-layout>
-  <div id="map"></div>
-
   <!-- Google Maps JavaScript APIの読み込み -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA986Z_pTt3rUAU6K64WGcIyPvAMtzhyeU"></script>
-<!-- 地図を表示する要素 -->
-<div id="map" style="height: 500px;"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA986Z_pTt3rUAU6K64WGcIyPvAMtzhyeU"></script>
+  <!-- 地図を表示する要素 -->
 
+  <section class="text-gray-900 body-font bg-appColor">
+    <p class="py-8 text-2xl text-center font-bold"> {{ __('地図 ') }}</p>
+    <div id="map"></div>
+  </section>
   {{-- style --}}
   <style>
-  /* スマホ */
-  #map {
-    height: calc(100vh - 80px - 113px);
-    width: 100%;
-  }
-
-  /* PC */
-  @media (min-width: 1024px) {
+    /* スマホ */
     #map {
-      height: calc(100vh - 88px);
+      height: calc(100vh - 80px - 113px);
       width: 100%;
-      margin-top: 8px;
     }
-  }
+
+    /* PC */
+    @media (min-width: 1024px) {
+      #map {
+        height: calc(100vh - 88px);
+        width: 100%;
+      }
+    }
   </style>
 
   <script>
