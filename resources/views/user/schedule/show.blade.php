@@ -2,7 +2,7 @@
   <div class="sm:mt-12 pb-20">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg min-height">
-        <div class="p-6 bg-white">
+        <div class="p-6 bg-appColor rounded-lg">
           <div class="mb-6 ml-1">
             <a href="{{ url()->previous() }}">
               <p class="w-4 h-4">
@@ -14,12 +14,12 @@
               </p>
             </a>
           </div>
-          <div class="mb-6">
+          <div class="mb-6 ">
             <div class="text-gray-900">
               <div class="mb-4 flex flex-col items-center content-center">
                 <p class="pb-2 text-2xl text-center font-bold">{{ $schedule->title }}</p>
                 <p class="pb-2 text-center">{{ date('Y/m/d', strtotime($schedule->date)) }}</p>
-                <div class="flex content-center items-center my-3  py-2 px-4 rounded-full border border-1 border-gray-600">
+                <div class="flex content-center items-center my-3  py-2 px-4 rounded-full bg-white">
                   <p class="text-center pr-2">持ち物リスト</p>
                   <div class="w-3 h-3">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -36,7 +36,7 @@
               @foreach ($destinations as $destination)
                 {{-- @if ($loop->index < count($destinations) && $destinations[$loop->index]->address) --}}
                 <div
-                  class="border border-1 border-gray-200 rounded {{ !($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address) ? 'mb-3' : '' }}">
+                  class=" rounded bg-white {{ !($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address) ? 'mb-3' : '' }}">
                   {{-- @endif --}}
                   <div class="flex  justify-between items-center ">
                     <div class="py-2 flex justify-center items-center">
@@ -66,15 +66,25 @@
                   {{-- リストの下に表示する情報 --}}
                   {{-- ($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address) 次の行き先に住所が設定されていたら移動にする。 --}}
                   @if (count($destination->risks) > 0 || count($destination->treatments) > 0)
-                    <div class="ml-[60px] mb-3">
+                    <div class="ml-[60px] pb-3">
+                      {{-- 処置 --}}
+                      @if ($destination->treatments)
+                        <div class="flex">
+                          @foreach ($destination->treatments as $treatment)
+                            <div class="px-2 mr-2  mb-2 text-sm border border-1 border-gray-500 rounded">
+                              <a href="{{ route('user.treatment.show', $treatment->id) }}">{{ $treatment->title }}</a>
+                            </div>
+                          @endforeach
+                        </div>
+                      @endif
                       {{-- 注意事項 --}}
                       @if (count($destination->risks) > 0)
                         <div class="w-full mb-1">
                           <a href="{{ route('user.destination.show', $destination->id) }}">
                             <div class="flex items-center text-sm">
                               <p class="mr-1">注意事項あり</p>
-                              <p class='flex justify-center items-center w-3 h-3 bg-amber-500  rounded-full'>
-                                <svg class="w-2 h-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                              <p class='flex justify-center items-center w-4 h-4 bg-black rounded-full'>
+                                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                   <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                   <path fill="#ffffff"
                                     d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
@@ -82,17 +92,6 @@
                               </p>
                             </div>
                           </a>
-                        </div>
-                      @endif
-
-                      {{-- 処置 --}}
-                      @if ($destination->treatments)
-                        <div class="flex">
-                          @foreach ($destination->treatments as $treatment)
-                            <div class="mr-4 pt-0.5 px-2 text-sm border border-1 border-gray-900 rounded-full">
-                              <a href="{{ route('user.treatment.show', $treatment->id) }}">{{ $treatment->title }}</a>
-                            </div>
-                          @endforeach
                         </div>
                       @endif
                     </div>
@@ -105,7 +104,7 @@
                   <div class="ml-8 move_border">
                     {{-- 移動あり --}}
                     @if ($loop->index < count($destinations) - 1 && $destinations[$loop->index + 1]->address)
-                      <p class="py-8 pl-4 text-sm ">移動あり</p>
+                      <p class="py-8 pl-4 text-sm ">移動</p>
                     @endif
                   </div>
                 @endif
