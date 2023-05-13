@@ -12,18 +12,9 @@
   <div class="sm:mt-12 pb-20">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg min-height">
-        <div class="p-6 bg-appColor">
-          <div class="mb-6 ml-1">
-            <a href="{{ url()->previous() }}">
-              <p class="w-4 h-4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                  <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                  <path
-                    d="M4.7 244.7c-6.2 6.2-6.2 16.4 0 22.6l176 176c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L54.6 272 432 272c8.8 0 16-7.2 16-16s-7.2-16-16-16L54.6 240 203.3 91.3c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0l-176 176z" />
-                </svg></p>
-            </a>
-          </div>
+        <div class="p-6 bg-round">
           <section class="text-gray-900 body-font">
-            <div class="flex justify-center items-center mb-10">
+            <div class="flex justify-center items-center mb-10 mt-4">
               <p class="pb-2 text-2xl text-center font-bold"> {{ __('緊急連絡先 ') }}</p>
             </div>
 
@@ -66,7 +57,7 @@
                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                               <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                               <path
-                                d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" 
+                                d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"
                                 fill="#FF0000"/>
                             </svg>
                         </div>

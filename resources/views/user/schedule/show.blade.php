@@ -2,19 +2,8 @@
   <div class="sm:mt-12 pb-20">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg min-height">
-        <div class="p-6 bg-appColor rounded-lg">
-          <div class="mb-6 ml-1">
-            <a href="{{ url()->previous() }}">
-              <p class="w-4 h-4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                  <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                  <path
-                    d="M4.7 244.7c-6.2 6.2-6.2 16.4 0 22.6l176 176c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L54.6 272 432 272c8.8 0 16-7.2 16-16s-7.2-16-16-16L54.6 240 203.3 91.3c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0l-176 176z" />
-                </svg>
-              </p>
-            </a>
-          </div>
-          <div class="mb-6 ">
+        <div class="p-6 rounded-lg bg-round">
+          <div class="mb-6 mt-4">
             <div class="text-gray-900">
               <div class="mb-4 flex flex-col items-center content-center">
                 <p class="pb-2 text-2xl text-center font-bold">{{ $schedule->title }}</p>
@@ -70,7 +59,7 @@
                       @if ($destination->treatments)
                         <div class="flex">
                           @foreach ($destination->treatments as $treatment)
-                            <div class="px-2 mr-2  mb-2 text-sm border border-1 border-gray-500 rounded">
+                            <div class="px-2 mr-2 mb-2 pt-0.5 text-sm border border-1 border-gray-500 rounded">
                               <a href="{{ route('user.treatment.show', $treatment->id) }}">{{ $treatment->title }}</a>
                             </div>
                           @endforeach
@@ -81,7 +70,6 @@
                         <div class="w-full mb-1">
                           <a href="{{ route('user.destination.show', $destination->id) }}">
                             <div class="flex items-center text-sm">
-                              <p class="mr-1">注意事項あり</p>
                               <p class='flex justify-center items-center w-4 h-4 bg-black rounded-full'>
                                 <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                   <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -89,6 +77,7 @@
                                     d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
                                 </svg>
                               </p>
+                              <p class="ml-2">注意事項あり</p>
                             </div>
                           </a>
                         </div>
