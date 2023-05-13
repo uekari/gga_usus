@@ -116,11 +116,11 @@
 </nav>
 
 
-<nav x-data="{ open: false }" class="pl-4 pr-4 bg-white  fixed bottom-0 w-screen z-50">
+<nav x-data="{ open: false }" class="pl-6 pr-6 bg-white  fixed bottom-0 w-screen z-50">
 
   <div class="lg:hidden">
-    <div class="space-y-1 flex">
-      <x-responsive-nav-link :href="route('user.schedule.index')" :active="request()->routeIs('user.schedule.index')">
+    <div class="space-y-1 flex justify-between py-4">
+      <x-nav-link-sp :href="route('user.schedule.index')" :active="request()->routeIs('user.schedule.index')">
         <div class="flex flex-col">
           <div class='mx-auto -2'>
             @if (request()->routeIs('user.schedule.index') ||
@@ -144,8 +144,8 @@
           </div>
           {{-- <p>{{ __('旅行スケジュール') }}</p> --}}
         </div>
-      </x-responsive-nav-link>
-      <x-responsive-nav-link :href="route('user.map.index')" :active="request()->routeIs('user.map.index')">
+      </x-nav-link-sp>
+      <x-nav-link-sp :href="route('user.map.index')" :active="request()->routeIs('user.map.index')">
         <div class="flex flex-col">
           <div class='mx-auto'>
             @if (request()->routeIs('user.map.index'))
@@ -166,8 +166,8 @@
           </div>
           {{-- <p>{{ __('地図') }}</p> --}}
         </div>
-      </x-responsive-nav-link>
-      <x-responsive-nav-link :href="route('user.client.index')" :active="request()->routeIs('user.client.index')">
+      </x-nav-link-sp>
+      <x-nav-link-sp :href="route('user.client.index')" :active="request()->routeIs('user.client.index')">
         <div class="flex flex-col">
           <div class='mx-auto'>
             @if (request()->routeIs('user.client.index'))
@@ -190,8 +190,8 @@
           </div>
           {{-- <p>{{ __('患者管理') }}</p> --}}
         </div>
-      </x-responsive-nav-link>
-      <x-responsive-nav-link :href="route('user.treatment.index')" :active="request()->routeIs('user.treatment.index')">
+      </x-nav-link-sp>
+      <x-nav-link-sp :href="route('user.treatment.index')" :active="request()->routeIs('user.treatment.index')">
         <div class="flex flex-col">
           <div class='mx-auto'>
             @if (request()->routeIs('user.treatment.index'))
@@ -216,8 +216,8 @@
           </div>
           {{-- <p>{{ __('処置') }}</p> --}}
         </div>
-      </x-responsive-nav-link>
-      <x-responsive-nav-link :href="route('user.emergency.index')" :active="request()->routeIs('user.emergency.index')">
+      </x-nav-link-sp>
+      <x-nav-link-sp :href="route('user.emergency.index')" :active="request()->routeIs('user.emergency.index')">
         <div class="flex flex-col">
           <div class='mx-auto'>
             @if (request()->routeIs('user.emergency.index'))
@@ -240,7 +240,7 @@
           </div>
           {{-- <p>{{ __('緊急連絡先') }}</p> --}}
         </div>
-      </x-responsive-nav-link>
+      </x-nav-link-sp>
     </div>
   </div>
 </nav>
