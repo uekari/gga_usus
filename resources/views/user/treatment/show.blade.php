@@ -1,8 +1,8 @@
 <x-app-layout>
-  <div class="sm:mt-12 pb-20">
+ <div class="sm:mt-12 pb-20 pt-24">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg">
-        <div class="p-6 bg-round">
+        <div class="py-6 px-8 bg-round">
           <section class="text-gray-900 body-font">
             <p class="mb-10 mt-4 text-2xl text-center font-bold"> {{ __('処置 ') }}</p>
 

@@ -1,8 +1,8 @@
 <x-app-layout>
-  <div class="sm:mt-12 pb-20">
+  <div class="sm:mt-12 pb-20 pt-24">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg min-height">
-        <div class="p-6 rounded-lg bg-round">
+        <div class="py-6 px-8 rounded-lg bg-round">
           <div class="mb-6 mt-4">
             <div class="text-gray-900">
               <div class="mb-4 flex flex-col items-center content-center">

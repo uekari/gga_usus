@@ -119,7 +119,7 @@
 <nav x-data="{ open: false }" class="pl-6 pr-6 bg-white  fixed bottom-0 w-screen z-50">
 
   <div class="lg:hidden">
-    <div class="space-y-1 flex justify-between py-4">
+    <div class="space-y-1 flex justify-between pt-2 pb-5">
       <x-nav-link-sp :href="route('user.schedule.index')" :active="request()->routeIs('user.schedule.index')">
         <div class="flex flex-col">
           <div class='mx-auto -2'>
