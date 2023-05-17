@@ -3,10 +3,10 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA986Z_pTt3rUAU6K64WGcIyPvAMtzhyeU"></script>
   <!-- 地図を表示する要素 -->
 
-  <div class="sm:mt-12 pb-20">
+  <div class="sm:mt-12 pb-20 pt-24">
     <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12 ">
       <div class="bg-white overflow-hidden sm:rounded-lg min-height">
-        <div class="p-6 bg-round">
+       <div class="py-6 px-10 bg-round">
          <section class="text-gray-900 body-font">
             <p class="pt-8 pb-6 text-2xl text-center font-bold"> {{ __('地図 ') }}</p>
               <div id="map" class="rounded"></div>
@@ -21,7 +21,7 @@
   <style>
     /* スマホ */
     #map {
-      height: calc(96vh - 80px - 80px - 75px);
+      height: calc(93vh - 80px - 80px - 75px);
       /* height: 100vh; */
       width: 100%;
     }
